@@ -22,8 +22,6 @@
                
                 <p class="text-2xl">Briefed</p><br>
                 <span class="text-xs">solicode</span>
-           
-               
             </a>
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
