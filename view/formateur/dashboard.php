@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../public/css/output.css"> <!-- Custom CSS file -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   <!-- Alpine.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.7.1/dist/alpine.min.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
   <title>Dashboard</title>
 </head>
 
-<body class="bg-bodybackground font-poppin">
-  <main class="flex gap-5 ">
-    </div>
+<body class="text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200 font-Poppins">
+
+  <main class="flex gap-5 relative">
+
     <div>
-      <a href="#" style="color: #3AAFA9;" class="flex justify-center items-center  text-2xl font-semibold text-gray-900 bg-white mt-7 rounded-xl">
-        <svg class="w-16 h-16 text-primary  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+    <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200 mt-7 rounded-xl"><svg class="w-16 h-16 text-primary  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
           <path fill-rule="evenodd" d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z" clip-rule="evenodd" />
         </svg>
 
         <p class="text-2xl">Briefed</p><br>
         <span class="text-xs">solicode</span>
       </a>
-      <aside id=" default-sidebar" class="bg-white  rounded-xl mt-4 ml-4  top-0 left-0 z-40 w-72 h-5/6  transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
-        <div class="overflow-y-auto mt-5 py-5 px-3 h-full bg-white rounded-xl  border-r border-gray-200">
+      <aside id="default-sidebar" class="bg-white dark:bg-gray-800 rounded-xl mt-4 ml-4 top-0 left-0 z-40 w-80 h-5/6 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
+
+
+      <div class="overflow-y-auto mt-5 py-5 px-3 h-full bg-white dark:bg-gray-800 rounded-xl border-r border-gray-200 dark:border-gray-700">
           <ul class="space-y-8">
             <li>
-              <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
+            <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 dark:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg style="color: #3AAFA9;" aria-hidden="true" class="w-6 h-6  transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                   <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                 </svg>
-                <span class="ml-3 text-xl">Dashboard</span>
+                <span class="ml-3 text-xl text-gray-900  dark:text-gray-200">Dashboard</span>
               </a>
             </li>
             <ul class="space-y-8 ">
@@ -102,8 +112,16 @@
       </aside>
     </div>
     <div class="flex justify-center">
-      <div class=" bg-white mt-7 w-96 rounded-xl " style="width: 1520px; height: 1030px; ">
-        <h3 class="text-5xl font-medium ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4">Imane</span></h3>
+      <div class=" bg-white mt-7 w-96 rounded-xl " style="width: 1480px; height: 1030px; ">
+        <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4">Imane</span></h3>
+        <button id="theme-toggle" type="button" class="text-gray-500  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
 
         <div class="flex bg-white border rounded-xl mx-4 h-24 p-4 mt-16">
           <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
@@ -114,7 +132,7 @@
           <div class="ml-48 mt-4">
             <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5">in progress</span>
           </div>
-          <div class="ml-32">
+          <div class="ml-24">
             <p class="text-gray-400 text-xl font-medium">Duration</p>
             <span class="text-xl font-medium text-gray-800">10jr</span>
           </div>
@@ -189,8 +207,86 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="bg-white w-80 h-64 mt-7 rounded-xl ml-5 ">
+
+        <div class="flex gap-4">
+          <img class="w-20 h-20 rounded-xl  ml-3 mt-[-10px] object-cover" src="../../public/assets/img/testprofile.jpg" alt="">
+          <div class="mt-3">
+            <p class="text-gray-800 text-xl font-medium">Imane Bouziane</p>
+            <span class="text-">Formatrice</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-x-14">
+          <div class="group ">
+            <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd" />
+              </svg>
+              Group </span>
+            <span class="ml-14 text-gray-900 font-medium text-xl">104</span>
+          </div>
+          <div class="group ">
+            <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd" />
+              </svg>
+
+              Briefs </span>
+            <span class="ml-14 text-gray-900 font-medium text-xl">10</span>
+          </div>
+          <div class="group ">
+            <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd" />
+              </svg>
+              Group </span>
+            <span class="ml-14 text-gray-900 font-medium text-xl">104</span>
+          </div>
+        </div>
+
+
+      </div>
 
   </main>
+
+  <script>
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        var themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+    </script>
 </body>
 
 
