@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+  var_dump($_SESSION["ID"]);
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 

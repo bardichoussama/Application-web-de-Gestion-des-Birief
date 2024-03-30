@@ -1,9 +1,6 @@
 <?php
-
-    include("controler/formateurLogin.php");
+    include("controler/formateurLogin.php")
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +30,7 @@
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                         Formateur Login
                     </h1>
-                    <form class="space-y-4 md:space-y-6" method="post">
+                    <form class="space-y-4 md:space-y-6" method="post" > 
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
@@ -53,7 +50,7 @@
                             </div>
                            
                         </div>
-                        <button type="submit" class="bg-primary w-full text-white  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                        <input type="submit" name="submit" value="sign in" class="bg-primary w-full text-white  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                        
                     </form>
                 </div>
