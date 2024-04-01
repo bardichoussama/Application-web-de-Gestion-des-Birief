@@ -56,9 +56,9 @@
 
 
 
-            <a href="./view/formateur/formateurLogin.php" class="flex items-center font-semibold text-gray-900  bg-white p-4 rounded-xl mt-16 w-full h-28 hover:bg-secondary hover:text-gray-300 ">
-                <div class="bg-white w-16 h-16 ml-4 rounded-lg flex items-center justify-center border-2 border-teal-500">
-                    <ion-icon class="text-primary text-2xl" name="ribbon"></ion-icon>
+            <a href="./view/formateur/formateurLogin.php" class="flex items-center font-semibold border-primary bg-secondary border-4  p-4 rounded-xl mt-16 w-full h-28  hover:text-gray-300 ">
+                <div class="bg-primary w-16 h-16 ml-4 rounded-lg flex items-center justify-center ">
+                    <ion-icon class="text-white text-2xl" name="ribbon"></ion-icon>
                 </div>
                 <div class="ml-4">
                     <p class="text-gray-800 text-2xl">Former</p>
