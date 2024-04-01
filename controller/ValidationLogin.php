@@ -21,9 +21,16 @@ require_once '../model/AuthenticationModel.php';
         $loggedIn = $authModel->login($email, $password, 'formateur'); 
         
         if ($loggedIn) {
+            if($userType == 'formateur'){
+                header('Location: ../view/formateur/dashboard_formateur.php'); 
+                exit();
+
+            }else{
+                header('Location: ../view/apprenant/promo.php'); 
+                exit();
+            }
            
-            header('Location: ../view/formateur/dashboard_formateur.php'); 
-            exit();
+           
         } else {
             
             echo "Invalid email or password. Please try again.";
