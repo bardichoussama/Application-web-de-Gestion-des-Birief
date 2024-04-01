@@ -2,9 +2,9 @@
 
 class Database {
     private $host = "localhost";
-    private $db_name = "breif-15";
+    private $db_name = "gestion_briefs";
     private $username = "root";
-    private $password = "";
+    private $password = "Mouad123*";
     public $conn;
 
     public  function getConnection() {
@@ -20,4 +20,3 @@ class Database {
     }
 }
 
-$conn= new Database();
