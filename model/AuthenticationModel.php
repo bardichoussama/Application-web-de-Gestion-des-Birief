@@ -25,12 +25,14 @@ class AuthenticationModel
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            
+            session_start();
             if ($user['MOT_DE_PASSE'] === $password) {
+                $_SESSION["ID"]=$user['ID'];
                 return true;
             }
         }
         return false;
     }   
+   
 }
 
