@@ -65,7 +65,7 @@
                     <span class="text-gray-400 text-xs block ">Click here to login</span>
                 </div>
             </a>
-            <a href="#" class="flex items-center font-semibold bg-white text-gray-900  p-4 rounded-xl mt-9 w-full h-28 hover:bg-secondary hover:text-gray-300 ">
+            <a href="./view/apprenant/apprenat_login.php" class="flex items-center font-semibold bg-white text-gray-900  p-4 rounded-xl mt-9 w-full h-28 hover:bg-secondary hover:text-gray-300 ">
                 <div class="bg-white w-16 h-16 ml-4 rounded-lg flex items-center justify-center border-2 border-teal-500">
                     <ion-icon class=" text-primary text-2xl" name="school"></ion-icon>
 
