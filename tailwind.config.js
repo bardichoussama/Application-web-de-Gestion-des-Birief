@@ -4,7 +4,9 @@ module.exports = {
   content: [
     './index.php',
     './**/*.php',
-    './view/formateur/dashboard.php'
+    './view/formateur/dashboard.php',
+    './view/formateur/formateurLogin.php',
+
   ],
   theme: {
     extend: {
