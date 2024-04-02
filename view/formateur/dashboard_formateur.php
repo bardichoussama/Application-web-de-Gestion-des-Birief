@@ -1,8 +1,7 @@
 
 <?php
-  session_start();
-  var_dump($_SESSION["ID"]);
-?>
+  require_once "../../controller/formateur/formateurDashboard.php";
+  ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -118,7 +117,7 @@
     </div>
     <div class="flex justify-center">
       <div class="  mt-7 w-96 rounded-xl text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200 " style="width: 1480px; height: 1030px;  ">
-        <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4">Imane</span></h3>
+        <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4"><?php echo $cardInfo["PRENOM"]; ?></span></h3>
         <button id="theme-toggle" type="button" class="text-gray-500  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -131,11 +130,11 @@
         <div class="flex  dark:bg-gray-900 border rounded-xl mx-4 h-24 p-4 mt-16 dark:border-gray-700">
           <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
           <div class="ml-4  w-4/12">
-            <p class="text-base font-medium">Creer une site web worddpress</p>
-            <span class="text-gray-400">By Imane bouziane</span>
+            <p class="text-base font-medium"><?php echo $currentBP["TITRE"]  ?></p>
+            <span class="text-gray-400">By <?php echo $currentBP["PRENOM"]." ".$currentBP["NOM"]  ?></span>
           </div>
           <div class="ml-48 mt-4">
-            <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5">in progress</span>
+            <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5"><?php echo $currentBP["ETAT"] ?></span>
           </div>
           <div class="ml-24">
             <p class="text-gray-400 text-xl font-medium">Duration</p>
@@ -172,21 +171,21 @@
             <span class="text-xl font-medium text-gray-800 ">8/13</span>
           </div>
         </div>
-
+       
         <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4">
           <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist" style="list-style-type: none; margin: 0; padding: 0;">
             <li class="w-full">
               <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">My Briefs</button>
             </li>
           </ul>
-
+          <?php for($i=0;$i<count($formateurBP);$i++){ ?>
           <div id="fullWidthTabContent" class="border-t border-gray-200 ">
 
             <div class="flex bg-white  rounded-xl h-24 mt-16 ">
               <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
               <div class="ml-4  w-4/12">
-                <p class="text-base font-medium">Creer une site web worddpress</p>
-                <span class="text-gray-400">By Imane bouziane</span>
+                <p class="text-base font-medium"><?php echo $formateurBP[$i]["TITRE"] ?></p>
+                <span class="text-gray-400">By <?php echo $formateurBP[$i]["PRENOM"]." ".$formateurBP[$i]["NOM"]  ?></span>
               </div>
               <div class="ml-48 mt-4">
                 <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">coming</span>
@@ -212,14 +211,15 @@
               </div>
             </div>
           </div>
+          <?php };?>
         </div>
       </div>
+     
       <div class="bg-white w-80 h-64 mt-7 rounded-xl ml-5 ">
-
         <div class="flex gap-4">
           <img class="w-20 h-20 rounded-xl  ml-3 mt-[-10px] object-cover" src="../../public/assets/img/testprofile.jpg" alt="">
           <div class="mt-3">
-            <p class="text-gray-800 text-xl font-medium">Imane Bouziane</p>
+            <p class="text-gray-800 text-xl font-medium"><?php echo $cardInfo["NOM"]." ".$cardInfo["PRENOM"]; ?></p>
             <span class="text-">Formatrice</span>
           </div>
         </div>
@@ -229,7 +229,7 @@
                 <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd" />
               </svg>
               Group </span>
-            <span class="ml-14 text-gray-900 font-medium text-xl">104</span>
+            <span class="ml-14 text-gray-900 font-medium text-xl"><?php echo $cardInfo["NOM_GROUPE"]; ?></span>
           </div>
           <div class="group ">
             <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
