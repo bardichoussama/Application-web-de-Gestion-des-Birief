@@ -13,7 +13,9 @@ class AuthenticationModel
 
     public function login($email, $password, $userType)
     {
-        if ($userType === 'formateur') {
+        
+       
+        if ($userType === 'FORMATEUR') {
             $tableName = 'formateur';
         } else {
             $tableName = 'apprenant';
@@ -24,10 +26,12 @@ class AuthenticationModel
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+ 
         if ($user) {
+           
             session_start();
             if ($user['MOT_DE_PASSE'] === $password) {
-                $_SESSION["ID"]=$user['ID'];
+                $_SESSION["ID"]= $user['ID_'.$userType];
                 return true;
             }
         }

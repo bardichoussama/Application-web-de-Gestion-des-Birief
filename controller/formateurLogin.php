@@ -4,11 +4,9 @@ require_once '../config/db.php';
 require_once '../model/AuthenticationModel.php'; 
 
 
-
-
-    $database = new Database();
-
     $db = $database->getConnection();
+   
+   
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,19 +16,12 @@ require_once '../model/AuthenticationModel.php';
 
  
         $authModel = new AuthenticationModel($db);
-        $loggedIn = $authModel->login($email, $password, 'formateur'); 
+        $loggedIn = $authModel->login($email, $password, 'FORMATEUR'); 
         
         if ($loggedIn) {
-            if($userType == 'formateur'){
+          
                 header('Location: ../view/formateur/dashboard_formateur.php'); 
                 exit();
-
-            }else{
-                header('Location: ../view/apprenant/promo.php'); 
-                exit();
-            }
-           
-           
         } else {
             
             echo "Invalid email or password. Please try again.";
