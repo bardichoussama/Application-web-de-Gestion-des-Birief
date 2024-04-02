@@ -1,7 +1,6 @@
 
 <?php
-  session_start();
-  var_dump($_SESSION["ID"]);
+require_once "../../controller/formateur/formateurDashboard.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -135,15 +134,15 @@
             <span class="text-gray-400">By <?php echo $currentBP["PRENOM"]." ".$currentBP["NOM"]  ?></span>
           </div>
           <div class="ml-48 mt-4">
-            <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5"><?php echo $currentBP["ETAT"] ?></span>
+            <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5">TO DO</span>
           </div>
           <div class="ml-24">
             <p class="text-gray-400 text-xl font-medium">Duration</p>
-            <span class="text-xl font-medium text-gray-800">10jr</span>
+            <span class="text-xl font-medium text-gray-800"><?php echo $currentBP["DUREE"] ?> jour</span>
           </div>
           <div class="ml-16">
             <p class="text-xl font-medium text-gray-400">Skills</p>
-            <span class="text-xl font-medium text-gray-800">5</span>
+            <span class="text-xl font-medium text-gray-800"><?php echo $currentBP["SKILLS"]?></span>
           </div>
           <div class="ml-24 mt-4">
             <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
