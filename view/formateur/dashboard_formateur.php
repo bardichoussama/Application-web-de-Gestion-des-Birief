@@ -179,7 +179,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
               <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">My Briefs</button>
             </li>
           </ul>
-          <?php for($i=0;$i<count($formateurBP);$i++){ ?>
+          <?php if(count($formateurBP)!=0): ?>
+          <?php for($i=0;$i<count($formateurBP);$i++): ?>
           <div id="fullWidthTabContent" class="border-t border-gray-200 ">
 
             <div class="flex bg-white  rounded-xl h-24 mt-16 ">
@@ -212,7 +213,10 @@ require_once "../../controller/formateur/formateurDashboard.php";
               </div>
             </div>
           </div>
-          <?php };?>
+          <?php endfor;?>
+          <?php else:?>
+          <?php echo "ther is no brief yet "?>
+          <?php endif; ?>
         </div>
       </div>
      
