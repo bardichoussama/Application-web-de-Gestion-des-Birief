@@ -115,6 +115,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
         </div>
       </aside>
     </div>
+     
     <div class="flex justify-center">
       <div class="  mt-7 w-96 rounded-xl text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200 " style="width: 1480px; height: 1030px;  ">
         <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4"><?php echo $cardInfo["PRENOM"]; ?></span></h3>
@@ -126,6 +127,13 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
           </svg>
         </button>
+        <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4">
+          <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist" style="list-style-type: none; margin: 0; padding: 0;">
+            <li class="w-full">
+              <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">in progres</button>
+            </li>
+          </ul>
+    
       <?php  if($currentBP):?>
         <div class="flex  dark:bg-gray-900 border rounded-xl mx-4 h-24 p-4 mt-16 dark:border-gray-700">
           <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
@@ -166,17 +174,18 @@ require_once "../../controller/formateur/formateurDashboard.php";
           </div>
 
           <div class="w-full bg-white rounded-full h-2.5 ">
-            <div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+            <div class="bg-primary h-2.5 rounded-full" style="width: <?php echo $progres["progres"]/$progres["total"] * 100  ?>%"></div>
           </div>
           <div class="flex justify-between mb-1">
-            <span class="text-xl font-medium text-gray-800 ">8/13</span>
+            <span class="text-xl font-medium text-gray-800 "><?php echo $progres["progres"]."/".$progres["total"] ?><?php?></span>
           </div>
         </div>
         <?php endif;?>
+        </div>
         <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4">
           <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist" style="list-style-type: none; margin: 0; padding: 0;">
             <li class="w-full">
-              <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">My Briefs</button>
+              <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">assigned briefs</button>
             </li>
           </ul>
           <?php if(count($formateurBP)!=0): ?>
@@ -236,21 +245,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
               Group </span>
             <span class="ml-14 text-gray-900 font-medium text-xl"><?php echo $cardInfo["NOM_GROUPE"]; ?></span>
           </div>
-          <div class="group ">
-            <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd" />
-              </svg>
-
-              Briefs </span>
-            <span class="ml-14 text-gray-900 font-medium text-xl">10</span>
-          </div>
-          <div class="group ">
-            <span class="flex mt-6 ml-7 text-gray-400 text-lg"><svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd" />
-              </svg>
-              Group </span>
-            <span class="ml-14 text-gray-900 font-medium text-xl">104</span>
-          </div>
+          
         </div>
 
 

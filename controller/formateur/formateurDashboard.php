@@ -10,8 +10,9 @@
             $brief = new brief($conn);
             $currentBP = $brief->getCurrentBP($_SESSION["ID"]);
             $formateurBP = $brief->getFormateurBP($_SESSION["ID"]);
-            for($i=0;$i<count($formateurBP);$i++){
-            }
+
+            $progres=$brief->briefProgres($currentBP["brief"]);
+
     }else{
         header("location:../../view/formateur/formateurLogin.php");
     }
