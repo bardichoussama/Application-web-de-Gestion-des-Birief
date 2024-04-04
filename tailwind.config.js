@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-  darkMode: 'class', // or 'media'
+  // darkMode: 'class', // or 'media'
   content: [
     './index.php',
     './**/*.php',
