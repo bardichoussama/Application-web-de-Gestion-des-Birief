@@ -125,23 +125,23 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
           </svg>
         </button>
-        <?php if ($currentBP) : ?>
+        <?php if ($inProgres) : ?>
           <div class="flex  dark:bg-gray-900 border rounded-xl mx-4 h-24 p-4 mt-16 dark:border-gray-700">
             <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
             <div class="ml-4  w-4/12">
-              <p class="text-base font-medium"><?php echo $currentBP["TITRE"]  ?></p>
-              <span class="text-gray-400">By <?php echo $currentBP["PRENOM"] . " " . $currentBP["NOM"]  ?></span>
+              <p class="text-base font-medium"><?php echo $inProgres["TITRE"]  ?></p>
+              <span class="text-gray-400">By <?php echo $inProgres["PRENOM"] . " " . $inProgres["NOM"]  ?></span>
             </div>
             <div class="ml-48 mt-4">
               <span class="bg-yellobadge text-gray-800 rounded-xl text-base font-medium me-2 p-1.5">TO DO</span>
             </div>
             <div class="ml-24">
               <p class="text-gray-400 text-xl font-medium">Duration</p>
-              <span class="text-xl font-medium text-gray-800"><?php echo $currentBP["DUREE"] ?> jour</span>
+              <span class="text-xl font-medium text-gray-800"><?php echo $inProgres["DUREE"] ?> jour</span>
             </div>
             <div class="ml-16">
               <p class="text-xl font-medium text-gray-400">Skills</p>
-              <span class="text-xl font-medium text-gray-800"><?php echo $currentBP["SKILLS"] ?></span>
+              <span class="text-xl font-medium text-gray-800"><?php echo $inProgres["SKILLS"] ?></span>
             </div>
             <div class="ml-24 mt-4">
               <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
@@ -165,10 +165,10 @@ require_once "../../controller/formateur/formateurDashboard.php";
             </div>
 
             <div class="w-full bg-white rounded-full h-2.5 ">
-              <div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+              <div class="bg-primary h-2.5 rounded-full" style="width:<?php echo $briefProgress['progres']/$briefProgress['total']*100 ?>%"></div>
             </div>
             <div class="flex justify-between mb-1">
-              <span class="text-xl font-medium text-gray-800 ">8/13</span>
+              <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress['progres']."/".$briefProgress['total'] ?></span>
             </div>
           </div>
         <?php endif; ?>
@@ -178,26 +178,26 @@ require_once "../../controller/formateur/formateurDashboard.php";
               <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">My Briefs</button>
             </li>
           </ul>
-          <?php if (count($formateurBP) != 0) : ?>
-            <?php for ($i = 0; $i < count($formateurBP); $i++) : ?>
+          <?php if (count($assignedBP) != 0) : ?>
+            <?php for ($i = 0; $i < count($assignedBP); $i++) : ?>
               <div id="fullWidthTabContent" class="border-t border-gray-200 ">
 
                 <div class="flex bg-white  rounded-xl h-24 mt-16 ">
                   <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                   <div class="ml-4  w-4/12">
-                    <p class="text-base font-medium"><?php echo $formateurBP[$i]["TITRE"] ?></p>
-                    <span class="text-gray-400">By <?php echo $formateurBP[$i]["PRENOM"] . " " . $formateurBP[$i]["NOM"]  ?></span>
+                    <p class="text-base font-medium"><?php echo $assignedBP[$i]["TITRE"] ?></p>
+                    <span class="text-gray-400">By <?php echo $assignedBP[$i]["PRENOM"] . " " . $assignedBP[$i]["NOM"]  ?></span>
                   </div>
                   <div class="ml-48 mt-4">
                     <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">coming</span>
                   </div>
                   <div class="ml-32">
                     <p class="text-gray-400 text-xl font-medium">Duration</p>
-                    <span class="text-xl font-medium text-gray-800">10jr</span>
+                    <span class="text-xl font-medium text-gray-800"><?php echo $assignedBP[$i]["DUREE"] ?></span>
                   </div>
                   <div class="ml-16">
                     <p class="text-xl font-medium text-gray-400">Skills</p>
-                    <span class="text-xl font-medium text-gray-800">5</span>
+                    <span class="text-xl font-medium text-gray-800"><?php echo $assignedBP[$i]["SKILLS"] ?></span>
                   </div>
                   <div class="ml-28 mt-4">
                     <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">

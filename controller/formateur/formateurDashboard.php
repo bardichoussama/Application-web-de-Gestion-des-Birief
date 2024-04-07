@@ -8,11 +8,9 @@
             $formateur = new formateur($_SESSION["ID"],$conn);
             $cardInfo = $formateur->getFormation();
             $brief = new brief($conn);
-            $currentBP = $brief->getCurrentBP($_SESSION["ID"]);
-            $formateurBP = $brief->getFormateurBP($_SESSION["ID"]);
-
-            $progres=$brief->briefProgres($currentBP["brief"]);
-
+            $inProgres = $brief->getInProgresBP($_SESSION["ID_GROUPE"]);
+            $assignedBP = $brief->getAssignedBP($_SESSION["ID_GROUPE"],$inProgres["ID_BRIEF"]);
+            $briefProgress=$brief->briefProgres($inProgres["ID_BRIEF"]);      
     }else{
         header("location:../../view/formateur/formateurLogin.php");
     }

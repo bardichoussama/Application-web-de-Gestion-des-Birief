@@ -1,5 +1,5 @@
 <?php
-require_once "../../controller/formateur/formateurDashboard.php";
+  require_once '../../controller/formateur/creatBrief.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -116,7 +116,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
     </div>
     <div class="flex justify-center ">
       <div class="  mt-7 w-96 rounded-xl bg-white  text-gray-900" style="width: 1480px; height: 1030px;  ">
-        <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4"><?php echo $cardInfo["PRENOM"]; ?></span></h3>
+        <h3 class="text-5xl font-semibold ml-7 mt-7">Hello,<span class="text-regular text-4xl ml-4">ayoub</span></h3>
         <button id="theme-toggle" type="button" class="text-gray-500  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -155,8 +155,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
                   </label>
                 </span>
               </div>
-
-
+              
+              <form action="" method="post">
               <div date-rangepicker class="flex items-center mt-7">
                 <div class="relative">
                   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -177,47 +177,16 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
               </div>
               <p class="text-gray-800 font-semibold text-xl mt-5">skills</p>
-              <form action="">
+              <?php foreach($competences as $cmpetence):?>
                 <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C1 <a href="#" class="text-gray-400">Maquetter une application</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C2 <a href="#" class="text-gray-400">Réaliser une interface utilisateur web statique et adaptable</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C3 <a href="#" class="text-gray-400">Développer une interface utilisateur web dynamique</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C4 <a href="#" class="text-gray-400">Réaliser une interface utilisateur avec une solution de gestion de contenu
-                      ou e-commerce</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C5 <a href="#" class="text-gray-400">Créer une base de données</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C6 <a href="#" class="text-gray-400">Développer les composants d’accès aux données</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C7 <a href="#" class="text-gray-400">Développer la partie back-end d’une application web ou web mobile</a>.</label>
-                </div>
-                <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary ">C8 <a href="#" class="text-gray-400"> Elaborer et mettre en œuvre des composants dans une application de gestion de
-                      contenu ou e-commerce</a>.</label>
-                </div>
+                  <input id="link-checkbox" type="checkbox" value="<?php echo $cmpetence["ID_COMPETENCE"]; ?>" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $cmpetence["CODE"]; ?> <a href="#" class="text-gray-400"><?php echo $cmpetence["NOM"]; ?></a>.</label>
+                </div>   
+              <?php endforeach;?>
                 <div class="flex gap-x-7 my-7">
                   <button class="bg-white text-gray-800 border rounded-xl w-44 h-12">Publish brief</button>
                   <button class="bg-primary text-white rounded-xl  h-12 w-56 ">Publish & Assign brief </button>
                 </div>
-
-
               </form>
 
 
@@ -230,7 +199,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
         <div class="flex gap-4">
           <img class="w-20 h-20 rounded-xl  ml-3 mt-[-10px] object-cover" src="../../public/assets/img/testprofile.jpg" alt="">
           <div class="mt-3 flex flex-col">
-            <p class="text-gray-800 text-xl font-medium"><?php echo $cardInfo["NOM"] . " " . $cardInfo["PRENOM"]; ?></p>
+            <p class="text-gray-800 text-xl font-medium">ayoub amazu</p>
             <span class="text-">Formatrice</span>
             <span class="">
               <div class="bg-green-500 w-2 h-2 rounded-2xl inline-block"></div>Online
@@ -243,7 +212,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd" />
               </svg>
               Group </span>
-            <span class="ml-14 text-gray-900 font-medium text-xl"><?php echo $cardInfo["NOM_GROUPE"]; ?></span>
+            <span class="ml-14 text-gray-900 font-medium text-xl">D-W:104</span>
           </div>
           <div class="group ">
             <button class="bg-primary text-white rounded-lg w-24 h-12 mt-6">Edit Profile</button>
