@@ -22,6 +22,7 @@ module.exports = {
       },
       colors: {
         primary: '#3AAFA9',
+        hoverprimary : '#48BEB8',
         secondary: '#DEF2F1',
         bodybackground: '#F6F5F3',
         yellobadge: '#FEF3C7',
