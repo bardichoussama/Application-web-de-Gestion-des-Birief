@@ -1,5 +1,5 @@
-<?php
-require_once "../../controller/formateur/formateurDashboard.php";
+<?php 
+  require_once '../../controller/formateur/creatBrief.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
