@@ -2,7 +2,7 @@
     session_start();
 require_once '../../config/db.php';
 require_once '../../model/AuthenticationModel.php'; 
-require_once '../../model/formateur/formateur_BP_model.php';
+require_once '../../model/formateur/formateurInfo.php';
 
     $db = $database->getConnection();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,8 +12,8 @@ require_once '../../model/formateur/formateur_BP_model.php';
         $loggedIn = $authModel->login($email, $password, 'FORMATEUR');
         if ($loggedIn) {
             $conn=$database->getConnection();
-            $brief = new brief($conn);
-           $_SESSION["ID_GROUPE"] = $brief->getGroupId($_SESSION["ID"]);
+            $formateur = new formateur($_SESSION["ID"],$conn);
+            $_SESSION["ID_GROUPE"] = $formateur->getFormation()["ID_GROUPE"];
             header('Location: ../../view/formateur/dashboard_formateur.php'); 
         } else {
             echo "Invalid email or password. Please try again.";

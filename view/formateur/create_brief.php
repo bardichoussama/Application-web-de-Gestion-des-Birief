@@ -1,4 +1,4 @@
-<?php
+<?php 
   require_once '../../controller/formateur/creatBrief.php';
 ?>
 <!DOCTYPE html>
@@ -127,12 +127,14 @@
         </button>
 
 
+      <form action="" method="post">
         <div class="flex ">
           <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4 w-96 h-48">
             <div class="flex flex-col ml-5 mt-7 gap-y-2 ">
               <p class="text-2xl font-semibold">Brief picture</p>
               <p class="text-lg font-regular text-gray-400">JPG, GIF or PNG. Max size of 800K</p>
               <span class=" flex justify-center items-center bg-primary w-40 h-11 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
+                
                 <label for="fileInput" class="cursor-pointer text-center">
                   Upload
                   <input id="fileInput" class="hidden" type="file">
@@ -155,8 +157,6 @@
                   </label>
                 </span>
               </div>
-              
-              <form action="" method="post">
               <div date-rangepicker class="flex items-center mt-7">
                 <div class="relative">
                   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -179,21 +179,21 @@
               <p class="text-gray-800 font-semibold text-xl mt-5">skills</p>
               <?php foreach($competences as $cmpetence):?>
                 <div class="flex items-center mt-5">
-                  <input id="link-checkbox" type="checkbox" value="<?php echo $cmpetence["ID_COMPETENCE"]; ?>" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="link-checkbox" type="checkbox" value="<?php echo $cmpetence["ID_COMPETENCE"]; ?>" name="competence[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $cmpetence["CODE"]; ?> <a href="#" class="text-gray-400"><?php echo $cmpetence["NOM"]; ?></a>.</label>
                 </div>   
               <?php endforeach;?>
                 <div class="flex gap-x-7 my-7">
-                  <button class="bg-white text-gray-800 border rounded-xl w-44 h-12">Publish brief</button>
+                  <input type="submit" class="bg-white text-gray-800 border rounded-xl w-44 h-12" name="publish" value="publish bireuf">
                   <button class="bg-primary text-white rounded-xl  h-12 w-56 ">Publish & Assign brief </button>
                 </div>
-              </form>
-
-
+                
+                
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
 
       <div class="bg-white dark:bg-gray-800 w-80 h-44 mt-7 rounded-xl ml-5 border dark:border-gray-600">
         <div class="flex gap-4">

@@ -8,16 +8,7 @@ class Brief
     {
         $this->conn = $conn;
     }
-    public function getGroupId($id){
-        $sql="SELECT ID_GROUPE FROM groupe
-        INNER JOIN formateur USING(ID_FORMATEUR)
-        WHERE ID_FORMATEUR=:id";
-        $db = $this->conn->prepare($sql);
-        $db->bindParam(":id",$id);
-        $db->execute();
-        $id_groupe=$db->fetch(PDO::FETCH_ASSOC);
-        return $id_groupe["ID_GROUPE"];
-    }
+  
     public function getAllBriefs()
     {
         $db =  $this->conn->query("SELECT * FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
@@ -73,6 +64,10 @@ class Brief
     public function getCompetence(){
         $db =  $this->conn->query("SELECT * FROM competence ")->fetchAll(PDO::FETCH_ASSOC);
         return  $db;
+    }
+    public function getLastBP(){
+        $db =  $this->conn->query("SELECT max(ID_BRIEF) as ID FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
+        return  $db["ID"];
     }
 
 }
