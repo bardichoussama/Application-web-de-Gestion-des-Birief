@@ -6,11 +6,11 @@
     $brief= new brief($conn);
     $competences = $brief->getCompetence();
     if(isset($_POST["publish"])){   
-        // $formateur = new formateur($_SESSION["ID"],$conn);
-        $add = $brief->addBrief( $_SESSION["ID"], $_POST["nom"], " ", date("Y-m-d"));
+        $add = $brief->addBrief( $_SESSION["ID"], $_POST["title"], "piece_joint.pdf", date("Y-m-d"));
+        $lastBriefId = $brief->getLastBP();
         foreach($_POST["competence"] as $compe){
             $db = $conn->prepare("INSERT INTO concerne (ID_BRIEF,ID_COMPETENCE) VALUES (:ID_BRIEF,:ID_COMPETENCE)");
-            $db->bindParam(":ID_BRIEF",$brief->getLastBP());
+            $db->bindParam(":ID_BRIEF",$lastBriefId);
             $db->bindParam("ID_COMPETENCE",$compe);
             $db->execute();
         }

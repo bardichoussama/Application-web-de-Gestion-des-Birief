@@ -53,13 +53,18 @@ class Brief
 
     }
     public function addBrief( $formateurId, $titre, $pieceJointe, $dateAjout){
-       $db = $this->conn->prepare("INSERT INTO brief ('ID_FORMATEUR','TITRE','PIECE_JOINTE','DATE_AJOUTE')
-                             VALUES (':ID',':TITRE',':PIECE_JOINTE',':DATE_JOINT')");
-         $db->bindParam(":ID",$formateurId);
-       $db->bindParam(":TITRE",$titre);
-       $db->bindParam(":PIECE_JOINT",$pieceJointe);
-       $db->bindParam(":DATE_AJOUT",$dateAjout);
-        $db->execute();
+          
+                                   $query = "INSERT INTO `brief` (`ID_FORMATEUR`, `TITRE`, `PIECE_JOINTE`, `DATE_AJOUTE`) 
+                                   VALUES (:ID_FORMATEUR, :TITRE, :PIECE_JOINTE, :DATE_AJOUTE)";
+                         $db = $this->conn->prepare($query);
+                         $db->bindParam(':ID_FORMATEUR', $formateurId);
+                         $db->bindParam(':TITRE', $titre);
+                         $db->bindParam(':PIECE_JOINTE', $pieceJointe);
+                         $db->bindParam(':DATE_AJOUTE', $dateAjout);       
+              
+         $db->execute();
+       
+
     }
     public function getCompetence(){
         $db =  $this->conn->query("SELECT * FROM competence ")->fetchAll(PDO::FETCH_ASSOC);
@@ -67,7 +72,7 @@ class Brief
     }
     public function getLastBP(){
         $db =  $this->conn->query("SELECT max(ID_BRIEF) as ID FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
-        return  $db["ID"];
+        return  $db[0]["ID"];
     }
 
 }

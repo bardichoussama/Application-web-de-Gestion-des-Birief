@@ -148,7 +148,7 @@
               <div class="flex items-center gap-x-11">
                 <div class="w-7/12">
                   <label for="first_name" class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Title</label>
-                  <input type="text" id="first_name" class="rounded-xl border block w-full p-2.5" placeholder="Title of brief" name="nom">
+                  <input type="text" id="first_name" class="rounded-xl border block w-full p-2.5" placeholder="Title of brief" name="title">
                 </div>
                 <span class=" flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
                   <label for="fileInput" class="cursor-pointer text-center">
