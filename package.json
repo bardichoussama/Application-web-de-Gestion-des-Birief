@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
     "build": "tailwindcss -i public/css/styles.css -o public/css/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +15,8 @@
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.2",
     "vite": "^5.2.6"
+  },
+  "dependencies": {
+    "flowbite": "^2.3.0"
   }
 }

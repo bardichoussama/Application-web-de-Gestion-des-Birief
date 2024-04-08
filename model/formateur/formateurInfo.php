@@ -13,7 +13,7 @@ class formateur
     }
 
     public function getFormation(){
-        $db=$this->conn->prepare("SELECT NOM , PRENOM , NOM_GROUPE , ID_GROUPE FROM formateur
+        $db=$this->conn->prepare("SELECT NOM , PRENOM , NOM_GROUPE FROM formateur
                                   inner join groupe 
                                   USING(ID_FORMATEUR)
                                   WHERE ID_FORMATEUR =:ID");
@@ -21,7 +21,7 @@ class formateur
         $db->execute();
         return  $db->fetch(PDO::FETCH_ASSOC);
     }
-    
+
 
 
 }
