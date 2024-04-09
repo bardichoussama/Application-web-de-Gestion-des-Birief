@@ -11,7 +11,7 @@ class Brief
   
     public function getAllBriefs()
     {
-        $db =  $this->conn->query("SELECT * FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
+        $db =  $this->conn->query("SELECT * FROM brief INNER JOIN formateur USING(ID_FORMATEUR)")->fetchAll(PDO::FETCH_ASSOC);
         return  $db;
     }
     public function getFormateurBP($ID)
@@ -61,10 +61,7 @@ class Brief
                          $db->bindParam(':TITRE', $titre);
                          $db->bindParam(':PIECE_JOINTE', $pieceJointe);
                          $db->bindParam(':DATE_AJOUTE', $dateAjout);       
-              
-         $db->execute();
-       
-
+                        $db->execute();
     }
     public function getCompetence(){
         $db =  $this->conn->query("SELECT * FROM competence ")->fetchAll(PDO::FETCH_ASSOC);

@@ -32,13 +32,13 @@ require_once "../../controller/formateur/formateurDashboard.php";
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">
                 <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium">Imane</span></p>
+                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
                 </div>
                 <div class="flex  gap-x-7 my-11">
                     <div>
                         <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
                     </div>
-                    <div class="">
+                    <!-- <div class="">
                         <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -47,7 +47,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                 <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <h4 class="text-xl font-medium mt-9 ml-4">Group progress</h4>
@@ -59,28 +59,28 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div class="w-full bg-white rounded-full h-2.5 ">
-                    <div class="bg-primary h-2.5 rounded-full"></div>
+                    <div class="bg-primary h-2.5 rounded-full" style="width: <?php echo $briefProgress["progres"]/$briefProgress["total"]*100?>%;"></div>
                 </div>
                 <div class="flex justify-between mb-1">
-                    <span class="text-xl font-medium text-gray-800 ">13/13</span>
+                    <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress["progres"]?>/<?php echo $briefProgress["total"] ?></span>
                 </div>
             </div>
             <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                 <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                 <div class="ml-4  w-4/12">
-                    <p class="text-xl font-medium ">Creer une site web worddpress</p>
-                    <span class="text-gray-400 text-lg">By Imane Bouziane</span>
+                    <p class="text-xl font-medium "><?php echo $inProgres["TITRE"]; ?></p>
+                    <span class="text-gray-400 text-lg">By <?php echo $inProgres["NOM"]." ".$inProgres["PRENOM"] ?></span>
                 </div>
                 <div class="ml-48 mt-4">
                     <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">To do</span>
                 </div>
                 <div class="ml-24">
                     <p class="text-gray-400 text-lg font-medium">Duration</p>
-                    <span class="text-lg font-medium text-gray-800">4 days</span>
+                    <span class="text-lg font-medium text-gray-800"><?php echo $inProgres["DUREE"] ?> DAYS</span>
                 </div>
                 <div class="ml-16">
                     <p class="text-lg font-medium text-gray-400">Skills</p>
-                    <span class="text-lg font-medium text-gray-800">7 </span>
+                    <span class="text-lg font-medium text-gray-800"><?php echo $inProgres["SKILLS"] ?></span>
                 </div>
                 <div class="ml-24 mt-4">
                     <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
@@ -103,23 +103,23 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                 <div id="fullWidthTabContent" class="border-t border-gray-200  ">
-
+                <?php foreach($assignedBP as $brief):?>
                     <div class="flex bg-white  rounded-xl h-24 mt-16 overflow-y-auto">
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                         <div class="ml-4  w-4/12">
-                            <p class="text-xl font-medium ">Creer une site web worddpress</p>
-                            <span class="text-gray-400 text-lg">By Imane Bouziane</span>
+                            <p class="text-xl font-medium "><?php echo $brief["TITRE"]; ?></p>
+                            <span class="text-gray-400 text-lg">By <?php echo $brief["NOM"]." ".$brief["PRENOM"]; ?></span>
                         </div>
                         <div class="ml-48 mt-4">
-                            <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">coming</span>
+                            <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">FINISHED</span>
                         </div>
                         <div class="ml-32">
                             <p class="text-gray-400 text-xl font-medium">Duration</p>
-                            <span class="text-xl font-medium text-gray-800">10jr</span>
+                            <span class="text-xl font-medium text-gray-800"><?php echo $brief["DUREE"] ?>jr</span>
                         </div>
                         <div class="ml-16">
                             <p class="text-xl font-medium text-gray-400">Skills</p>
-                            <span class="text-xl font-medium text-gray-800">5</span>
+                            <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
                         </div>
                         <div class="ml-28 mt-4">
                             <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
@@ -133,6 +133,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                             </span>
                         </div>
                     </div>
+                <?php endforeach;?>
                 </div>
 
             </div>
