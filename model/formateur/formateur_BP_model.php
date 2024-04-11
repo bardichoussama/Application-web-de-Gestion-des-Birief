@@ -11,7 +11,7 @@ class Brief
 
     public function getAllBriefs()
     {
-        $db =  $this->conn->query("SELECT * FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
+        $db =  $this->conn->query("SELECT * FROM brief INNER JOIN formateur USING(ID_FORMATEUR)")->fetchAll(PDO::FETCH_ASSOC);
         return  $db;
     }
     public function getFormateurBP($ID)
@@ -54,6 +54,7 @@ class Brief
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
+<<<<<<< HEAD
     public function addBrief($formateurId, $titre, $pieceJointe, $dateAjout)
     {
         $db = $this->conn->prepare("INSERT INTO brief (ID_FORMATEUR,TITRE,PIECE_JOINTE,DATE_AJOUTE)
@@ -63,6 +64,18 @@ class Brief
         $db->bindParam(":PIECE_JOINT", $pieceJointe);
         $db->bindParam(":DATE_AJOUT", $dateAjout);
         $db->execute();
+=======
+    public function addBrief( $formateurId, $titre, $pieceJointe, $dateAjout){
+          
+                                   $query = "INSERT INTO `brief` (`ID_FORMATEUR`, `TITRE`, `PIECE_JOINTE`, `DATE_AJOUTE`) 
+                                   VALUES (:ID_FORMATEUR, :TITRE, :PIECE_JOINTE, :DATE_AJOUTE)";
+                         $db = $this->conn->prepare($query);
+                         $db->bindParam(':ID_FORMATEUR', $formateurId);
+                         $db->bindParam(':TITRE', $titre);
+                         $db->bindParam(':PIECE_JOINTE', $pieceJointe);
+                         $db->bindParam(':DATE_AJOUTE', $dateAjout);       
+                        $db->execute();
+>>>>>>> ff735c569f595200e249aab980472213dd700108
     }
     public function getCompetence()
     {
@@ -72,6 +85,6 @@ class Brief
     public function getLastBP()
     {
         $db =  $this->conn->query("SELECT max(ID_BRIEF) as ID FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
-        return  $db["ID"];
+        return  $db[0]["ID"];
     }
 }
