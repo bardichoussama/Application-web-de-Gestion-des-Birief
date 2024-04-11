@@ -75,7 +75,7 @@ require_once '../../controller/formateur/creatBrief.php';
                     <div class="ml-5">
                         <div class="flex items-center gap-x-11">
                             <div class="w-7/12">
-                                <input type="text" id="Title of brief" class="rounded-xl border block w-full p-2.5 h-12 text-base" placeholder="Title of brief" name="nom">
+                                <input type="text" id="Title of brief" class="rounded-lg border-gray-200  block w-full p-2.5 h-12 text-base" placeholder="Title of brief" name="nom">
                             </div>
                             <span class=" flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
                                 <label for="fileInput" class="cursor-pointer text-center">
@@ -136,6 +136,20 @@ require_once '../../controller/formateur/creatBrief.php';
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="flex gap-x-11 mt-4">
+                            <div class="flex items-center p-2 border border-gray-200 rounded  w-96">
+                                <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-primary bg-gray-100 border-gray-300  ">
+                                <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Individual</label>
+                            </div>
+                            <div class="flex items-center p-2 border border-gray-200 rounded   w-96">
+                                <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-primary bg-gray-100 ">
+                                <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">In group</label>
+                            </div>
+
+                        </div> -->
+
+
+
 
 
 

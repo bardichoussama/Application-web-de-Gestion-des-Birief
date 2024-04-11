@@ -1,5 +1,5 @@
 <?php
-require_once "../../controller/formateur/formateurDashboard.php";
+require_once "../../controller/apprenant/apprenant.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -38,7 +38,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                     <div class="font-medium text-xs w-full  ">
-                        <p class="text-xl">Ayoub Amazou</p>
+                        <p class="text-xl"><?= $groupInfo['NOM'] .' '. $groupInfo['PRENOM']  ?></p>
                         <p class="text-xs">welcome to Biefed solidode</p>
                     </div>
 
@@ -54,7 +54,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         </div>
                         <div class="flex flex-col gap-y-6">
                             <p class="text-3xl font-medium">Logic Legends</p>
-                            <p class="text-lg font-regular">Group W-104 | 2023</p>
+                            <p class="text-lg font-regular">Group <?= $groupInfo['NOM_GROUPE']  ?> | 2023</p>
                             <div class="flex  gap-x-20 w-full">
                                 <div class="mt-20 flex gap-x-4 text-primary ">
                                     <ion-icon class="w-8 h-8" name="location-outline"></ion-icon>
@@ -62,7 +62,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                 </div>
                                 <div class="mt-20 flex gap-x-4 text-primary w-44 ">
                                     <ion-icon class="w-8 h-8" name="people-outline"></ion-icon>
-                                    <p class="text-base font-regular text-gray-700">13 learner</p>
+                                    <p class="text-base font-regular text-gray-700"><?= $groupInfo['nbApprenants']  ?> learner</p>
                                 </div>
                                 <div class="mt-20 flex gap-x-4 text-primary">
                                     <ion-icon class="w-8 h-8" name="location-outline"></ion-icon>
@@ -79,15 +79,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                 </div>
             </div>
-
-
-
-
-
         </main>
-
-
-
     </div>
     <script>
         document.getElementById('toggleButton').addEventListener('click', function() {
@@ -117,3 +109,5 @@ require_once "../../controller/formateur/formateurDashboard.php";
     <input id="fileInput" class="hidden" type="file">
   </label>
 </span> -->
+
+
