@@ -24,8 +24,6 @@ class AuthenticationModel
 
  
         if ($user) {
-           
-            session_start();
             if ($user['MOT_DE_PASSE'] === $password) {
                 $_SESSION["ID"]=$user['ID_'.$userType];
                 return true;

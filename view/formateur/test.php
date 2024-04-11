@@ -57,9 +57,9 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
 
-            
 
-           
+
+
             <div class="flex  ml-28">
                 <div class="max-w-md w-96   rounded-xl p-6">
                     <div class="flex flex-col ">
@@ -114,8 +114,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         </div>
                     </div>
                 </div>
-             
-               
+
+
 
 
 
@@ -163,3 +163,6 @@ require_once "../../controller/formateur/formateurDashboard.php";
     <input id="fileInput" class="hidden" type="file">
   </label>
 </span> -->
+
+
+
