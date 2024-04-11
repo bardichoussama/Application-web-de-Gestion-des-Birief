@@ -54,17 +54,6 @@ class Brief
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
-<<<<<<< HEAD
-    public function addBrief($formateurId, $titre, $pieceJointe, $dateAjout)
-    {
-        $db = $this->conn->prepare("INSERT INTO brief (ID_FORMATEUR,TITRE,PIECE_JOINTE,DATE_AJOUTE)
-                             VALUES (:ID,:TITRE,:PIECE_JOINTE,:DATE_JOINT)");
-        $db->bindParam(":ID", $formateurId);
-        $db->bindParam(":TITRE", $titre);
-        $db->bindParam(":PIECE_JOINT", $pieceJointe);
-        $db->bindParam(":DATE_AJOUT", $dateAjout);
-        $db->execute();
-=======
     public function addBrief( $formateurId, $titre, $pieceJointe, $dateAjout){
           
                                    $query = "INSERT INTO `brief` (`ID_FORMATEUR`, `TITRE`, `PIECE_JOINTE`, `DATE_AJOUTE`) 
@@ -75,7 +64,6 @@ class Brief
                          $db->bindParam(':PIECE_JOINTE', $pieceJointe);
                          $db->bindParam(':DATE_AJOUTE', $dateAjout);       
                         $db->execute();
->>>>>>> ff735c569f595200e249aab980472213dd700108
     }
     public function getCompetence()
     {
