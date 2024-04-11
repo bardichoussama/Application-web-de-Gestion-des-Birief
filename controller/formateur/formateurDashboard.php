@@ -20,7 +20,7 @@ if ($_SESSION["ID"] != "" && is_numeric($_SESSION["ID"])) {
 
     } else {
     
-        echo "Error: Brief in progress not found.";
+        echo " Brief in progress not found.";
     }
 } else {
     header("location:../../view/formateur/formateurLogin.php");
