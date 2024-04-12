@@ -63,7 +63,7 @@ class Brief
                          $db->bindParam(':TITRE', $titre);
                          $db->bindParam(':PIECE_JOINTE', $pieceJointe);
                          $db->bindParam(':DATE_AJOUTE', $dateAjout);       
-                        $db->execute();
+                         $db->execute();
     }
     public function getCompetence()
     {

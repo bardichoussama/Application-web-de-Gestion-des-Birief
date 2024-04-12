@@ -31,7 +31,7 @@ require_once '../../controller/formateur/allBriefs.php';
 
     <div class="flex">
         <?php
-        include_once '../../view/templates/formateur_sidebar.php';
+        include_once '../../view/templates/apprenant_slidbar.php';
         ?>
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">

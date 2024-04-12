@@ -12,13 +12,13 @@ if (isset($_SESSION["ID"])) {
     $apprenantID = $_SESSION["ID"];
     $groupID = $_SESSION["ID_GROUPE"];
     
-    echo "Session ID : " . $apprenantID . "<br>";
-    echo "Session Group: " . $groupID . "<br>";
+    // echo "Session ID : " . $apprenantID . "<br>";
+    // echo "Session Group: " . $groupID . "<br>";
 
     $groupInfo = $apprenant->getGroupInfo($_SESSION["ID"]);
 
     if ($groupInfo) {
-        var_dump($groupInfo);
+        // var_dump($groupInfo);
     } else {
         echo "No group info ";
     }

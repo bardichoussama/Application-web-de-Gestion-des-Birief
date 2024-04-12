@@ -29,7 +29,7 @@ require_once "../../controller/apprenant/apprenant.php";
 <body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
     <div class="flex">
         <?php
-        include_once '../../view/templates/formateur_sidebar.php';
+        include_once '../../view/templates/apprenant_slidbar.php';
         ?>
         <main class="  my-20 w-full ">
             <div class="mx-20 w-full">
