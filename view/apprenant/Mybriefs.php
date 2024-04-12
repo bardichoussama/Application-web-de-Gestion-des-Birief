@@ -53,11 +53,11 @@ require_once '../../controller/formateur/allBriefs.php';
                 </div>
             </div>
             <div class=" text-2xl font-semibold mx-7">
-                    <p>Current brief</p>
-                </div>
+                <p>Current brief</p>
+            </div>
             <div class="mx-11 mt-11">
-                
-               
+
+
 
                 <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                     <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
@@ -88,17 +88,20 @@ require_once '../../controller/formateur/allBriefs.php';
                         </span>
                     </div>
                 </div>
+                <div class=" text-lg font-regular mx-7">
+                <p>Time left : 9j 4h 33 min</p>
+            </div>
 
 
             </div>
             <div class=" text-2xl font-semibold mx-7 mt-11">
-                    <p>My promo briefs</p>
-                </div>
+                <p>My promo briefs</p>
+            </div>
 
 
             <form class=" mx-20 ">
 
-              
+
 
 
                 <div class="flex gap-x-11 mt-7">

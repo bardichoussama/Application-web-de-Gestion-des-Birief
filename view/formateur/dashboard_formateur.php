@@ -26,7 +26,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 <body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
     <div class="flex">
-    <?php
+        <?php
         include_once '../../view/templates/formateur_sidebar.php';
         ?>
         <main class="bg-white h-screen w-8/12 ">
@@ -59,17 +59,17 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div class="w-full bg-white rounded-full h-2.5 ">
-                    <div class="bg-primary h-2.5 rounded-full" style="width: <?php echo $briefProgress["progres"]/$briefProgress["total"]*100?>%;"></div>
+                    <div class="bg-primary h-2.5 rounded-full" style="width: <?php echo $briefProgress["progres"] / $briefProgress["total"] * 100 ?>%;"></div>
                 </div>
                 <div class="flex justify-between mb-1">
-                    <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress["progres"]?>/<?php echo $briefProgress["total"] ?></span>
+                    <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress["progres"] ?>/<?php echo $briefProgress["total"] ?></span>
                 </div>
             </div>
             <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                 <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                 <div class="ml-4  w-4/12">
                     <p class="text-xl font-medium "><?php echo $inProgres["TITRE"]; ?></p>
-                    <span class="text-gray-400 text-lg">By <?php echo $inProgres["NOM"]." ".$inProgres["PRENOM"] ?></span>
+                    <span class="text-gray-400 text-lg">By <?php echo $inProgres["NOM"] . " " . $inProgres["PRENOM"] ?></span>
                 </div>
                 <div class="ml-48 mt-4">
                     <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">To do</span>
@@ -103,37 +103,37 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                 <div id="fullWidthTabContent" class="border-t border-gray-200  ">
-                <?php foreach($assignedBP as $brief):?>
-                    <div class="flex bg-white  rounded-xl h-24 mt-16 overflow-y-auto">
-                        <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
-                        <div class="ml-4  w-4/12">
-                            <p class="text-xl font-medium "><?php echo $brief["TITRE"]; ?></p>
-                            <span class="text-gray-400 text-lg">By <?php echo $brief["NOM"]." ".$brief["PRENOM"]; ?></span>
+                    <?php foreach ($assignedBP as $brief) : ?>
+                        <div class="flex bg-white  rounded-xl h-24 mt-16 overflow-y-auto">
+                            <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
+                            <div class="ml-4  w-4/12">
+                                <p class="text-xl font-medium "><?php echo $brief["TITRE"]; ?></p>
+                                <span class="text-gray-400 text-lg">By <?php echo $brief["NOM"] . " " . $brief["PRENOM"]; ?></span>
+                            </div>
+                            <div class="ml-48 mt-4">
+                                <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">FINISHED</span>
+                            </div>
+                            <div class="ml-32">
+                                <p class="text-gray-400 text-xl font-medium">Duration</p>
+                                <span class="text-xl font-medium text-gray-800"><?php echo $brief["DUREE"] ?>jr</span>
+                            </div>
+                            <div class="ml-16">
+                                <p class="text-xl font-medium text-gray-400">Skills</p>
+                                <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
+                            </div>
+                            <div class="ml-28 mt-4">
+                                <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
+                                    <label for="fileInput" class="cursor-pointer text-gray-800">
+                                        Attachment
+                                        <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <input id="fileInput" class="hidden" type="input">
+                                    </label>
+                                </span>
+                            </div>
                         </div>
-                        <div class="ml-48 mt-4">
-                            <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">FINISHED</span>
-                        </div>
-                        <div class="ml-32">
-                            <p class="text-gray-400 text-xl font-medium">Duration</p>
-                            <span class="text-xl font-medium text-gray-800"><?php echo $brief["DUREE"] ?>jr</span>
-                        </div>
-                        <div class="ml-16">
-                            <p class="text-xl font-medium text-gray-400">Skills</p>
-                            <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
-                        </div>
-                        <div class="ml-28 mt-4">
-                            <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
-                                <label for="fileInput" class="cursor-pointer text-gray-800">
-                                    Attachment
-                                    <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
-                                    </svg>
-                                    <input id="fileInput" class="hidden" type="input">
-                                </label>
-                            </span>
-                        </div>
-                    </div>
-                <?php endforeach;?>
+                    <?php endforeach; ?>
                 </div>
 
             </div>
