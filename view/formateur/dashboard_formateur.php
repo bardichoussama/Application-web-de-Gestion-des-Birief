@@ -38,7 +38,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     <div>
                         <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
                     </div>
-                    <!-- <div class="">
+                    <div class="">
                         <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -47,7 +47,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                 <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <h4 class="text-xl font-medium mt-9 ml-4">Group progress</h4>
@@ -68,6 +68,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                 <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                 <div class="ml-4  w-4/12">
+                  
                     <p class="text-xl font-medium "><?php echo $inProgres["TITRE"]; ?></p>
                     <span class="text-gray-400 text-lg">By <?php echo $inProgres["NOM"] . " " . $inProgres["PRENOM"] ?></span>
                 </div>
@@ -76,7 +77,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
                 <div class="ml-24">
                     <p class="text-gray-400 text-lg font-medium">Duration</p>
-                    <span class="text-lg font-medium text-gray-800"><?php echo $inProgres["DUREE"] ?> DAYS</span>
+                    <span class="text-lg font-medium text-gray-800"><?php echo $inProgres["DUREE"] ?> Days</span>
                 </div>
                 <div class="ml-16">
                     <p class="text-lg font-medium text-gray-400">Skills</p>
@@ -97,7 +98,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4">
                 <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist" style="list-style-type: none; margin: 0; padding: 0;">
                     <li class="w-full">
-                        <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="true" class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 text-primary text-xl">Assigned briefs</button>
+                        <p   class="text-primary inline-block w-full p-4 rounded-tl-lg bg-gray-50  text-xl">Assigned briefs</p>
                     </li>
                 </ul>
 
@@ -114,12 +115,12 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                 <span class="bg-secondary text-primary rounded-lg text-base font-medium me-2 px-2">FINISHED</span>
                             </div>
                             <div class="ml-32">
-                                <p class="text-gray-400 text-xl font-medium">Duration</p>
-                                <span class="text-xl font-medium text-gray-800"><?php echo $brief["DUREE"] ?>jr</span>
+                                <p class="text-gray-400 text-lg font-medium">Duration</p>
+                                <span class="text-lg font-medium text-gray-800"><?php echo $brief["DUREE"] ?>Days</span>
                             </div>
                             <div class="ml-16">
-                                <p class="text-xl font-medium text-gray-400">Skills</p>
-                                <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
+                                <p class="text-lg font-medium text-gray-400">Skills</p>
+                                <span class="text-lg font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
                             </div>
                             <div class="ml-28 mt-4">
                                 <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">

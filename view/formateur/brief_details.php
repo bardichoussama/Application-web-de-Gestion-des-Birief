@@ -1,5 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+require_once '../../controller/formateur/brief_details_controller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -56,12 +57,13 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                 <div class="flex flex-col item-center mx-20 mt-11 rounded-3xl  " style=" width: 900px;">
                     <div class="my-4">
+                        <a href="./briefs_list.php" />
                         <button class=" flex justify-center items-center px-6 bg-secondary rounded-lg w-38 h-14 text-lg text-primary  "><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
                     </div>
                     <img class="object-cover rounded-3xl  " style="max-height: 550px; width: 900px;" src="../../public/assets/img/bp-cover.jpg" alt="Cover Image">
                     <div class="flex flex-wrap ">
                         <div class="f min-w-0  mt-2">
-                            <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate ">Creer une site web worddpress</h2>
+                            <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?= $briefDetail['TITRE']?></h2>
                         </div>
 
                     </div>
@@ -71,8 +73,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                             <div class="font-medium text-xs w-full  ">
-                                <p class="text-xl"> Jean Marc</p>
-                                <p class="text-xs">created : 14/4/2024</p>
+                                <p class="text-xl"> <?= $briefDetail['NOM'] .' '. $briefDetail['PRENOM'] ?></p>
+                                <p class="text-xs">created : <?= $briefDetail['DATE_AJOUTE']?></p>
                             </div>
                            
 
@@ -95,15 +97,13 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
                 <div class="flex flex-col border w-96  shadow rounded-3xl p-4 gap-y-7">
                     <p class="text-2xl font-semibold">Targeted skill</p>
+                    <?php foreach ($briefCompetence as $competence ): ?>
                     <div class=" mx-4  flex gap-x-3">
-                        <p class="text-lg text-primary font-semibold">C1</p>
-                        <span class="text-gray-500">Maquetter une application</span>
+                        <p class="text-lg text-primary font-semibold"><?= $competence ['CODE']?></p>
+                        <span class="text-gray-500"><?= $competence ['COMPETENCE_NOM']?></span>
                     </div>
-                    <div class=" mx-4  flex gap-x-3">
-                        <p class="text-lg text-primary font-semibold">C2</p>
-                        <span class="text-gray-500">Create a static and adaptable web user
-                            interface</span>
-                    </div>
+                    <?php endforeach; ?>
+                   
 
 
                 </div>

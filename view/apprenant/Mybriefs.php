@@ -1,4 +1,5 @@
 <?php
+
 require_once "../../controller/formateur/formateurDashboard.php";
 require_once '../../controller/formateur/allBriefs.php';
 ?>
@@ -62,7 +63,8 @@ require_once '../../controller/formateur/allBriefs.php';
                 <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                     <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                     <div class="ml-4  w-4/12">
-                        <p class="text-xl font-medium ">Gestion des briefs</p>
+                        <p class="text-xl font-medium "><?php
+                         echo $inProgres["TITRE"]; ?></p>
                         <span class="text-gray-400 text-lg">By Imane bouziane</span>
                     </div>
                     <div class="ml-48 mt-4">
