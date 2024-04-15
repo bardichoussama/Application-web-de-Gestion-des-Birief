@@ -181,7 +181,7 @@ class Brief
         $db->bindParam(":idApprenant", $idApprenanr);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
-    }
+    }   
 
     public function getAffecedBP($idGroupe)
     {

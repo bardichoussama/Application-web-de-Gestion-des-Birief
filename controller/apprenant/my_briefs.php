@@ -1,4 +1,6 @@
 <?php
+
+
 require_once "../../config/db.php";
 require_once "../../model/formateur/formateur_BP_model.php";
 
@@ -20,7 +22,5 @@ if (isset($_POST["startBP"])) {
  
     $result = $brief->updateBriefStatus($briefArealiser["ID_BRIEF"], 'DOING');
   
-}else{
- echo "im not";
 }
-?>
+

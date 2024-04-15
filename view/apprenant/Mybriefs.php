@@ -58,7 +58,9 @@ require_once '../../controller/apprenant/my_briefs.php';
             </div>
             <form id="myForm" action="mybriefs.php" method="post">
                 <div class="mx-11 mt-11">
+
                     <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
+
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                         <div class="ml-4 w-4/12">
                             <a href="./briefDetails.php?id=<?= $briefArealiser['ID_BRIEF'];?>">
