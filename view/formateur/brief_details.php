@@ -79,11 +79,11 @@ require_once '../../controller/formateur/brief_details_controller.php';
                            
 
                         </div>
-                        <div class="flex justify-end w-full ">
+                        <!-- <div class="flex justify-end w-full ">
                             <div class="flex items-center   bg-green-400 text-white text-xs px-2  rounded-lg h-7 ">
                                 assigned
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="flex items-center mt-4">

@@ -158,26 +158,27 @@ class Brief
         }
     }
 
-    public function realiseBrief($idGroupe)
+    public function realiseBrief($idGroupe,$idApprenanr)
     {
 
         $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, B.ID_BRIEF,
-                                    B.TITRE, 
-                                    F.NOM, 
-                                    F.PRENOM, 
-                                    R.ETAT, 
-                                    COUNT(C.ID_COMPETENCE) AS SKILLS 
-                                    FROM affectation A
-                                    INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
-                                    INNER JOIN realiser R ON B.ID_BRIEF = R.ID_BRIEF 
-                                    INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
-                                    INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
-                                    WHERE A.ID_GROUPE = :idGroupe AND A.ID_BRIEF 
-                                    GROUP BY B.ID_BRIEF, R.ETAT");
+        B.TITRE, 
+        F.NOM, 
+        F.PRENOM, 
+        R.ETAT, 
+        COUNT(C.ID_COMPETENCE) AS SKILLS 
+        FROM affectation A
+        INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
+        INNER JOIN realiser R ON B.ID_BRIEF = R.ID_BRIEF 
+        INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
+        INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
+        INNER JOIN apprenant P on P.ID_APPRENANT=R.ID_APPRENANT
+        WHERE A.ID_GROUPE = :idGroupe AND P.ID_APPRENANT=:idApprenant AND NOW() BETWEEN A.DATE_DEBUT AND A.DATE_FIN group by B.ID_BRIEF");
         $db->bindParam(":idGroupe", $idGroupe);
+        $db->bindParam(":idApprenant", $idApprenanr);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
-    }
+    }   
 
     public function getAffecedBP($idGroupe)
     {

@@ -1,8 +1,8 @@
 <?php
-
-require_once '../../controller/apprenant/my_briefs.php';
 require_once '../../controller/apprenant/apprenant.php';
-require_once '../../controller/apprenant/brief_stat.php';
+require_once '../../controller/apprenant/my_briefs.php';
+
+
 
 ?>
 <!DOCTYPE html>
@@ -60,10 +60,19 @@ require_once '../../controller/apprenant/brief_stat.php';
             </div>
             <form id="myForm" action="" method="">
                 <div class="mx-11 mt-11">
+
                     <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
+
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                         <div class="ml-4 w-4/12">
-                            <p class="text-xl font-medium"><?php echo $briefArealiser["TITRE"] ?></p>
+                            <?php
+                            $briefID = $briefArealiser['ID_BRIEF'];
+                            
+                            ?>
+                            <a href="./briefDetails.php?id=<?php echo $briefID; ?>">
+                                <p class="text-xl font-medium"><?php echo $briefArealiser["TITRE"]; ?></p>
+                            </a>
+
                             <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"] . " " . $briefArealiser["PRENOM"] ?></span>
                         </div>
                         <div class="ml-48 mt-4">
@@ -148,6 +157,7 @@ require_once '../../controller/apprenant/brief_stat.php';
                                             <div class="flex flex-wrap ">
 
                                                 <div class="f min-w-0  mt-2">
+                                                <a href="./briefDetails.php?id=<?php echo $brief['ID_BRIEF']; ?>">
 
                                                     <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "> <?= $brief['TITRE']  ?></h2>
 

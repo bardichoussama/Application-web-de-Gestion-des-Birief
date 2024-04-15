@@ -7,6 +7,7 @@ $briefId =isset($_GET['id']) ? $_GET['id'] : null;
 $conn=$database->getConnection();
 $brief = new brief($conn);
  $briefDetail=$brief->briefDetails($briefId ,$_SESSION["ID"]);
+ var_dump( $briefDetail);
  $briefCompetence =$brief->briefCompetence($briefId);
 
 

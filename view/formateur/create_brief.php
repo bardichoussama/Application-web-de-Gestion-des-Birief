@@ -58,9 +58,9 @@ require_once '../../controller/formateur/creatBrief.php';
                         <p class="text-2xl font-semibold">Brief picture</p>
                         <p class="text-lg font-regular text-gray-400">JPG, GIF or PNG. Max size of 800K</p>
                         <span class=" flex justify-center items-center bg-primary w-40 h-11 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
-                            <label for="fileInput" class="cursor-pointer text-center">
+                            <label for="imgInput" class="cursor-pointer text-center">
                                 Upload
-                                <input id="fileInput" class="hidden" type="file" name="image">
+                                <input id="imgInput" class="hidden" type="file" name="image">
                             </label>
                         </span>
                     </div>
@@ -75,7 +75,7 @@ require_once '../../controller/formateur/creatBrief.php';
                             <span class=" flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
                                 <label for="fileInput" class="cursor-pointer text-center">
                                     Upload attachment
-                                    <input  class="hidden" type="file" name="ayoub">
+                                    <input id="fileInput" class="hidden" type="file" name="ayoub">
                                 </label>
                             </span>
                         </div>
@@ -144,7 +144,7 @@ require_once '../../controller/formateur/creatBrief.php';
                         <?php foreach( $competences as $compe): ?>
                             <div class="flex items-center mt-5">
                                 <input id="link-checkbox" type="checkbox" name="competence[]" value="<?php echo $compe["ID_COMPETENCE"] ?>" class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded ">
-                                <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["NOM"] ?></a>.</label>
+                                <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["COMPETENCE_NOM"] ?></a>.</label>
                             </div>
                         <?php endforeach; ?>  
                             <div class="flex gap-x-7 my-7">
