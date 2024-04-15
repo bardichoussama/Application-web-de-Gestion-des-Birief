@@ -58,9 +58,9 @@ require_once '../../controller/formateur/creatBrief.php';
                         <p class="text-2xl font-semibold">Brief picture</p>
                         <p class="text-lg font-regular text-gray-400">JPG, GIF or PNG. Max size of 800K</p>
                         <span class=" flex justify-center items-center bg-primary w-40 h-11 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
-                            <label for="fileInput" class="cursor-pointer text-center">
+                            <label for="imgInput" class="cursor-pointer text-center">
                                 Upload
-                                <input id="fileInput" class="hidden" type="file" name="image">
+                                <input id="imgInput" class="hidden" type="file" name="image">
                             </label>
                         </span>
                     </div>
@@ -75,7 +75,7 @@ require_once '../../controller/formateur/creatBrief.php';
                             <span class=" flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
                                 <label for="fileInput" class="cursor-pointer text-center">
                                     Upload attachment
-                                    <input  class="hidden" type="file" name="ayoub">
+                                    <input id="fileInput" class="hidden" type="file" name="ayoub">
                                 </label>
                             </span>
                         </div>

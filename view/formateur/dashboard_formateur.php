@@ -60,10 +60,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div class="w-full bg-white rounded-full h-2.5 ">
-                   
+                <div class="w-full bg-white-300 rounded-full h-2.5 dark:bg-white-700">
+                        <div class="bg-green-400 h-2.5 rounded-full" style="width: <?php echo $briefProgress["progres"]/$briefProgress["total"] *100 ?>%"></div>
+                </div>
                 </div>
                 <div class="flex justify-between mb-1">
+               
                     <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress["progres"]?>/<?php echo $briefProgress["total"] ?></span>
+                    
                 </div>
             </div>
             <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
