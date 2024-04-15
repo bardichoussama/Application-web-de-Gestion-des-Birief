@@ -117,7 +117,7 @@ class Brief
     public function realiseBrief($idGroupe)
     {
 
-        $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, 
+        $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, B.ID_BRIEF,
                                     B.TITRE, 
                                     F.NOM, 
                                     F.PRENOM, 
@@ -133,5 +133,28 @@ class Brief
         $db->bindParam(":idGroupe", $idGroupe);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getAffecedBP($idGroupe)
+    {
+
+        $db = $this->conn->prepare("SELECT * 
+        FROM affectation A
+         INNER JOIN brief B on A.ID_BRIEF = B.ID_BRIEF
+        INNER JOIN formateur F  ON F.ID_FORMATEUR = B.ID_FORMATEUR
+        where ID_GROUPE =:idGroupe");
+
+        $db->bindParam(":idGroupe", $idGroupe);
+        $db->execute();
+        return $db->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateBriefStatus($briefId, $newStatus)
+    {
+
+        $db = $this->conn->prepare("UPDATE realiser SET ETAT = :newStatus WHERE ID_BRIEF = :briefId");
+        $db->bindParam(":newStatus", $newStatus);
+        $db->bindParam(":briefId", $briefId);
+        $db->execute();
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
 require_once '../../controller/apprenant/my_briefs.php';
-
-// require_once "../../controller/formateur/formateurDashboard.php";
+require_once '../../controller/apprenant/apprenant.php';
+require_once '../../controller/apprenant/brief_stat.php';
 
 ?>
 <!DOCTYPE html>
@@ -58,45 +58,36 @@ require_once '../../controller/apprenant/my_briefs.php';
             <div class=" text-2xl font-semibold mx-7">
                 <p>Current brief</p>
             </div>
-            <div class="mx-11 mt-11">
-
-
-
-                <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
-                    <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
-                    <div class="ml-4  w-4/12">
-                        <p class="text-xl font-medium "></p>
-                        <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"]." ".$briefArealiser["PRENOM"] ?></span>
+            <form id="myForm" action="" method="">
+                <div class="mx-11 mt-11">
+                    <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
+                        <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
+                        <div class="ml-4 w-4/12">
+                            <p class="text-xl font-medium"><?php echo $briefArealiser["TITRE"] ?></p>
+                            <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"] . " " . $briefArealiser["PRENOM"] ?></span>
+                        </div>
+                        <div class="ml-48 mt-4">
+                            <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
+                        </div>
+                        <div class="ml-24">
+                            <p class="text-gray-400 text-lg font-medium">Duration</p>
+                            <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["DUREE"] ?>Days </span>
+                        </div>
+                        <div class="ml-16">
+                            <p class="text-lg font-medium text-gray-400">Skills</p>
+                            <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["SKILLS"] ?></span>
+                        </div>
+                        <div class="ml-24 mt-4">
+                            <button name="<?php echo $buttonName; ?>" class="bg-primary w-40 text-white text-lg font-medium me-2 px-3 py-2 rounded-xl">
+                                <?php echo $buttonLabel; ?>
+                            </button>
+                        </div>
                     </div>
-                    <div class="ml-48 mt-4">
-                        <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
-                    </div>
-                    <div class="ml-24">
-                        <p class="text-gray-400 text-lg font-medium">Duration</p>
-                        <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["DUREE"] ?>Days </span>
-                    </div>
-                    <div class="ml-16">
-                        <p class="text-lg font-medium text-gray-400">Skills</p>
-                        <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["SKILLS"] ?></span>
-                    </div>
-                    <div class="ml-24 mt-4">
-                        <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
-                            <label for="fileInput" class="cursor-pointer text-gray-800">
-                                Attachment
-                                <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
-                                </svg>
-                                <input id="fileInput" class="hidden" type="input">
-                            </label>
-                        </span>
+                    <div class=" text-lg font-regular mx-7">
+                        <p>Time left : 9j 4h 33 min</p>
                     </div>
                 </div>
-                <div class=" text-lg font-regular mx-7">
-                <p>Time left : 9j 4h 33 min</p>
-            </div>
-
-
-            </div>
+            </form>
             <div class=" text-2xl font-semibold mx-7 mt-11">
                 <p>My promo briefs</p>
             </div>
@@ -127,62 +118,65 @@ require_once '../../controller/apprenant/my_briefs.php';
             </form>
 
             <div class="flex  w-full mx-28 flex-wrap">
-                <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse ">
-                    <div class="max-w-md w-96   rounded-xl p-6">
-                        <div class="flex flex-col ">
-                            <div class="">
-                                <div class="relative h-62 w-full mb-3">
+                <?php if ($affecedBP !== null) : ?>
+                    <?php foreach ($affecedBP as $brief) : ?>
+                        <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse ">
+                            <div class="max-w-md w-96   rounded-xl p-6">
+                                <div class="flex flex-col ">
+                                    <div class="">
+                                        <div class="relative h-62 w-full mb-3">
 
-                                    <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class=" w-full   h-52  object-cover  rounded-xl">
-                                </div>
-
-                                <div class="flex gap-x-32  mt-2 items-center">
-                                    <div class=" flex gap-x-4 items-center">
-                                        <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-
-
-                                        <div class="font-medium text-xs w-28 ">
-                                            Jean Marc
+                                            <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class=" w-full   h-52  object-cover  rounded-xl">
                                         </div>
 
-                                    </div>
+                                        <div class="flex gap-x-32  mt-2 items-center">
+                                            <div class=" flex gap-x-4 items-center">
+                                                <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
 
-                                    <div class="flex items-center  bg-secondary text-gray-800 text-xs font-semibold px-2  rounded-lg h-7">
-                                        Individual
-                                    </div>
-                                </div>
-                                <div class="flex-auto justify-evenly">
-                                    <div class="flex flex-wrap ">
 
-                                        <div class="f min-w-0  mt-2">
+                                                <div class="font-medium text-xs w-28 ">
+                                                    <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
+                                                </div>
 
-                                            <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate ">Creer une site web worddpress</h2>
+                                            </div>
 
+                                            <div class="flex items-center  bg-secondary text-gray-800 text-xs font-semibold px-2  rounded-lg h-7">
+                                                Individual
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- <div class="flex space-x-2 text-sm font-medium justify-end w-full mt-3">
+                                        <div class="flex-auto justify-evenly">
+                                            <div class="flex flex-wrap ">
+
+                                                <div class="f min-w-0  mt-2">
+
+                                                    <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "> <?= $brief['TITRE']  ?></h2>
+
+                                                </div>
+                                            </div>
+                                            <!-- <div class="flex space-x-2 text-sm font-medium justify-end w-full mt-3">
                                         <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium  md:mb-0 bg-primary px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-xl hover:bg-hoverprimary ">
                                             <span>Details</span>
                                         </button>
 
                                     </div> -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
 
-
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
             </div>
 
 
-
-
         </main>
         <div class=" w-96 flex justify-center  bg-bodybackground">
-         
+            <?php
+            include_once '../../view/templates/apprenant_card_info.php';
+            ?>
 
         </div>
 

@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+
 
 require_once("../../config/db.php");
 include_once '../../model/apprenant/apprenant_model.php';
@@ -15,10 +15,12 @@ if (isset($_SESSION["ID"])) {
     // echo "Session ID : " . $apprenantID . "<br>";
     // echo "Session Group: " . $groupID . "<br>";
 
-    $groupInfo = $apprenant->getGroupInfo($_SESSION["ID"]);
+    $cardInfo = $apprenant->getGroupInfo($_SESSION["ID"]);
+ 
 
-    if ($groupInfo) {
-        // var_dump($groupInfo);
+    if ($cardInfo) {
+        var_dump($cardInfo);
+
     } else {
         echo "No group info ";
     }
