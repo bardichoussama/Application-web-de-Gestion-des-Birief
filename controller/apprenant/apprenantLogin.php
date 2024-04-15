@@ -8,7 +8,7 @@
         $authModel = new AuthenticationModel($db);
         $loggedIn = $authModel->login($email, $password, 'APPRENANT'); 
         if ($loggedIn) {
-                header('Location: ../../view/apprenant/dashboard.php'); 
+                header('Location: ../../view/apprenant/promo.php'); 
                 exit();
         } else {       
             echo "Invalid email or password. Please try again.";

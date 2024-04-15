@@ -1,8 +1,7 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-require_once '../../controller/formateur/allBriefs.php';
-
-
+require_once '../../controller/formateur/brief_list_controller.php';
+$Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -30,6 +29,7 @@ require_once '../../controller/formateur/allBriefs.php';
 </head>
 
 <body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
+
     <div class="flex">
         <?php
         include_once '../../view/templates/formateur_sidebar.php';
@@ -37,7 +37,7 @@ require_once '../../controller/formateur/allBriefs.php';
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">
                 <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"]?></span></p>
+                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
                 </div>
                 <div class="flex  gap-x-7 my-11">
                     <div>
@@ -66,110 +66,95 @@ require_once '../../controller/formateur/allBriefs.php';
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input type="search" name="input" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50     " placeholder="Search Mockups, Logos..." required />
-                    <button name="search"   class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">  Search</button>
+                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50     " placeholder="Search Mockups, Logos..." required />
+                    <button class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button>
                 </div>
             </form>
-        <div class="flex ">
-            <div class="ml-20 mt-16">
-                <form action="filter.php" method="post">
-                    <p class="text-gray-800 text-2xl font-medium">Filter my Briefs</p>
-                    <ul class="pt-5 mt-5 space-y-8 ">
-                        <li>
-                            <button type="submit" name="category" value="all" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 border-3 border-gray-600 focus:border-gray-800 focus:outline-none w-48 p-2">
-                                <ion-icon class="w-6 h-6" name="bookmarks-outline"></ion-icon>
-                                <span class="ml-3 text-xl text-gray-900 ">All Briefs</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="submit" name="category" value="all" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100  focus:border-gray-800 focus:outline-none W-48 P-2">
-                                <ion-icon class="w-6 h-6" name="bookmark-outline"></ion-icon>
-                                <span class="ml-3 text-xl text-gray-900 ">My Briefs</span>
-                            </button>
-                        </li>
 
-                    </ul>
-                </form>
-            </div>
-            <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse">
-                <?php foreach($allbriefs as $brief): ?>
-
-                <div class="max-w-md w-96   rounded-xl p-6">
-                    <div class="flex flex-col ">
-                        <div class="">
-                            <div class="relative h-62 w-full mb-3">
-                                <div class="absolute flex flex-col top-0 right-0 p-3">
-                                    <button id="toggleButton" class="transition ease-in duration-300 bg-secondary hover:bg-primary border  hover:text-primary hover:shadow-lg text-primary rounded-full w-9 h-9 text-center p-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="eyeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path id="eyeOpenIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            <path id="eyeClosedIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                        </svg>
+            <form class="" method="post" action="./briefs_list.php" >
+                <div class="flex">
+                    <div class="ml-20 mt-16">
+                       
+                            <p class="text-gray-800 text-2xl font-medium">Filter my Briefs</p>
+                            <ul class="pt-5 mt-5 space-y-8 ">
+                                <li>
+                                    <button type="submit" name="allBriefs" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 border-3 border-gray-600 focus:border-gray-800 focus:outline-none w-48 p-2">
+                                        <ion-icon class="w-6 h-6" name="bookmarks-outline"></ion-icon>
+                                        <span class="ml-3 text-xl text-gray-900 ">All Briefs</span>
                                     </button>
+                                </li>
+                                <li>
+                                    <button type="submit" name="myBriefs"  class=" flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 focus:border-gray-800 focus:outline-none W-48 P-2">
+                                        <ion-icon class="w-6 h-6" name="bookmark-outline"></ion-icon>
+                                        <span class="ml-3 text-xl text-gray-900 ">My Briefs</span>
+                                    </button>
+                                </li>
 
+                            </ul>
+                       
+                    </div>
+            </form>
+            <div class="flex flex-wrap w-full">
 
-                                </div>
-                                <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class=" w-full   h-52  object-cover  rounded-xl">
-                            </div>
-                            <div class="flex gap-x-32  mt-2 items-center">
-                                <div class=" flex gap-x-4 items-center">
-                                    <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-
-
-                                    <div class="font-medium text-xs w-28 ">
-                                       <?php echo $brief["NOM"]." ".$brief["PRENOM"] ?>
+                <?php foreach ($allbriefs as $brief) : ?>
+                    <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse">             
+                        <div class="max-w-md w-96 rounded-xl p-6">
+                            <div class="flex flex-col">
+                                <div class="">
+                                    <div class="relative h-62 w-full mb-3">
+                                        <!-- <div class="absolute flex flex-col top-0 right-0 p-3">
+                                                <button id="toggleButton" class="transition ease-in duration-300 bg-secondary hover:bg-primary border hover:text-primary hover:shadow-lg text-primary rounded-full w-9 h-9 text-center p-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="eyeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path id="eyeOpenIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path id="eyeClosedIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
+                                                </button>
+                                            </div> -->
+                                        <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="w-full h-52 object-cover rounded-xl">
                                     </div>
-
-                                </div>
-
-                                <div class="flex items-center  bg-green-400 text-white text-xs px-2  rounded-lg h-7">
-                                    assigned
-                                </div>
-                            </div>
-                            <div class="flex-auto justify-evenly">
-                                <div class="flex flex-wrap ">
-
-                                    <div class="f min-w-0  mt-2">
-
-                                        <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?php echo $brief["TITRE"] ?></h2>
+                                    <a href="./brief_details.php?id=<?= $brief['ID_BRIEF']?>">
+                                    <div class="flex justify-around mt-2 items-center">
+                                        <div class="flex gap-x-4 items-center">
+                                            <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+                                            <div class="font-medium text-xs  w-40">
+                                                <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center bg-secondary text-gray-800 text-xs font-semibold px-2 rounded-lg h-7">
+                                            individual
+                                        </div>
+                                    </div>
+                                    <div class="flex-auto justify-evenly">
+                                        <div class="flex flex-wrap">
+                                            <div class="f min-w-0 mt-2">
+                                                <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate ">
+                                                    <?php echo $brief['TITRE']; ?>
+                                                </h2>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
-
-
-
-                                <!-- <div class="flex space-x-2 text-sm font-medium justify-end">
-                                <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium  md:mb-0 bg-primary px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full hover:bg-purple-600 ">
-                                    <span>Add Cart</span>
-                                </button>
-
-                            </div> -->
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php endforeach;?>
+                <?php endforeach; ?>
 
-                
+
 
             </div>
 
-           
 
 
+    </div>
 
-        </div>
+    </main>
+    <div class=" w-96 flex justify-center  bg-bodybackground">
+        <?php
+        include_once '../../view/templates/formateur_info_card.php';
+        ?>
 
-
-
-
-
-        </main>
-        <div class=" w-96 flex justify-center  bg-bodybackground">
-            <?php
-            include_once '../../view/templates/formateur_info_card.php';
-            ?>
-
-        </div>
+    </div>
 
 
     </div>
@@ -181,6 +166,8 @@ require_once '../../controller/formateur/allBriefs.php';
             eyeOpenIcon.classList.toggle('hidden');
             eyeClosedIcon.classList.toggle('hidden');
         });
+
+        
     </script>
 
 

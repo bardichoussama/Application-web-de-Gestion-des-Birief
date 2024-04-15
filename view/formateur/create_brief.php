@@ -122,6 +122,24 @@ require_once '../../controller/formateur/creatBrief.php';
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="flex gap-x-11 mt-4">
+                            <div class="flex items-center p-2 border border-gray-200 rounded  w-96">
+                                <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-primary bg-gray-100 border-gray-300  ">
+                                <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Individual</label>
+                            </div>
+                            <div class="flex items-center p-2 border border-gray-200 rounded   w-96">
+                                <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-primary bg-gray-100 ">
+                                <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">In group</label>
+                            </div>
+
+                        </div> -->
+
+
+
+
+
+
+
                         <p class="text-gray-800 font-semibold text-xl mt-5">skills</p>
                         <?php foreach( $competences as $compe): ?>
                             <div class="flex items-center mt-5">
