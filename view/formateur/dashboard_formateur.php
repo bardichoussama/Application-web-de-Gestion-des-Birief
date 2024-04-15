@@ -50,6 +50,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     </div> -->
                 </div>
             </div>
+            <?php  if($inProgres):?>
             <h4 class="text-xl font-medium mt-9 ml-4">Group progress</h4>
             <div class="bg-secondary w-6/12 h-20 rounded-xl mt-9 ml-8 px-4 flex justify-center items-center gap-11">
                 <div class="w-16 h-12 bg-primary flex justify-center items-center rounded-lg">
@@ -94,6 +95,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     </span>
                 </div>
             </div>
+            <?php endif;?>
             <div class=" bg-white border border-gray-200 rounded-lg shadow-sm  sm:p-2 mt-11 mx-4">
                 <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist" style="list-style-type: none; margin: 0; padding: 0;">
                     <li class="w-full">
@@ -103,6 +105,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                 <div id="fullWidthTabContent" class="border-t border-gray-200  ">
+                <?php if($assignedBP): ?>
                 <?php foreach($assignedBP as $brief):?>
                     <div class="flex bg-white  rounded-xl h-24 mt-16 overflow-y-auto">
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
@@ -134,7 +137,9 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         </div>
                     </div>
                 <?php endforeach;?>
+                <?php endif; ?>
                 </div>
+
 
             </div>
         </main>
