@@ -8,30 +8,14 @@
             $formateur = new formateur($_SESSION["ID"],$conn);
             $cardInfo = $formateur->getFormation();
             $brief = new brief($conn);
-            var_dump($_SESSION["ID"]);
-            $inProgres = $brief->getInProgresBP($_SESSION["ID_GROUPE"],$_SESSION["ID"]);
+            $inProgres = $brief->getInProgresBP($_SESSION["ID_GROUPE"]);
             if($inProgres){
                 $progresID=$inProgres["ID_BRIEF"];
-                var_dump( $progresID);
             }else{
                 $progresID=0;
             }
-       
-            var_dump($_SESSION["ID_GROUPE"]);
-          $assignedBP = $brief->getAssignedBP($_SESSION["ID_GROUPE"],$progresID);
-          var_dump($assignedBP);
-          if(!empty($assignedBP ) ){
-            echo'full';
-         
-
-          }else{
-            echo 'is empty';
-          }
-            
-           
-            $briefProgress=$brief->briefProgres($progresID);   
-             
-             
+            $assignedBP = $brief->getAssignedBP($_SESSION["ID_GROUPE"], $progresID);
+            $briefProgress=$brief->briefProgres( $progresID);      
     }else{
         header("location:../../view/formateur/formateurLogin.php");
     }

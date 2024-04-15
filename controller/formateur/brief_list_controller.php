@@ -18,5 +18,4 @@
                 $allbriefs =$mybriefs;
 
         }
-        var_dump($mybriefs);  
 ?>

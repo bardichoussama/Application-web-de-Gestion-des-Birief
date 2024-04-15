@@ -1,6 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-require_once '../../controller/formateur/brief_list_controller.php';
+require_once "../../controller/formateur/brief_list_controller.php";
 $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                 </div>
                 <div class="flex  gap-x-7 my-11">
                     <div>
-                        <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                        <a href="create_brief.php"><button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button></a>
                     </div>
                     <div class="">
                         <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
@@ -58,7 +58,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 
 
 
-            <form class="max-w-md mx-20">
+            <form class="max-w-md mx-20" method="post">
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

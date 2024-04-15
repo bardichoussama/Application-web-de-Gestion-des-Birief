@@ -4,7 +4,6 @@
         $conn=$database->getConnection();
         $formateur = new formateur($_SESSION["ID"],$conn);
         $cardInfo = $formateur->getFormation();
-
 ?>
 
 <div class="bg-white  w-full  h-48 mt-7 rounded-xl ml-5 border ">
