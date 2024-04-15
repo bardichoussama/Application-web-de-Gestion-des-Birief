@@ -69,43 +69,41 @@ class Brief
 
 
         $db = $this->conn->prepare(" SELECT * 
-    FROM brief B INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
-    INNER JOIN competence P ON C.ID_COMPETENCE = P.ID_COMPETENCE
-    WHERE   C.ID_BRIEF =:id_brief");
+        FROM brief B INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
+        INNER JOIN competence P ON C.ID_COMPETENCE = P.ID_COMPETENCE
+        WHERE   C.ID_BRIEF =:id_brief");
 
 
         $db->bindParam(":id_brief", $idBrief);
         $db->execute();
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
+    // public function getAssignedBP($idGroupe, $ID_BRIEF)
+    // {
+    //     $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, B.TITRE, F.NOM, F.PRENOM, COUNT(C.ID_COMPETENCE) AS SKILLS 
+    //     FROM affectation A
+    //     INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
+    //     INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
+    //     INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
+    //     WHERE A.ID_GROUPE = :idGroupe AND A.ID_BRIEF = :ID_BRIEF
+    //     GROUP BY B.ID_BRIEF");
 
-
-    public function getAssignedBP($idGroupe, $ID_BRIEF)
-    {
-        $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, B.TITRE, F.NOM, F.PRENOM, COUNT(C.ID_COMPETENCE) AS SKILLS 
-        FROM affectation A
-        INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
-        INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
-        INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
-        WHERE A.ID_GROUPE = :idGroupe AND A.ID_BRIEF = :ID_BRIEF
-        GROUP BY B.ID_BRIEF");
-
-        $db->bindParam(":idGroupe", $idGroupe);
-        $db->bindParam(":ID_BRIEF", $ID_BRIEF);
-        $db->execute();
-        return $db->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function getInProgresBP($id)
-    {
-        $db = $this->conn->prepare("SELECT B.ID_BRIEF,  DATEDIFF(A.DATE_FIN,A.DATE_DEBUT) AS DUREE,B.TITRE,F.NOM,F.PRENOM,COUNT(C.ID_COMPETENCE) AS SKILLS FROM affectation  A
-        INNER JOIN brief B ON B.ID_BRIEF = A.ID_BRIEF
-        INNER JOIN formateur F  ON F.ID_FORMATEUR = B.ID_FORMATEUR
-        INNER JOIN concerne C ON C.ID_BRIEF = B.ID_BRIEF
-        WHERE ID_GROUPE=:ID GROUP BY B.ID_BRIEF");
-        $db->bindParam(":ID", $id);
-        $db->execute();
-        return $db->fetch(PDO::FETCH_ASSOC);
-    }
+    //     $db->bindParam(":idGroupe", $idGroupe);
+    //     $db->bindParam(":ID_BRIEF", $ID_BRIEF);
+    //     $db->execute();
+    //     return $db->fetchAll(PDO::FETCH_ASSOC);
+    // }
+    // public function getInProgresBP($id)
+    // {
+        // $db = $this->conn->prepare("SELECT B.ID_BRIEF,  DATEDIFF(A.DATE_FIN,A.DATE_DEBUT) AS DUREE,B.TITRE,F.NOM,F.PRENOM,COUNT(C.ID_COMPETENCE) AS SKILLS FROM affectation  A
+        // INNER JOIN brief B ON B.ID_BRIEF = A.ID_BRIEF
+        // INNER JOIN formateur F  ON F.ID_FORMATEUR = B.ID_FORMATEUR
+        // INNER JOIN concerne C ON C.ID_BRIEF = B.ID_BRIEF
+        // WHERE ID_GROUPE=:ID GROUP BY B.ID_BRIEF");
+        // $db->bindParam(":ID", $id);
+        // $db->execute();
+        // return $db->fetch(PDO::FETCH_ASSOC);
+    // }
     public function briefProgres($id)
     {
         $db = $this->conn->prepare("SELECT COUNT(*) as progres, (SELECT COUNT(*) FROM realiser WHERE ID_BRIEF=$id ) AS total FROM `realiser` 

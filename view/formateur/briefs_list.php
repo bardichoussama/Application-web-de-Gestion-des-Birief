@@ -1,6 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-require_once '../../controller/formateur/brief_list_controller.php';
+require_once "../../controller/formateur/brief_list_controller.php";
 $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 ?>
 <!DOCTYPE html>

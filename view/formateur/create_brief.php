@@ -75,7 +75,7 @@ require_once '../../controller/formateur/creatBrief.php';
                             <span class=" flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl ">
                                 <label for="fileInput" class="cursor-pointer text-center">
                                     Upload attachment
-                                    <input id="fileInput" class="hidden" type="file" name="bp-file">
+                                    <input  class="hidden" type="file" name="ayoub">
                                 </label>
                             </span>
                         </div>
