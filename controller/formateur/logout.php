@@ -1,6 +1,7 @@
 <?php
     session_start();
     $_SESSION["ID"]="";
-    header("location:./index.")
+    header("location: ../../index.php");
+  
 
 ?>
