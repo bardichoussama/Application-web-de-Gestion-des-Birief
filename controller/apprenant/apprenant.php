@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 require_once("../../config/db.php");
 include_once '../../model/apprenant/apprenant_model.php';
 
@@ -19,7 +18,6 @@ if (isset($_SESSION["ID"])) {
  
 
     if ($cardInfo) {
-        var_dump($cardInfo);
 
     } else {
         echo "No group info ";

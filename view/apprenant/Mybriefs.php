@@ -1,9 +1,7 @@
 <?php
 
-require_once '../../controller/apprenant/my_briefs.php';
 require_once '../../controller/apprenant/apprenant.php';
-require_once '../../controller/apprenant/brief_stat.php';
-
+require_once '../../controller/apprenant/my_briefs.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -39,7 +37,7 @@ require_once '../../controller/apprenant/brief_stat.php';
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">
                 <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium">Oussama</span></p>
+                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
                 </div>
                 <div class="flex  gap-x-7 my-11">
 
@@ -58,12 +56,14 @@ require_once '../../controller/apprenant/brief_stat.php';
             <div class=" text-2xl font-semibold mx-7">
                 <p>Current brief</p>
             </div>
-            <form id="myForm" action="" method="">
+            <form id="myForm" action="mybriefs.php" method="post">
                 <div class="mx-11 mt-11">
                     <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                         <div class="ml-4 w-4/12">
+                            <a href="./briefDetails.php?id=<?= $briefArealiser['ID_BRIEF'];?>">
                             <p class="text-xl font-medium"><?php echo $briefArealiser["TITRE"] ?></p>
+                            </a>
                             <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"] . " " . $briefArealiser["PRENOM"] ?></span>
                         </div>
                         <div class="ml-48 mt-4">
@@ -83,9 +83,9 @@ require_once '../../controller/apprenant/brief_stat.php';
                             </button>
                         </div>
                     </div>
-                    <div class=" text-lg font-regular mx-7">
+                    <!-- <div class=" text-lg font-regular mx-7">
                         <p>Time left : 9j 4h 33 min</p>
-                    </div>
+                    </div> -->
                 </div>
             </form>
             <div class=" text-2xl font-semibold mx-7 mt-11">
@@ -148,9 +148,9 @@ require_once '../../controller/apprenant/brief_stat.php';
                                             <div class="flex flex-wrap ">
 
                                                 <div class="f min-w-0  mt-2">
-
+                                                <a href="./briefDetails.php?id=<?= $brief['ID_BRIEF']?>">
                                                     <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "> <?= $brief['TITRE']  ?></h2>
-
+                                                 </a>    
                                                 </div>
                                             </div>
                                             <!-- <div class="flex space-x-2 text-sm font-medium justify-end w-full mt-3">

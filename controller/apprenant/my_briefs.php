@@ -1,25 +1,26 @@
 <?php
-session_start(); 
-
 require_once "../../config/db.php";
 require_once "../../model/formateur/formateur_BP_model.php";
 
 $conn = $database->getConnection();
 $brief = new brief($conn);
-$briefArealiser = $brief->realiseBrief($_SESSION["ID_GROUPE"]);
+$briefArealiser = $brief->realiseBrief($_SESSION["ID_GROUPE"],$_SESSION["ID"]);
 $affecedBP = $brief->getAffecedBP($_SESSION["ID_GROUPE"]);
 
 
-$buttonLabel = "Start brief";
-$buttonName = "startBP";
 
+if ($briefArealiser["ETAT"] == "TO DO") {
+    $buttonLabel = "Start brief";
+    $buttonName = "startBP";
+}else{
+    $buttonLabel = "END";
+    $buttonName = "endBP";
+}
 if (isset($_POST["startBP"])) {
-
+ 
     $result = $brief->updateBriefStatus($briefArealiser["ID_BRIEF"], 'DOING');
-    if ($result) {
-        echo "Status updated successfully.";
-    } else {
-        echo "Error updating status.";
-    }
+  
+}else{
+ echo "im not";
 }
 ?>

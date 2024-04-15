@@ -144,7 +144,7 @@ require_once '../../controller/formateur/creatBrief.php';
                         <?php foreach( $competences as $compe): ?>
                             <div class="flex items-center mt-5">
                                 <input id="link-checkbox" type="checkbox" name="competence[]" value="<?php echo $compe["ID_COMPETENCE"] ?>" class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded ">
-                                <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["NOM"] ?></a>.</label>
+                                <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary "><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["NOM_COMPETENCE"] ?></a>.</label>
                             </div>
                         <?php endforeach; ?>  
                             <div class="flex gap-x-7 my-7">

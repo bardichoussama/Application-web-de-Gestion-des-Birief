@@ -25,7 +25,7 @@ class Brief
     }
     public function getAssignedBP($ID,$ID_BRIEF)
     {
-        $db= $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
+        $db= $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
                                    INNER JOIN brief USING(ID_BRIEF) 
                                    INNER JOIN formateur USING(ID_FORMATEUR) 
                                    INNER JOIN concerne USING(ID_BRIEF) 
@@ -104,11 +104,14 @@ class Brief
         // $db->execute();
         // return $db->fetch(PDO::FETCH_ASSOC);
     // }
-    public function briefProgres($id)
+    public function briefProgres($id,$idGroupe)
     {
-        $db = $this->conn->prepare("SELECT COUNT(*) as progres, (SELECT COUNT(*) FROM realiser WHERE ID_BRIEF=$id ) AS total FROM `realiser` 
-                                WHERE ID_BRIEF=$id AND ETAT='done'");
-
+        $db = $this->conn->prepare("SELECT COUNT(*) as progres, (SELECT COUNT(*) FROM realiser INNER JOIN apprenant USING(ID_APPRENANT)INNER JOIN groupe USING(ID_GROUPE) WHERE ID_BRIEF=:id AND ID_GROUPE = :ID_GROUPE) AS total FROM `realiser` 
+                                    INNER JOIN apprenant USING(ID_APPRENANT)
+                                    INNER JOIN groupe USING(ID_GROUPE)
+                                    WHERE ID_BRIEF=:id AND ETAT='done' AND ID_GROUPE = :ID_GROUPE" );
+        $db->bindParam(":id",$id);
+        $db->bindParam(":ID_GROUPE",$idGroupe);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
@@ -158,23 +161,24 @@ class Brief
         }
     }
 
-    public function realiseBrief($idGroupe)
+    public function realiseBrief($idGroupe,$idApprenanr)
     {
 
         $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, B.ID_BRIEF,
-                                    B.TITRE, 
-                                    F.NOM, 
-                                    F.PRENOM, 
-                                    R.ETAT, 
-                                    COUNT(C.ID_COMPETENCE) AS SKILLS 
-                                    FROM affectation A
-                                    INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
-                                    INNER JOIN realiser R ON B.ID_BRIEF = R.ID_BRIEF 
-                                    INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
-                                    INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
-                                    WHERE A.ID_GROUPE = :idGroupe AND A.ID_BRIEF 
-                                    GROUP BY B.ID_BRIEF, R.ETAT");
+        B.TITRE, 
+        F.NOM, 
+        F.PRENOM, 
+        R.ETAT, 
+        COUNT(C.ID_COMPETENCE) AS SKILLS 
+        FROM affectation A
+        INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
+        INNER JOIN realiser R ON B.ID_BRIEF = R.ID_BRIEF 
+        INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
+        INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
+        INNER JOIN apprenant P on P.ID_APPRENANT=R.ID_APPRENANT
+        WHERE A.ID_GROUPE = :idGroupe AND P.ID_APPRENANT=:idApprenant AND NOW() BETWEEN A.DATE_DEBUT AND A.DATE_FIN");
         $db->bindParam(":idGroupe", $idGroupe);
+        $db->bindParam(":idApprenant", $idApprenanr);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
