@@ -73,7 +73,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
 
 
                             <div class="font-medium text-xs w-full  ">
-                                <p class="text-xl"> <?= $briefDetail['NOM'] .' '. $briefDetail['PRENOM'] ?></p>
+                            <p class="text-xl"><?= $briefDetail['NOM'] .' '. $briefDetail['PRENOM'] ?></p>
                                 <p class="text-xs">created : <?= $briefDetail['DATE_AJOUTE']?></p>
                             </div>
                            

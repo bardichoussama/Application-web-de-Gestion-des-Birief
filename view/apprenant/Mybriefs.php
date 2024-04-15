@@ -1,7 +1,9 @@
 <?php
 
-require_once "../../controller/formateur/formateurDashboard.php";
-require_once '../../controller/formateur/allBriefs.php';
+require_once '../../controller/apprenant/my_briefs.php';
+
+// require_once "../../controller/formateur/formateurDashboard.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -63,20 +65,19 @@ require_once '../../controller/formateur/allBriefs.php';
                 <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                     <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                     <div class="ml-4  w-4/12">
-                        <p class="text-xl font-medium "><?php
-                         echo $inProgres["TITRE"]; ?></p>
-                        <span class="text-gray-400 text-lg">By Imane bouziane</span>
+                        <p class="text-xl font-medium "></p>
+                        <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"]." ".$briefArealiser["PRENOM"] ?></span>
                     </div>
                     <div class="ml-48 mt-4">
-                        <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">To do</span>
+                        <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
                     </div>
                     <div class="ml-24">
                         <p class="text-gray-400 text-lg font-medium">Duration</p>
-                        <span class="text-lg font-medium text-gray-800">10 DAYS</span>
+                        <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["DUREE"] ?>Days </span>
                     </div>
                     <div class="ml-16">
                         <p class="text-lg font-medium text-gray-400">Skills</p>
-                        <span class="text-lg font-medium text-gray-800">7</span>
+                        <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["SKILLS"] ?></span>
                     </div>
                     <div class="ml-24 mt-4">
                         <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
@@ -181,9 +182,7 @@ require_once '../../controller/formateur/allBriefs.php';
 
         </main>
         <div class=" w-96 flex justify-center  bg-bodybackground">
-            <?php
-            include_once '../../view/templates/formateur_info_card.php';
-            ?>
+         
 
         </div>
 

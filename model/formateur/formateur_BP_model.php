@@ -24,22 +24,23 @@ class Brief
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function briefDetails($idFormateur, $idBrief)
+    public function briefDetails($idBrief)
     {
 
 
-        $db = $this->conn->prepare("    SELECT * 
-   FROM brief
-   INNER JOIN formateur ON brief.ID_FORMATEUR = formateur.ID_FORMATEUR
-   INNER JOIN concerne ON brief.ID_BRIEF = concerne.ID_BRIEF
-   INNER JOIN competence ON concerne.ID_COMPETENCE = competence.ID_COMPETENCE
-   WHERE brief.ID_FORMATEUR = :id_formateur AND brief.ID_BRIEF = :id_brief ");
+        $db = $this->conn->prepare(" SELECT * 
+        FROM brief
+        INNER JOIN formateur ON brief.ID_FORMATEUR = formateur.ID_FORMATEUR
+        INNER JOIN concerne ON brief.ID_BRIEF = concerne.ID_BRIEF
+        INNER JOIN competence ON concerne.ID_COMPETENCE = competence.ID_COMPETENCE
+        WHERE brief.ID_BRIEF = :id_brief ");
 
-        $db->bindParam(":id_formateur", $idFormateur);
+
         $db->bindParam(":id_brief", $idBrief);
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
+
     public function briefCompetence($idBrief)
     {
 
@@ -111,5 +112,26 @@ class Brief
     {
         $db =  $this->conn->query("SELECT max(ID_BRIEF) as ID FROM brief ")->fetchAll(PDO::FETCH_ASSOC);
         return  $db[0]["ID"];
+    }
+
+    public function realiseBrief($idGroupe)
+    {
+
+        $db = $this->conn->prepare("SELECT DATEDIFF(A.DATE_FIN, A.DATE_DEBUT) AS DUREE, 
+                                    B.TITRE, 
+                                    F.NOM, 
+                                    F.PRENOM, 
+                                    R.ETAT, 
+                                    COUNT(C.ID_COMPETENCE) AS SKILLS 
+                                    FROM affectation A
+                                    INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
+                                    INNER JOIN realiser R ON B.ID_BRIEF = R.ID_BRIEF 
+                                    INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
+                                    INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
+                                    WHERE A.ID_GROUPE = :idGroupe AND A.ID_BRIEF 
+                                    GROUP BY B.ID_BRIEF, R.ETAT");
+        $db->bindParam(":idGroupe", $idGroupe);
+        $db->execute();
+        return $db->fetch(PDO::FETCH_ASSOC);
     }
 }
