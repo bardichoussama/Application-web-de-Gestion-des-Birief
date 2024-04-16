@@ -2,6 +2,7 @@
 
 require_once("../../config/db.php");
 include_once '../../model/apprenant/apprenant_model.php';
+session_start();
 
 $conn = $database->getConnection();
 $apprenant = new Apprenant($conn);

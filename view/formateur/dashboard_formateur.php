@@ -133,7 +133,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                             <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
                         </div>
                         <div class=" flex flex-col ml-28 gap-y-4  p-4 w-48 ">
-                            <a class="text-xs text-center font-medium  text-white bg-primary rounded-lg p-2" href="./statByBrief.php">Apprenant stat</a>
+                            <a class="text-xs text-center font-medium  text-gray-800 bg-yellow-100 rounded-lg p-2" href="./statByBrief.php">Apprenant stat</a>
                            
                             <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
                         <label for="fileInput" class="cursor-pointer text-gray-800">
