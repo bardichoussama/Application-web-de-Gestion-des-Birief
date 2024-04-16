@@ -1,6 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-require_once "../../controller/formateur/learners_states.php";
+require_once "../../controller/formateur/learners_table.php";
 
 ?>
 <!DOCTYPE html>
