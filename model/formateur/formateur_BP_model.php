@@ -193,4 +193,12 @@ class Brief
         $db->execute();
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getLearnersInfo($id_groupe)
+    {
+        $sql="SELECT * FROM apprenant WHERE ID_GROUPE=:ID";
+        $db=$this->conn->prepare($sql);
+        $db->bindParam(":ID",$id_groupe);
+        $db->execute();
+        return $db->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
