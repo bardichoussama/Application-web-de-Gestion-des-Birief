@@ -11,7 +11,7 @@ $affecedBP = $brief->getAffecedBP($_SESSION["ID_GROUPE"]);
 
 
 
-if ($briefArealiser["ETAT"] == "TO DO") {
+if ($briefArealiser["ETAT"] == "TODO") {
     $buttonLabel = "Start brief";
     $buttonName = "startBP";
 }else{

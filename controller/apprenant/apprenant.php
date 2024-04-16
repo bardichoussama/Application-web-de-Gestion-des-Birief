@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once("../../config/db.php");
 include_once '../../model/apprenant/apprenant_model.php';
 

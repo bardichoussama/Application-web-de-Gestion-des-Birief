@@ -78,13 +78,13 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                             <p class="text-gray-800 text-2xl font-medium">Filter my Briefs</p>
                             <ul class="pt-5 mt-5 space-y-8 ">
                                 <li>
-                                    <button type="submit" name="allBriefs" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 border-3 border-gray-600 focus:border-gray-800 focus:outline-none w-48 p-2">
+                                    <button type="submit" name="allBriefs" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 border-3  w-48 p-2">
                                         <ion-icon class="w-6 h-6" name="bookmarks-outline"></ion-icon>
                                         <span class="ml-3 text-xl text-gray-900 ">All Briefs</span>
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="submit" name="myBriefs"  class=" flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 focus:border-gray-800 focus:outline-none W-48 P-2">
+                                    <button type="submit" name="myBriefs"  class=" flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 W-48 P-2">
                                         <ion-icon class="w-6 h-6" name="bookmark-outline"></ion-icon>
                                         <span class="ml-3 text-xl text-gray-900 ">My Briefs</span>
                                     </button>

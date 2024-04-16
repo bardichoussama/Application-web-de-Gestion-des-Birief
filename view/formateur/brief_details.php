@@ -35,28 +35,28 @@ require_once '../../controller/formateur/brief_details_controller.php';
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">
                 <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?>e</span></p>
+                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
                 </div>
                 <div class="flex  gap-x-7 my-11">
                     <div>
-                    <form action="" method="post" >
-                        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative p-4 w-full max-w-md max-h-full">
-                                <!-- Modal content -->
-                                <div class="relative bg-white rounded-lg shadow ">
-                                    <!-- Modal header -->
-                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
-                                        <h3 class="text-lg font-semibold text-gray-900 ">
-                                            Brief Duration
-                                        </h3>
-                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                    </div>
-                                    <!-- Modal body -->
+                        <form action="" method="post">
+                            <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow ">
+                                        <!-- Modal header -->
+                                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+                                            <h3 class="text-lg font-semibold text-gray-900 ">
+                                                Brief Duration
+                                            </h3>
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
                                         <div date-rangepicker class="flex items-center mt-7">
                                             <div class="relative">
                                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -79,17 +79,17 @@ require_once '../../controller/formateur/brief_details_controller.php';
                                         <div class="w-full relative  flex justify-end">
                                             <button name="done" class="bg-primary border-2  text-white  rounded-xl  h-10 w-20  text-xs mt-3 ">Donne</button>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                   
-                               
-                                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary blue-800 focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center " >
-                                    assign
-                                </button>
-                            </div>  
-                    
+                        </form>
+
+
+                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary blue-800 focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center ">
+                            Assign now
+                        </button>
+                    </div>
+
                     <div class="">
                         <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -102,57 +102,63 @@ require_once '../../controller/formateur/brief_details_controller.php';
                     </div>
                 </div>
             </div>
-            <div class="flex ">
-
-                <div class="flex flex-col item-center mx-20 mt-11 rounded-3xl  " style=" width: 900px;">
-                    <div class="my-4">
-                        <a href="./briefs_list.php" >
-                        <button class=" flex justify-center items-center px-6 bg-secondary rounded-lg w-38 h-14 text-lg text-primary  "><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
-                        </a>
-                    </div>
-                    <img class="object-cover rounded-3xl  " style="max-height: 550px; width: 900px;" src="../../public/assets/img/bp-cover.jpg" alt="Cover Image">
-                    <div class="flex flex-wrap ">
-                        <div class="f min-w-0  mt-2">
-                            <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?= $briefDetail['TITRE']?></h2>
-                        </div>
-
-                    </div>
-                    <div class="flex gap-x-32  mt-2 items-center w-full ">
-                        <div class=" flex gap-x-4 items-center w-full">
-                            <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-
-
-                            <div class="font-medium text-xs w-full  ">
-                            <p class="text-xl"><?= $briefDetail['NOM'] .' '. $briefDetail['PRENOM'] ?></p>
-                                <p class="text-xs">created : <?= $briefDetail['DATE_AJOUTE']?></p>
-                            </div>
-                           
-
-                        </div>
-                
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="flex-1">
-                            <h5 class="w-full break-words">Réaliser une application web en PHP pour gérer les réservations des événements de l’association FARHA. 
-</h5>
-                        </div>
-                      
-                    </div>
-
-                </div>
-                <div class="flex flex-col border w-96  shadow rounded-3xl p-4 gap-y-7">
-                    <p class="text-2xl font-semibold">Targeted skill</p>
-                    <?php foreach ($briefCompetence as $competence ): ?>
-                    <div class=" mx-4  flex gap-x-3">
-                        <p class="text-lg text-primary font-semibold"><?= $competence ['CODE']?></p>
-                        <span class="text-gray-500"><?= $competence ['NOM_COMPETENCE']?></span>
-                    </div>
-                    <?php endforeach; ?>
-                   
-
-
-                </div>
+           <div class="flex flex-col mx-11">
+           <div class="my-4">
+                <a href="./briefs_list.php">
+                    <button class=" flex justify-center items-center px-6 bg-secondary rounded-lg w-38 h-14 text-lg text-primary  "><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
+                </a>
             </div>
+            <div class="flex  justify-center   m-0 p-0">
+           
+
+           <div class="flex flex-col item-center mx-20  rounded-3xl  k" style=" width: 900px; ">
+
+               <img class="object-cover rounded-3xl   bg-black" style="max-height: 550px; width: 900px;" src="../../public/assets/img/bp-cover.jpg" alt="Cover Image">
+               <div class="flex flex-wrap ">
+                   <div class="f min-w-0  mt-2">
+                       <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?= $briefDetail['TITRE'] ?></h2>
+                   </div>
+
+               </div>
+               <div class="flex gap-x-32  mt-2 items-center w-full ">
+                   <div class=" flex gap-x-4 items-center w-full">
+                       <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+
+
+                       <div class="font-medium text-xs w-full  ">
+                           <p class="text-xl"><?= $briefDetail['NOM'] . ' ' . $briefDetail['PRENOM'] ?></p>
+                           <p class="text-xs">created : <?= $briefDetail['DATE_AJOUTE'] ?></p>
+                       </div>
+
+
+                   </div>
+
+               </div>
+               <div class="flex items-center mt-4">
+                   <div class="flex-1">
+                       <h5 class="w-full break-words">Réaliser une application web en PHP pour gérer les réservations des événements de l’association FARHA.
+                       </h5>
+                   </div>
+
+               </div>
+
+           </div>
+           <div class="flex flex-col border w-96  shadow rounded-3xl p-4 gap-y-7">
+               <p class="text-2xl font-semibold">Targeted skill</p>
+               <?php foreach ($briefCompetence as $competence) : ?>
+                   <div class=" mx-4  flex gap-x-3">
+                       <p class="text-lg text-primary font-semibold"><?= $competence['CODE'] ?></p>
+                       <span class="text-gray-500"><?= $competence['COMPETENCE_NOM'] ?></span>
+                   </div>
+               <?php endforeach; ?>
+
+
+
+           </div>
+       </div>
+
+           </div>
+           
 
 
 

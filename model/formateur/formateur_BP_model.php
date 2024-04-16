@@ -176,7 +176,7 @@ class Brief
         INNER JOIN formateur F ON B.ID_FORMATEUR = F.ID_FORMATEUR
         INNER JOIN concerne C ON B.ID_BRIEF = C.ID_BRIEF
         INNER JOIN apprenant P on P.ID_APPRENANT=R.ID_APPRENANT
-        WHERE A.ID_GROUPE = :idGroupe AND P.ID_APPRENANT=:idApprenant AND NOW() BETWEEN A.DATE_DEBUT AND A.DATE_FIN");
+        WHERE A.ID_GROUPE = :idGroupe AND P.ID_APPRENANT=:idApprenant AND NOW() BETWEEN A.DATE_DEBUT AND A.DATE_FIN group by ID_BRIEF ");
         $db->bindParam(":idGroupe", $idGroupe);
         $db->bindParam(":idApprenant", $idApprenanr);
         $db->execute();
