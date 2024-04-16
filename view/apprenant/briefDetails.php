@@ -99,7 +99,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
                     <?php foreach ($briefCompetence as $competence ): ?>
                     <div class=" mx-4  flex gap-x-3">
                         <p class="text-lg text-primary font-semibold"><?= $competence ['CODE']?></p>
-                        <span class="text-gray-500"><?= $competence ['COMPETENCE_NOM']?></span>
+                        <span class="text-gray-500"><?= $competence ['NOM_COMPETENCE']?></span>
                     </div>
                     <?php endforeach; ?>
                    

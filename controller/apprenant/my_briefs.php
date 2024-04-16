@@ -21,6 +21,7 @@ if ($briefArealiser["ETAT"] == "TODO") {
 if (isset($_POST["startBP"])) {
  
     $result = $brief->updateBriefStatus($briefArealiser["ID_BRIEF"], 'DOING');
+    header("location:./appreanat_brief_detail.php"); 
   
 }
 
