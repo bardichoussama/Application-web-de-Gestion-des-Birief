@@ -13,7 +13,7 @@ $affecedBP = $brief->getAffecedBP($_SESSION["ID_GROUPE"]);
 
 
 
-if ($briefArealiser["ETAT"] == "TODO") {
+if ($briefArealiser["ETAT"] == "TO DO") {
     $buttonLabel = "Start brief";
     $buttonName = "startBP";
 }else{
@@ -25,7 +25,7 @@ if ($briefArealiser["ETAT"] == "TODO") {
 if (isset($_POST["startBP"])) {
  
     $result = $brief->updateRealiserEtat($briefArealiser["ID_BRIEF"],$_SESSION["ID"],'DOING');
-    header("location:./appreanat_brief_detail.php"); 
+    header("location:./Mybriefs.php"); 
   
 }elseif(isset($_POST["endBP"])){
     header("location:../../view/apprenant/submit-brief.php?id=".$briefArealiser["ID_BRIEF"]);
