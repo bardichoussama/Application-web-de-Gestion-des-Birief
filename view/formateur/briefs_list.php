@@ -120,9 +120,9 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                                                 <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
                                             </div>
                                         </div>
-                                        <div class="flex items-center bg-secondary text-gray-800 text-xs font-semibold px-2 rounded-lg h-7">
+                                        <!-- <div class="flex items-center bg-secondary text-gray-800 text-xs font-semibold px-2 rounded-lg h-7">
                                             individual
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="flex-auto justify-evenly">
                                         <div class="flex flex-wrap">
