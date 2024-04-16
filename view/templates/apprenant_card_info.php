@@ -19,9 +19,9 @@
                 Group </span>
             <span class="ml-14 text-gray-900 font-medium text-xl"><?php echo $cardInfo["NOM_GROUPE"] ?></span>
         </div>
-        <div class="group ">
+        <!-- <div class="group ">
             <button class="bg-primary text-white rounded-lg w-28 h-12 mt-6 text-lg p-2">Edit Profile</button>
-        </div>
+        </div> -->
     </div>
 
 </div>

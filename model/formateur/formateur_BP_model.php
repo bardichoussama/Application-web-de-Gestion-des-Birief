@@ -37,7 +37,7 @@ class Brief
     }
     public function getInProgresBP($id)
     {
-        $db= $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
+        $db= $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,PIECE_JOINTE,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
                                     INNER JOIN brief USING(ID_BRIEF) 
                                     INNER JOIN formateur USING(ID_FORMATEUR) 
                                     INNER JOIN concerne USING(ID_BRIEF) 
@@ -172,14 +172,7 @@ class Brief
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function updateBriefStatus($briefId, $newStatus)
-    {
-
-        $db = $this->conn->prepare("UPDATE realiser SET ETAT = :newStatus WHERE ID_BRIEF = :briefId");
-        $db->bindParam(":newStatus", $newStatus);
-        $db->bindParam(":briefId", $briefId);
-        $db->execute();
-    }
+    
     public function briefStates($idBrief,$idGroupe)
     {
         $sql="SELECT * FROM `realiser`
@@ -208,5 +201,36 @@ class Brief
         $db->bindParam(":ID",$id_apprenant);
         $db->execute();
         return $db->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function updateRealiserLink($briefId, $apprenantId, $newLink)
+    {
+
+
+
+        $stmt = $this->conn->prepare("UPDATE realiser SET LIEN = :lien WHERE ID_BRIEF = :brief_id AND ID_APPRENANT = :apprenant_id");
+
+
+        $stmt->bindParam(':lien', $newLink);
+        $stmt->bindParam(':brief_id', $briefId);
+        $stmt->bindParam(':apprenant_id', $apprenantId);
+
+
+        $stmt->execute();
+    } 
+    public function updateRealiserEtat($briefId, $apprenantId, $newEtat)
+    {
+
+
+        $stmt = $this->conn->prepare("UPDATE realiser SET ETAT = :etat WHERE ID_BRIEF = :brief_id AND ID_APPRENANT = :apprenant_id");
+
+
+        $stmt->bindParam(':etat', $newEtat);
+        $stmt->bindParam(':brief_id', $briefId);
+        $stmt->bindParam(':apprenant_id', $apprenantId);
+
+
+        $stmt->execute();
+
+
     }
 }
