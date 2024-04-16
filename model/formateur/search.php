@@ -2,16 +2,24 @@
 class search
 {
     private $conn;
-    private $title;
-    public function __construct($conn,$title)
+   
+    public function __construct($conn)
     {
         $this->conn = $conn;
-        $this->title = $title;
+      
     }
-    public function titleSeaarch(){
-        $sql="SELECT * FROM brief WHERE";
+    public function formateurTitleSearch($title){
+        $sql="SELECT * FROM brief  INNER JOIN formateur USING(ID_FORMATEUR) WHERE TITRE LIKE '%$title%'";
+        $db=$this->conn->prepare($sql);
+        // $db->bindParam(':TITRE',$title);
+        $db->execute();
+        return $db->fetchAll(PDO::FETCH_ASSOC);
+        
     }
 
+    public function apprenatTitleSearch($title){
+        
+    }
 
 
 }

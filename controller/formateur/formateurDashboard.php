@@ -15,7 +15,8 @@
                 $progresID=0;
             }
             $assignedBP = $brief->getAssignedBP($_SESSION["ID_GROUPE"], $progresID);
-            $briefProgress=$brief->briefProgres( $progresID);      
+            $briefProgress=$brief->briefProgres( $progresID,$_SESSION["ID_GROUPE"]);   
+           
     }else{
         header("location:../../view/formateur/formateurLogin.php");
     }

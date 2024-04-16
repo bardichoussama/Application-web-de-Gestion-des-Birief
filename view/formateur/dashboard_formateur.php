@@ -60,17 +60,23 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div class="w-full bg-white rounded-full h-2.5 ">
-                   
+                <div class="w-full bg-white-300 rounded-full h-2.5 dark:bg-white-700">
+                        <div class="bg-green-400 h-2.5 rounded-full" style="width: <?php echo $briefProgress["progres"]/$briefProgress["total"] *100 ?>%"></div>
+                </div>
                 </div>
                 <div class="flex justify-between mb-1">
+               
                     <span class="text-xl font-medium text-gray-800 "><?php echo $briefProgress["progres"]?>/<?php echo $briefProgress["total"] ?></span>
+                    
                 </div>
             </div>
             <div class="flex   border rounded-xl mx-4 h-24 p-4 mt-7 ">
                 <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl ">
                 <div class="ml-4  w-4/12">
+                <a href="./brief_details.php?id=<?= $inProgres['ID_BRIEF']?>">
                     <p class="text-xl font-medium "><?php echo $inProgres["TITRE"]; ?></p>
                     <span class="text-gray-400 text-lg">By <?php echo $inProgres["NOM"]." ".$inProgres["PRENOM"] ?></span>
+                </a>  
                 </div>
                 <div class="ml-48 mt-4">
                     <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">To do</span>
@@ -110,7 +116,9 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     <div class="flex bg-white  rounded-xl h-24 mt-16 overflow-y-auto">
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
                         <div class="ml-4  w-4/12">
+                        <a href="./brief_details.php?id=<?= $brief['ID_BRIEF']?>">
                             <p class="text-xl font-medium "><?php echo $brief["TITRE"]; ?></p>
+                        </a>
                             <span class="text-gray-400 text-lg">By <?php echo $brief["NOM"]." ".$brief["PRENOM"]; ?></span>
                         </div>
                         <div class="ml-48 mt-4">
@@ -134,6 +142,9 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                     <input id="fileInput" class="hidden" type="input">
                                 </label>
                             </span>
+                        </div>
+                        <div>
+                            <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
                         </div>
                     </div>
                 <?php endforeach;?>

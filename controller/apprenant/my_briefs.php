@@ -10,15 +10,17 @@ $briefArealiser = $brief->realiseBrief($_SESSION["ID_GROUPE"],$_SESSION["ID"]);
 $affecedBP = $brief->getAffecedBP($_SESSION["ID_GROUPE"]);
 
 
-$buttonLabel = "Start brief";
-$buttonName = "startBP";
 
-if (isset($_POST["startBP"])) {
-
-    $result = $brief->updateBriefStatus($briefArealiser["ID_BRIEF"], 'DOING');
-    if ($briefArealiser['ETAT'] == 'DOING') {
-
-        $buttonLabel = "End brief";
-        $buttonName = "endBP";
-    }
+if ($briefArealiser["ETAT"] == "TO DO") {
+    $buttonLabel = "Start brief";
+    $buttonName = "startBP";
+}else{
+    $buttonLabel = "END";
+    $buttonName = "endBP";
 }
+if (isset($_POST["startBP"])) {
+ 
+    $result = $brief->updateBriefStatus($briefArealiser["ID_BRIEF"], 'DOING');
+  
+}
+
