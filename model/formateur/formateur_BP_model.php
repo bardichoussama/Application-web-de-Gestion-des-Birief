@@ -8,7 +8,6 @@ class Brief
     {
         $this->conn = $conn;
     }
-
     public function getAllBriefs()
     {
         $db =  $this->conn->query("SELECT * FROM brief INNER JOIN formateur USING(ID_FORMATEUR)")->fetchAll(PDO::FETCH_ASSOC);
