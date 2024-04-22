@@ -26,7 +26,7 @@ class AuthenticationModel
         if ($user && $user['MOT_DE_PASSE'] === $password) {
             session_start();
             $_SESSION["ID"] = $user['ID_' . $userType];
-            if ($userType === 'APPRENANT') {
+            if ($userType) {
                 $_SESSION["ID_GROUPE"] = $user['ID_GROUPE'];
             }
             return true;

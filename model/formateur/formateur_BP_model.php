@@ -25,11 +25,7 @@ class Brief
     }
     public function getAssignedBP($ID, $ID_BRIEF)
     {
-<<<<<<< HEAD
-        $db = $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
-=======
         $db= $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,PIECE_JOINTE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
->>>>>>> 4a5c22389d39594a5ee87a8f232d6821a831c238
                                    INNER JOIN brief USING(ID_BRIEF) 
                                    INNER JOIN formateur USING(ID_FORMATEUR) 
                                    INNER JOIN concerne USING(ID_BRIEF) 
@@ -41,11 +37,7 @@ class Brief
     }
     public function getInProgresBP($id)
     {
-<<<<<<< HEAD
-        $db = $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
-=======
         $db= $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,PIECE_JOINTE,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
->>>>>>> 4a5c22389d39594a5ee87a8f232d6821a831c238
                                     INNER JOIN brief USING(ID_BRIEF) 
                                     INNER JOIN formateur USING(ID_FORMATEUR) 
                                     INNER JOIN concerne USING(ID_BRIEF) 
@@ -87,27 +79,7 @@ class Brief
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
 
-<<<<<<< HEAD
-    //     $db->bindParam(":idGroupe", $idGroupe);
-    //     $db->bindParam(":ID_BRIEF", $ID_BRIEF);
-    //     $db->execute();
-    //     return $db->fetchAll(PDO::FETCH_ASSOC);
-    // }
-    // public function getInProgresBP($id)
-    // {
-    // $db = $this->conn->prepare("SELECT B.ID_BRIEF,  DATEDIFF(A.DATE_FIN,A.DATE_DEBUT) AS DUREE,B.TITRE,F.NOM,F.PRENOM,COUNT(C.ID_COMPETENCE) AS SKILLS FROM affectation  A
-    // INNER JOIN brief B ON B.ID_BRIEF = A.ID_BRIEF
-    // INNER JOIN formateur F  ON F.ID_FORMATEUR = B.ID_FORMATEUR
-    // INNER JOIN concerne C ON C.ID_BRIEF = B.ID_BRIEF
-    // WHERE ID_GROUPE=:ID GROUP BY B.ID_BRIEF");
-    // $db->bindParam(":ID", $id);
-    // $db->execute();
-    // return $db->fetch(PDO::FETCH_ASSOC);
-    // }
-    public function briefProgres($id, $idGroupe)
-=======
     public function briefProgres($id,$idGroupe)
->>>>>>> 4a5c22389d39594a5ee87a8f232d6821a831c238
     {
         $db = $this->conn->prepare("SELECT COUNT(*) as progres, (SELECT COUNT(*) FROM realiser INNER JOIN apprenant USING(ID_APPRENANT)INNER JOIN groupe USING(ID_GROUPE) WHERE ID_BRIEF=:id AND ID_GROUPE = :ID_GROUPE) AS total FROM `realiser` 
                                     INNER JOIN apprenant USING(ID_APPRENANT)
@@ -259,40 +231,4 @@ class Brief
 
 
     }
-<<<<<<< HEAD
-
-    public function updateRealiserLink($briefId, $apprenantId, $newLink)
-    {
-
-
-
-        $stmt = $this->conn->prepare("UPDATE realiser SET LIEN = :lien WHERE ID_BRIEF = :brief_id AND ID_APPRENANT = :apprenant_id");
-
-
-        $stmt->bindParam(':lien', $newLink);
-        $stmt->bindParam(':brief_id', $briefId);
-        $stmt->bindParam(':apprenant_id', $apprenantId);
-
-
-        $stmt->execute();
-    }
-
-
-    public function updateRealiserEtat($briefId, $apprenantId, $newEtat)
-    {
-
-
-        $stmt = $this->conn->prepare("UPDATE realiser SET ETAT = :etat WHERE ID_BRIEF = :brief_id AND ID_APPRENANT = :apprenant_id");
-
-
-        $stmt->bindParam(':etat', $newEtat);
-        $stmt->bindParam(':brief_id', $briefId);
-        $stmt->bindParam(':apprenant_id', $apprenantId);
-
-
-        $stmt->execute();
-    }
 }
-=======
-}
->>>>>>> 4a5c22389d39594a5ee87a8f232d6821a831c238
