@@ -79,7 +79,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </a>  
                 </div>
                 <div class="ml-48 mt-4">
-                    <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">To do</span>
+                    <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5">in progres</span>
                 </div>
                 <div class="ml-24">
                     <p class="text-gray-400 text-lg font-medium">Duration</p>

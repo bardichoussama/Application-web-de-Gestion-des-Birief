@@ -1,5 +1,13 @@
 <?php
     session_start();
+    if($_SESSION["user"] != ""){
+        if($_SESSION["user"]=="formateur"){
+            header("location:./view/formateur/dashboard_formateur.php");
+        }elseif($_SESSION["user"]=="apprenant"){
+            header("location:./view/apprenant/promo.php");
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

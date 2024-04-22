@@ -170,8 +170,6 @@ class Brief
         $db->execute();
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    
     public function briefStates($idBrief,$idGroupe)
     {
         $sql="SELECT * FROM `realiser`

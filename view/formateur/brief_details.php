@@ -84,10 +84,11 @@ require_once '../../controller/formateur/brief_details_controller.php';
                             </div>
                         </form>
 
-
+                        <?php if( !$inProgres): ?>
                         <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary blue-800 focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center ">
                             Assign now
                         </button>
+                        <?php endif; ?>
                     </div>
 
                     <div class="">
