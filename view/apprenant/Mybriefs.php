@@ -68,7 +68,7 @@ require_once '../../controller/apprenant/my_briefs.php';
                             </a>
                             <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"] . " " . $briefArealiser["PRENOM"] ?></span>
                         </div>
-                        <div class="ml-48 mt-4">
+                        <div class="ml-48 mt-4 w-48">
                             <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
                         </div>
                         <div class="ml-24">
@@ -95,34 +95,34 @@ require_once '../../controller/apprenant/my_briefs.php';
             </div>
 
 
-            <form class=" mx-20 ">
+            <form class=" mx-20 " method="post">
 
 
 
 
-                <div class="flex gap-x-11 mt-7">
-                    <div class="relative w-96">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50     " placeholder="Search " required />
-                        <!-- <button class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button> -->
-                    </div>
-                    <div>
-                        <button class="px-6 bg-primary rounded-lg w-56 h-14 text-base text-white">View My submissions</button>
-                    </div>
+            <div class="flex gap-x-11 mt-7">
+    <div class="relative w-96">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+        </div>
+        <input type="search" name="title" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search" required />
+        <!-- <button class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button> -->
+    </div>
+    <div>
+        <button class="px-6 bg-primary rounded-lg w-56 h-14 text-base text-white" name="search">View My submissions</button>
+    </div>
+</div>
 
-                </div>
 
 
             </form>
 
-            <div class="flex  w-full mx-28 flex-wrap">
+            <div class="flex flex-wrap  mr-28">
                 <?php if ($affecedBP !== null) : ?>
                     <?php foreach ($affecedBP as $brief) : ?>
-                        <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse ">
+                        <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse " class="brief">
                             <div class="max-w-md w-96   rounded-xl p-6">
                                 <div class="flex flex-col ">
                                     <div class="">
@@ -142,7 +142,7 @@ require_once '../../controller/apprenant/my_briefs.php';
 
                                             </div>
 
-                                            <div class="flex items-center  bg-secondary text-gray-800 text-xs font-semibold px-2  rounded-lg h-7">
+                                            <div class="flex items-center  bg-white text-white text-xs font-semibold px-2  rounded-lg h-7">
                                                 Individual
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@ require_once '../../controller/apprenant/my_briefs.php';
 
                                                 <div class="f min-w-0  mt-2">
                                                 <a href="./briefDetails.php?id=<?= $brief['ID_BRIEF']?>">
-                                                    <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "> <?= $brief['TITRE']  ?></h2>
+                                                    <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate titles"> <?= $brief['TITRE']  ?></h2>
                                                  </a>    
                                                 </div>
                                             </div>
@@ -189,15 +189,6 @@ require_once '../../controller/apprenant/my_briefs.php';
 
 
 
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var eyeOpenIcon = document.getElementById('eyeOpenIcon');
-            var eyeClosedIcon = document.getElementById('eyeClosedIcon');
-
-            eyeOpenIcon.classList.toggle('hidden');
-            eyeClosedIcon.classList.toggle('hidden');
-        });
-    </script>
 
 
 
@@ -206,6 +197,25 @@ require_once '../../controller/apprenant/my_briefs.php';
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("search").addEventListener("input", function() {
+        let search = this.value; // 'this' refers to the input element with id 'search'
+        console.log(search)
+        let titles = document.querySelectorAll(".titles");
+        titles.forEach(title => {
+            if (!title.innerHTML.includes(search)) {
+                title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.setAttribute("style","display:none")
+            } else {
+                title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.removeAttribute("style")
+            }
+        });
+    });
+});
+
+    </script>
+  
 
 </body>
 

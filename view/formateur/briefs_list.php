@@ -34,7 +34,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
         <?php
         include_once '../../view/templates/formateur_sidebar.php';
         ?>
-        <main class="bg-white h-screen w-8/12 ">
+        <main class="bg-white h-screen w-8/12 overflow-y-auto">
             <div class="flex  justify-between mx-4">
                 <div class="my-11">
                     <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
@@ -120,7 +120,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                                                 <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
                                             </div>
                                         </div>
-                                        <div class="flex items-center bg-secondary text-gray-800 text-xs font-semibold px-2 rounded-lg h-7">
+                                        <div class="flex items-center bg-white text-white text-xs font-semibold px-2 rounded-lg h-7">
                                             individual
                                         </div>
                                     </div>

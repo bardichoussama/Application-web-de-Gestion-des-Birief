@@ -90,6 +90,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     <span class="text-lg font-medium text-gray-800"><?php echo $inProgres["SKILLS"] ?></span>
                 </div>
                 <div class="ml-24 mt-4">
+                    <a href="../../BP-PDF/<?php echo $inProgres["PIECE_JOINTE"] ?>" download>
                     <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
                         <label for="fileInput" class="cursor-pointer text-gray-800">
                             Attachment
@@ -99,6 +100,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                             <input id="fileInput" class="hidden" type="input">
                         </label>
                     </span>
+                     </a>
                 </div>
             </div>
             <?php endif;?>
@@ -133,26 +135,28 @@ require_once "../../controller/formateur/formateurDashboard.php";
                             <span class="text-xl font-medium text-gray-800"><?php echo $brief["SKILLS"] ?></span>
                         </div>
                         <div class=" flex flex-col ml-28 gap-y-4  p-4 w-48 ">
-                            <a class="text-xs text-center font-medium  text-gray-800 bg-yellow-100 rounded-lg p-2" href="./statByBrief.php">Apprenant stat</a>
+                            <a class="text-xs text-center font-medium  text-white bg-primary rounded-lg p-2" href="./statByBrief.php?id=<?= $brief['ID_BRIEF']?>">Apprenant stat</a>
                            
                             <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
-                        <label for="fileInput" class="cursor-pointer text-gray-800">
+                                <label for="fileInput" class="cursor-pointer text-gray-800">
+                            <a     href="../../BP-PDF/gestion_employes.pdf" id="fileInput" download>
                             Attachment
                             <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
                             </svg>
-                            <input id="fileInput" class="hidden" type="input">
+                            
+                        </a>
                         </label>
                     </span>
-                        </div>
-                        
-                    </div>
-                <?php endforeach;?>
-                <?php endif; ?>
                 </div>
-
-
+                
             </div>
+            <?php endforeach;?>
+            <?php endif; ?>
+        </div>
+        
+        
+    </div>
         </main>
         <div class=" w-96 flex justify-center  bg-bodybackground">
             <?php

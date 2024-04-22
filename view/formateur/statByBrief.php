@@ -1,5 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+require_once "../../controller/formateur/brief_states.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -35,7 +36,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                     <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
                 </div>
                 <div class="flex  gap-x-7 my-11">
-                    <div>
+                    <!-- <div>
                         <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
                     </div>
                     <div class="">
@@ -47,7 +48,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                 <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -77,18 +78,20 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white ">
+                                    <?php if($brief_state): ?>
+                                    <?php foreach($brief_state as $apprenant ) : ?>
                                     <tr>
                                         <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap ">
-                                        Game Recomondation
+                                       <?php echo $apprenant["TITRE"] ?>
                                         </td>
                                         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap ">
-                                            Oussama
+                                        <?php echo $apprenant["PRENOM"] ?>
                                         </td>
                                         <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap ">
-                                            Bardich
+                                        <?php echo $apprenant["NOM"] ?>
                                         </td>
                                         <td class="p-4 whitespace-nowrap">
-                                            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md  border-green-100 ">Completed</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md  border-green-100 "> <?php echo $apprenant["ETAT"] ?></span>
                                         </td>
                                         <td class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                                             
@@ -96,7 +99,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                         </td>
                                         
                                     </tr>
-                                    
+                                    <?php endforeach;?>
+                                    <?php endif; ?>
                                     
                                 </tbody>
                             </table>

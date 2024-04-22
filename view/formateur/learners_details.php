@@ -1,5 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+require_once "../../controller/formateur/learner_state_detail.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -76,16 +77,18 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white ">
+                                    <?php if($aprenant_states): ?>
+                                    <?php foreach($aprenant_states as $state ): ?>
                                     <tr>
                                         <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap ">
-                                        1
+                                        <?php echo $state["ID_BRIEF"] ?>
                                         </td>
                                         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap ">
-                                        Game Recomondation 
+                                        <?php echo $state["TITRE"] ?>
                                         </td>
                                        
                                         <td class="p-4 whitespace-nowrap">
-                                            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md  border-green-100 ">Completed</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md  border-green-100 "><?php echo $state["ETAT"] ?></span>
                                         </td>
                                         <td class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                                             
@@ -93,6 +96,8 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                         </td>
                                         
                                     </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                     
                                     
                                 </tbody>

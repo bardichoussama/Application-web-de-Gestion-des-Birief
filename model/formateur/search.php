@@ -17,10 +17,6 @@ class search
         
     }
 
-    public function apprenatTitleSearch($title){
-        
-    }
-
 
 }
 ?>

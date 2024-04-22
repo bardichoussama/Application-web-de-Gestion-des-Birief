@@ -20,8 +20,6 @@
         if(isset($_POST["competence"]) &&  $_POST["title"]!="" ){
             move_uploaded_file($_FILES["image"]["tmp_name"],"../../BP-IMAGE/".$_FILES["image"]["name"]);
             move_uploaded_file($_FILES["ayoub"]["tmp_name"],"../../BP-PDF/".$_FILES["ayoub"]["name"]);
-            //var_dump($_FILES["image"]);
-            var_dump($_FILES["ayoub"]);
             $add = $brief->addBrief( $_SESSION["ID"], $_POST["title"], "piece_joint.bp-file", date("Y-m-d"));
             $lastBriefId = $brief->getLastBP($_SESSION["ID"]);
             foreach($_POST["competence"] as $compe){
