@@ -2,6 +2,7 @@
 module.exports = {
   // darkMode: 'class', // or 'media'
   content: [
+    'node_modules/preline/dist/*.js',
     './index.php',
     './**/*.php',
     './view/formateur/dashboard.php',
@@ -31,6 +32,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('preline/plugin'),
     require('flowbite/plugin')
   ],
 };

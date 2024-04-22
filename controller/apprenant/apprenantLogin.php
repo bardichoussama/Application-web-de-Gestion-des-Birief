@@ -11,7 +11,7 @@
                 header('Location: ../../view/apprenant/promo.php'); 
                 exit();
         } else {       
-            echo "Invalid email or password. Please try again.";
+            include_once '../../view/alerts/lgin_fail_message.php';
         }
     }
 ?>
