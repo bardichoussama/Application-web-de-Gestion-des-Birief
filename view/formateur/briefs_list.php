@@ -14,8 +14,6 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/output.css"> <!-- Custom CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
     <!-- Alpine.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.7.1/dist/alpine.min.js" defer></script>
     <style>
@@ -28,128 +26,156 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
     <title>Dashboard</title>
 </head>
 
-<body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
 
-    <div class="flex">
-        <?php
-        include_once '../../view/templates/formateur_sidebar.php';
-        ?>
-        <main class="bg-white h-screen w-8/12 overflow-y-auto">
-            <div class="flex  justify-between mx-4">
-                <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
-                </div>
-                <div class="flex  gap-x-7 my-11">
-                    <div>
-                        <a href="create_brief.php"><button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button></a>
-                    </div>
-                    <div class="">
-                        <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
-                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+
+<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+    <?php
+    include_once '../../view/templates/formateur_sidebar.php';
+    ?>
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative  overflow-auto">
+
+        <div class="flex  justify-between mx-4 ">
+            <div class="my-11">
+                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
+            <div class="flex  gap-x-7 my-11">
 
 
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
+                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                        <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                    </svg>
 
-            <form class="max-w-md mx-20" method="post">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 "></div>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow  border" aria-labelledby="dropdownNotificationButton">
+                    <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
+                        Notifications
                     </div>
-                    <input type="search" id="default-search" name="title" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50     " placeholder="Search Mockups, Logos..." required />
-                    <button name="search" class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button>
+                    <div class="divide-y divide-gray-100 ">
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
+                                <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-primary border border-white rounded-full ">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                        <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 ">New message from <span class="font-semibold text-gray-900 ">Jese Leos</span>: "Hey, what's up? All set for the presentation?"</div>
+                                <div class="text-xs text-primary ">a few moments ago</div>
+                            </div>
+                        </a>
+
+                    </div>
+
                 </div>
-            </form>
 
-            <form class="" method="post" action="./briefs_list.php" >
-                <div class="flex">
-                    <div class="ml-20 mt-16">
-                       
-                            <p class="text-gray-800 text-2xl font-medium">Filter my Briefs</p>
-                            <ul class="pt-5 mt-5 space-y-8 ">
-                                <li>
-                                    <button type="submit" name="allBriefs" class="flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 border-3  w-48 p-2">
-                                        <ion-icon class="w-6 h-6" name="bookmarks-outline"></ion-icon>
-                                        <span class="ml-3 text-xl text-gray-900 ">All Briefs</span>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="submit" name="myBriefs"  class=" flex items-center text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 W-48 P-2">
-                                        <ion-icon class="w-6 h-6" name="bookmark-outline"></ion-icon>
-                                        <span class="ml-3 text-xl text-gray-900 ">My Briefs</span>
-                                    </button>
-                                </li>
+                <div>
+                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                </div>
 
-                            </ul>
-                       
-                    </div>
-            </form>
-            <div class="flex flex-wrap w-full">
+            </div>
+        </div>
+
+        <form class="max-w-md mx-20" method="post">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="search" id="default-search" name="title" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 " placeholder="Search Mockups, Logos..." required />
+                <button name="search" class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button>
+            </div>
+        </form>
+
+        <form class="absolute right-0 mt-72 mr-16" action="./briefs_list.php" method="post">
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-800 bg-white border font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Filter briefs <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDefaultButton">
+                    <li>
+                        <button name="allBriefs" class="block px-4 py-2 hover:bg-gray-100 ">All briefs</button>
+                    </li>
+                    <li>
+                        <button name="myBriefs" class="block px-4 py-2 hover:bg-gray-100 ">My briefs</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <div class="flex flex-wrap w-full  gap-x-4 mx-24">
+
+            <?php if ($allbriefs) : ?>
 
                 <?php foreach ($allbriefs as $brief) : ?>
-                    <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse">             
-                        <div class="max-w-md w-96 rounded-xl p-6">
+                    <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse">
+                        <div class="max-w-md  rounded-xl p-6" style="width: 350px;">
                             <div class="flex flex-col">
                                 <div class="">
                                     <div class="relative h-62 w-full mb-3">
                                         <!-- <div class="absolute flex flex-col top-0 right-0 p-3">
-                                                <button id="toggleButton" class="transition ease-in duration-300 bg-secondary hover:bg-primary border hover:text-primary hover:shadow-lg text-primary rounded-full w-9 h-9 text-center p-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="eyeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path id="eyeOpenIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                        <path id="eyeClosedIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                    </svg>
-                                                </button>
-                                            </div> -->
+                                <button id="toggleButton" class="transition ease-in duration-300 bg-secondary hover:bg-primary border hover:text-primary hover:shadow-lg text-primary rounded-full w-9 h-9 text-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="eyeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path id="eyeOpenIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path id="eyeClosedIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
+                            </div> -->
                                         <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="w-full h-52 object-cover rounded-xl">
                                     </div>
-                                    <a href="./brief_details.php?id=<?= $brief['ID_BRIEF']?>">
-                                    <div class="flex justify-around mt-2 items-center">
-                                        <div class="flex gap-x-4 items-center">
-                                            <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-                                            <div class="font-medium text-xs  w-40">
-                                                <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
+                                    <a href="./brief_details.php?id=<?= $brief['ID_BRIEF'] ?>">
+                                        <div class="flex justify-around mt-2 items-center">
+                                            <div class="flex gap-x-4 items-center">
+                                                <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+                                                <div class="font-medium text-xs  w-40">
+                                                    <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center bg-white text-white text-xs font-semibold px-2 rounded-lg h-7">
+                                                individual
                                             </div>
                                         </div>
-                                        <div class="flex items-center bg-white text-white text-xs font-semibold px-2 rounded-lg h-7">
-                                            individual
-                                        </div>
-                                    </div>
-                                    <div class="flex-auto justify-evenly">
-                                        <div class="flex flex-wrap">
-                                            <div class="f min-w-0 mt-2">
-                                                <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate ">
-                                                    <?php echo $brief['TITRE']; ?>
-                                                </h2>
+                                        <div class="flex-auto justify-evenly">
+                                            <div class="flex flex-wrap">
+                                                <div class="f min-w-0 mt-2">
+                                                    <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate ">
+                                                        <?php echo $brief['TITRE']; ?>
+                                                    </h2>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+            <?php endif; ?>
 
 
 
-            </div>
+        </div>
+
+
+
+
+
 
 
 
     </div>
 
-    </main>
-    <div class=" w-96 flex justify-center  bg-bodybackground">
+    <div class=" w-96 flex justify-center mx-2 bg-bodybackground   ">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>
@@ -157,18 +183,8 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
     </div>
 
 
-    </div>
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var eyeOpenIcon = document.getElementById('eyeOpenIcon');
-            var eyeClosedIcon = document.getElementById('eyeClosedIcon');
 
-            eyeOpenIcon.classList.toggle('hidden');
-            eyeClosedIcon.classList.toggle('hidden');
-        });
 
-        
-    </script>
 
 
 
@@ -181,6 +197,9 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 </body>
 
 </html>
+
+
+
 
 <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
   <label for="fileInput" class="cursor-pointer">

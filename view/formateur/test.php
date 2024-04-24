@@ -1,5 +1,7 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+require_once "../../controller/formateur/brief_list_controller.php";
+$Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -30,7 +32,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative ">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
@@ -80,8 +82,11 @@ require_once "../../controller/formateur/formateurDashboard.php";
             </div>
         </div>
 
-        
        
+
+
+
+
 
 
     </div>
@@ -92,13 +97,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
         ?>
 
     </div>
+    
 
 
 
 
 
 
-
+     <script></script>
     <script src="../../public/js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>

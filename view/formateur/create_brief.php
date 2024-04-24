@@ -35,7 +35,7 @@ require_once '../../controller/formateur/creatBrief.php';
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
@@ -98,7 +98,7 @@ require_once '../../controller/formateur/creatBrief.php';
                         </span>
                     </div>
                 </div>
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm sm:p-2 mt-11 w-9/12 h-auto">
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm sm:p-2 mt-11 w-9/12 h-auto mx-4 ">
                     <p class="text-2xl font-semibold mt-7 mx-4">General information</p>
                     <div class="ml-5">
                         <div class="flex items-center gap-x-11 my-7">

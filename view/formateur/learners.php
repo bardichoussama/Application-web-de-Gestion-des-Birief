@@ -26,33 +26,63 @@ require_once "../../controller/formateur/learners_table.php";
     <title>Dashboard</title>
 </head>
 
-<body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
-    <div class="flex">
-        <?php
-        include_once '../../view/templates/formateur_sidebar.php';
-        ?>
-        <main class="bg-white h-screen w-8/12 ">
-            <div class="flex  justify-between mx-4">
-                <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
-                </div>
-                <!-- <div class="flex  gap-x-7 my-11">
-                    <div>
-                        <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
-                    </div>
-                    <div class="">
-                        <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
-                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div> -->
+
+
+<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+    <?php
+    include_once '../../view/templates/formateur_sidebar.php';
+    ?>
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative ">
+
+        <div class="flex  justify-between mx-4 ">
+            <div class="my-11">
+                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
-            <!-- <div class="sm:flex mx-7">
+            <div class="flex  gap-x-7 my-11">
+
+
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
+                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                        <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                    </svg>
+
+                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 "></div>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow  border" aria-labelledby="dropdownNotificationButton">
+                    <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
+                        Notifications
+                    </div>
+                    <div class="divide-y divide-gray-100 ">
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
+                                <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-primary border border-white rounded-full ">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                        <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 ">New message from <span class="font-semibold text-gray-900 ">Jese Leos</span>: "Hey, what's up? All set for the presentation?"</div>
+                                <div class="text-xs text-primary ">a few moments ago</div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sm:flex mx-7">
                 <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
                     <form class="lg:pr-3" action="#" method="GET">
                         <label for="users-search" class="sr-only">Search</label>
@@ -97,7 +127,7 @@ require_once "../../controller/formateur/learners_table.php";
                         Export
                     </a>
                 </div>
-            </div> -->
+            </div>
             <div class="flex flex-col mx-7">
                 <div class="overflow-x-auto">
                     <div class="inline-block min-w-full align-middle">
@@ -166,18 +196,27 @@ require_once "../../controller/formateur/learners_table.php";
                 </div>
             </div>
 
+
+
+
+
+
+
     </div>
 
-
-    </main>
-    <div class=" w-96 flex justify-center  bg-bodybackground">
+    <div class=" w-96 flex justify-center mx-2 bg-bodybackground   ">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>
+
     </div>
 
 
-    </div>
+
+
+
+
+
     <script src="../../public/js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
@@ -187,6 +226,8 @@ require_once "../../controller/formateur/learners_table.php";
 </body>
 
 </html>
+
+
 
 <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
   <label for="fileInput" class="cursor-pointer">
