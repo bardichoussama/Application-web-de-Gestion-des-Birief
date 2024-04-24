@@ -27,11 +27,11 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
 
-<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl ">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
@@ -456,6 +456,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <!-- Card Footer -->
         </div>
 
+       
 
     </div>
 
