@@ -1,5 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -74,7 +75,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div>
-                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                   <a href="./create_brief.php"><button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button></a>
                 </div>
 
             </div>
@@ -85,16 +86,23 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
                     <h3 class="mb-2 text-2xl font-semibold text-gray-800 ">Current Brief</h3>
+                
+                    <?php if (!$inProgres) : ?>
+                    <span class="text-base font-normal text-gray-500 dark:text-gray-400">NO BRIEF AFFECTED TO YOUR GROUP YET </span>
+                    <?php else: ?>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400">This a brief that you assigned to your group</span>
+                    <?php endif; ?>
                 </div>
 
+                <?php if ($inProgres) : ?>
                 <div class=" w-96 h-16 rounded-xl mt-9 ml-8 px-4 flex justify-center items-center gap-11">
+
                     <div>
                         <p class="text-lg">Progress</p>
                     </div>
                     <div class="w-full bg-white rounded-full h-2.5 ">
                         <div class="w-full bg-secondary rounded-full h-2.5 dark:bg-white-700">
-                            <div class="bg-primary h-2.5 rounded-full" style="width: 50%"></div>
+                            <div class="bg-primary h-2.5 rounded-full" style="width:<?php echo $briefProgress["progres"] / $briefProgress["total"]*100?>%"></div>
                         </div>
                     </div>
                     <div class="flex justify-between mb-1">
@@ -103,6 +111,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
             <!-- Table -->
             <div class="flex flex-col mt-6">
@@ -111,7 +120,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         <div class="overflow-hidden shadow sm:rounded-lg">
                             <table class="min-w-full divide-y ">
                                 <thead class="bg-white ">
-
+                                <?php if ($inProgres) : ?>
                                     <tr>
 
                                         <th scope="col" class="p-4 text-lg font-medium tracking-wider text-left text-gray-700 uppercase ">
@@ -136,7 +145,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                             Action
                                         </th>
                                     </tr>
-
+                                    <?php endif; ?>
                                 </thead>
                                 <tbody class="bg-bodybackground">
                                     <?php if ($inProgres) : ?>
@@ -144,16 +153,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
                                             <td class="flex items-center p-4  space-x-3 whitespace-nowrap">
-                                                <img class=" w-24 h-16 rounded-lg" src="../../public/assets/img/bp-cover.jpg" alt="">
+                                                <img class=" w-24 h-16 rounded-lg" src="../../BP-IMAGE/<?= $inProgres["IMAGE"] ?> " alt="">
 
                                             </td>
                                             <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
                                                 <div class="text-sm font-normal text-gray-500 ">
                                                     <div class="text-lg font-semibold text-gray-800 ">Created By</div>
                                                     <div class="text-lg font-normal text-gray-800  flex items-center">
-                                                        <?php echo $inProgres["PRENOM"] ?>
-                                                        <img class="w-8 h-8 rounded-full ml-1" src="../../public/assets/img/testprofile.jpg" alt="">
-                                                        <?php echo $inProgres["NOM"] ?>
+                                                        <?php echo $inProgres["PRENOM"]." ".$inProgres["NOM"] ?>
                                                     </div>
                                                 </div>
                                             </td>
@@ -204,7 +211,11 @@ require_once "../../controller/formateur/formateurDashboard.php";
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
                     <h3 class="mb-2 text-2xl font-semibold text-gray-800 ">Assigned Brief</h3>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400">This a brief that you assigned to your group</span>
+                    <?php if ($assignedBP) : ?>
+                    <span class="text-base font-normal text-gray-500 dark:text-gray-400">There are briefs that you assigned to your group</span>
+                    <?php else: ?>
+                    <span class="text-base font-normal text-gray-500 dark:text-gray-400">NO BRIEF AFFECTED TO YOUR GROUP YET </span>
+                    <?php endif; ?>
                 </div>
                 <div class="items-center sm:flex">
                     <div class="flex items-center">
@@ -272,7 +283,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                             <table class="min-w-full divide-y divide-gray-200 ">
                                 <thead class="bg-white ">
                                     <tr>
-
+                                    <?php if ($assignedBP) : ?>
                                         <th scope="col" class="p-4 text-lg font-medium tracking-wider text-left text-gray-700 uppercase ">
                                             Image
                                         </th>
@@ -295,24 +306,21 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                             Action
                                         </th>
                                     </tr>
+                                    <?php endif; ?>
                                 </thead>
                                 <tbody class="bg-bodybackground">
                                     <?php if ($assignedBP) : ?>
                                         <?php foreach ($assignedBP as $brief) : ?>
                                             <tr>
-
-
                                                 <td class="flex items-center p-4  space-x-3 whitespace-nowrap">
-                                                    <img class=" w-24 h-16 rounded-lg" src="../../public/assets/img/bp-cover.jpg" alt="">
+                                                    <img class=" w-24 h-16 rounded-lg" src="../../BP-IMAGE/<?php echo $brief["IMAGE"]; ?>" alt="">
 
                                                 </td>
                                                 <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
                                                     <div class="text-sm font-normal text-gray-500 ">
                                                         <div class="text-lg font-semibold text-gray-800 ">Created By</div>
                                                         <div class="text-lg font-normal text-gray-800  flex items-center">
-                                                        <?php echo $inProgres["PRENOM"] ?>
-                                                            <img class="w-8 h-8 rounded-full ml-1" src="../../public/assets/img/testprofile.jpg" alt="">
-                                                            <?php echo $inProgres["NOM"] ?>
+                                                        <?php echo $brief["PRENOM"]." ".$brief["NOM"] ?>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -324,15 +332,15 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                                     <span class="bg-secondary text-gray-800 text-lg font-medium mr-2 px-2.5 py-0.5 rounded-md ">FINISHED</span>
                                                 </td>
                                                 <td class="p-4 text-lg font-medium text-gray-800 whitespace-nowrap ">
-                                                <?php echo $inProgres["DUREE"] ?> DAYS
+                                                <?php echo $brief["DUREE"] ?> DAYS
                                                 </td>
                                                 <td class=" p-4 space-x-2 text-lg font-medium text-gray-800 whitespace-nowrap ">
-                                                <?php echo $inProgres["SKILLS"] ?>
+                                                <?php echo $brief["SKILLS"] ?>
                                                 </td>
                                                 <td class="p-4 space-x-2 whitespace-nowrap">
 
                                                     <div class="mt-4 flex gap-x-2 items-center">
-                                                        <a class=" bg-primary rounded-lg p-3  flex" href="#">
+                                                        <a class=" bg-primary rounded-lg p-3  flex" href="./statByBrief.php?id=<?php echo $brief    ["ID_BRIEF"]?>">
                                                             <p class="text-base text-center font-medium  text-white">Brief statics </p>
                                                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                                                 <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd" />

@@ -40,17 +40,17 @@ require_once "../../controller/apprenant/apprenant.php";
 
                     <div class="font-medium text-xs w-full  ">
                         <p class="text-xl"><?= $cardInfo['NOM'] .' '. $cardInfo['PRENOM']  ?></p>
-                        <p class="text-xs">welcome to Biefed solidode</p>
+                        <p class="text-xs">welcome to Biefed solicode</p>
                     </div>
 
 
                 </div>
-                <div class="w-3/4 h-3/5 rounded-xl bg-white  mt-5 p-7">
+                <div class="w-6/6 h-3/5 rounded-xl bg-white  mt-5 p-7">
                     <div class="my-7">
                         <p class="text-3xl text-gray-800 font-semibold">My prime</p>
                     </div>
                     <div class="flex gap-x-4">
-                        <div class="bg-black w-1/2 h-96 rounded-xl">
+                        <div class="bg-black w-100 h-96 rounded-xl">
                             <img class="w-full h-full bg-cover rounded-xl" src="../../public//assets/img/group.jpg" alt="">
                         </div>
                         <div class="flex flex-col gap-y-6">

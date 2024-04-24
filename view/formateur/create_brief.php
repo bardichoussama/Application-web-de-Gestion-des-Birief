@@ -78,9 +78,7 @@ require_once '../../controller/formateur/creatBrief.php';
 
                 </div>
 
-                <div>
-                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
-                </div>
+
 
             </div>
         </div>
@@ -110,12 +108,12 @@ require_once '../../controller/formateur/creatBrief.php';
                             <span class="flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl">
                                 <label for="fileInput" class="cursor-pointer text-center">
                                     Upload attachment
-                                    <input id="fileInput" class="hidden" type="file" name="ayoub">
+                                    <input id="fileInput" class="hidden" type="file" name="pdf">
                                 </label>
                             </span>
                         </div>
                         <div class="my-7">
-                        <textarea name="" id="Title of brief" class="rounded-xl border-gray-300 block  text-base" placeholder="Description of brief" name="description" cols="30" rows="10"></textarea>
+                        <textarea name="description" id="Title of brief" class="rounded-xl border-gray-300 block  text-base" placeholder="Description of brief" name="description" cols="30" rows="10"></textarea>
                         </div>
                         <!-- Main modal -->
                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -171,13 +169,16 @@ require_once '../../controller/formateur/creatBrief.php';
                         <?php else : ?>
                             <p>No competences available.</p>
                         <?php endif; ?>
-
+                        
                         <div class="flex gap-x-7 my-7">
                             <input type="submit" name="creat" value="Create" class="bg-white border-2 text-gray-900 rounded-xl h-12 w-48 text-lg">
+                            <?php if(!$inProgress):?>
                             <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary  focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center" type="button">
                                 Create and assign
                             </button>
+                            <?php endif; ?>
                         </div>
+                        
                     </div>
                 </div>
             </div>

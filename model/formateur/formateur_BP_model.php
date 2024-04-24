@@ -24,7 +24,7 @@ class Brief
     }
     public function getAssignedBP($ID, $ID_BRIEF)
     {
-        $db= $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,PIECE_JOINTE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
+        $db= $this->conn->prepare("SELECT  DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,TITRE,PIECE_JOINTE,IMAGE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
                                    INNER JOIN brief USING(ID_BRIEF) 
                                    INNER JOIN formateur USING(ID_FORMATEUR) 
                                    INNER JOIN concerne USING(ID_BRIEF) 
@@ -36,7 +36,7 @@ class Brief
     }
     public function getInProgresBP($id)
     {
-        $db= $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,PIECE_JOINTE,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
+        $db= $this->conn->prepare("SELECT DATEDIFF(DATE_FIN,DATE_DEBUT) AS DUREE,ID_BRIEF,PIECE_JOINTE,IMAGE,TITRE,NOM,PRENOM,COUNT(ID_COMPETENCE) AS SKILLS FROM affectation 
                                     INNER JOIN brief USING(ID_BRIEF) 
                                     INNER JOIN formateur USING(ID_FORMATEUR) 
                                     INNER JOIN concerne USING(ID_BRIEF) 
@@ -89,16 +89,18 @@ class Brief
         $db->execute();
         return $db->fetch(PDO::FETCH_ASSOC);
     }
-    public function addBrief($formateurId, $titre, $pieceJointe, $dateAjout)
+    public function addBrief($formateurId, $titre,$description,$pieceJointe, $dateAjout,$image)
     {
-
-        $query = "INSERT INTO `brief` (`ID_FORMATEUR`, `TITRE`, `PIECE_JOINTE`, `DATE_AJOUTE`) 
-                                   VALUES (:ID_FORMATEUR, :TITRE, :PIECE_JOINTE, :DATE_AJOUTE)";
+        
+        $query = "INSERT INTO `brief` (`ID_FORMATEUR`,`TITRE`,`DESCRIPTION`,`PIECE_JOINTE`,`DATE_AJOUTE`,`IMAGE`) 
+                  VALUES (:ID_FORMATEUR,:TITRE,:DESCRIPTIONN,:PIECE_JOINTE,:DATE_AJOUTE,:IMAGEE)";
         $db = $this->conn->prepare($query);
         $db->bindParam(':ID_FORMATEUR', $formateurId);
         $db->bindParam(':TITRE', $titre);
+        $db->bindParam(':DESCRIPTIONN', $description);
         $db->bindParam(':PIECE_JOINTE', $pieceJointe);
         $db->bindParam(':DATE_AJOUTE', $dateAjout);
+        $db->bindParam(':IMAGEE', $image); 
         $db->execute();
     }
     public function getCompetence()
@@ -141,6 +143,7 @@ class Brief
         F.NOM, 
         F.PRENOM, 
         R.ETAT, 
+        B.IMAGE,
         COUNT(C.ID_COMPETENCE) AS SKILLS 
         FROM affectation A
         INNER JOIN brief B ON A.ID_BRIEF = B.ID_BRIEF
@@ -152,7 +155,12 @@ class Brief
         $db->bindParam(":idGroupe", $idGroupe);
         $db->bindParam(":idApprenant", $idApprenanr);
         $db->execute();
-        return $db->fetch(PDO::FETCH_ASSOC);
+        $brief=$db->fetch(PDO::FETCH_ASSOC);
+        if( $brief){
+            return $brief;
+        }else{
+            return false;
+        }
     }
 
     public function getAffecedBP($idGroupe)

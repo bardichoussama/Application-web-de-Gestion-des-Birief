@@ -58,7 +58,7 @@ require_once '../../controller/apprenant/my_briefs.php';
             </div>
             <form id="myForm" action="mybriefs.php" method="post">
                 <div class="mx-11 mt-11">
-
+                <?php if($briefArealiser):?>
                     <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
 
                         <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
@@ -85,6 +85,8 @@ require_once '../../controller/apprenant/my_briefs.php';
                             </button>
                         </div>
                     </div>
+                    <?php endif;?>
+
                     <!-- <div class=" text-lg font-regular mx-7">
                         <p>Time left : 9j 4h 33 min</p>
                     </div> -->
@@ -110,9 +112,9 @@ require_once '../../controller/apprenant/my_briefs.php';
         <input type="search" name="title" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search" required />
         <!-- <button class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button> -->
     </div>
-    <div>
+    <!-- <div>
         <button class="px-6 bg-primary rounded-lg w-56 h-14 text-base text-white" name="search">View My submissions</button>
-    </div>
+    </div> -->
 </div>
 
 

@@ -14,12 +14,14 @@ class AuthenticationModel
     public function login($email, $password, $userType)
     {
         if ($userType === 'FORMATEUR') {
-            $tableName = 'formateur';   
+            $tableName = 'formateur';  
+            $stmt = $this->conn->prepare("SELECT * FROM $tableName INNER JOIN groupe USING(ID_FORMATEUR) WHERE EMAIL = :email "); 
         } else {
             $tableName = 'apprenant';
+            $stmt = $this->conn->prepare("SELECT * FROM $tableName  WHERE EMAIL = :email ");
         }
         
-        $stmt = $this->conn->prepare("SELECT * FROM $tableName INNER JOIN groupe WHERE EMAIL = :email ");
+       
         $stmt->bindParam(':email', $email);
 
         $stmt->execute();

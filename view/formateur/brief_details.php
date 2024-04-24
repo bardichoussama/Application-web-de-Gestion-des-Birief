@@ -24,7 +24,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
             font-family: 'Poppins', sans-serif;
         }
     </style>
-    <title>Dashboard</title>
+    <title>DETAILS_BRIEF</title>
 </head>
 
 <body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
@@ -114,7 +114,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
 
            <div class="flex flex-col item-center mx-20  rounded-3xl  k" style=" width: 900px; ">
 
-               <img class="object-cover rounded-3xl   bg-black" style="max-height: 550px; width: 900px;" src="../../public/assets/img/bp-cover.jpg" alt="Cover Image">
+               <img class="object-cover rounded-3xl   bg-white" style="max-height: 550px; width: 900px;" src="../../BP-IMAGE/<?= $briefDetail['IMAGE'] ?>" alt="Cover Image">
                <div class="flex flex-wrap ">
                    <div class="f min-w-0  mt-2">
                        <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?= $briefDetail['TITRE'] ?></h2>
@@ -137,7 +137,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
                </div>
                <div class="flex items-center mt-4">
                    <div class="flex-1">
-                       <h5 class="w-full break-words">Réaliser une application web en PHP pour gérer les réservations des événements de l’association FARHA.
+                       <h5 class="w-full break-words"><?php echo $briefDetail['DESCRIPTION'];  ?>
                        </h5>
                    </div>
                    <a  href="../../BP-PDF/<?= $briefDetail['PIECE_JOINTE'] ?>" download class="bg-secondary text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded "> <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"  download >
