@@ -1,7 +1,6 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-require_once "../../controller/formateur/brief_list_controller.php";
-$Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
+require_once "../../controller/formateur/brief_states.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -28,21 +27,21 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 
 
 
-<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+<body class=" flex h-screen text-gray-900 bg-black md:text-lg lg:text-xl xl:text-2xl ">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-60   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
             <div class="flex  gap-x-7 my-11">
 
 
                 <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
-                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
 
@@ -76,35 +75,81 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                 </div>
 
                 <div>
-                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
                 </div>
 
             </div>
         </div>
 
-       
+        <div class="flex flex-col mt-6 mx-9">
+            <div class="overflow-x-auto rounded-lg">
+                <div class="inline-block min-w-full align-middle">
+                    <div class="overflow-hidden shadow sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200  text-gray-800 ">
+                            <thead class="text-gray-800 bg-gray-50 text-xs">
+                                <tr>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800  uppercase ">
+                                        Title
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                        First Name
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                        Last Name
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                        Status
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
+                                        Brief link
+                                    </th>
 
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white ">
+                                <?php if ($brief_state) : ?>
+                                    <?php foreach ($brief_state as $apprenant) : ?>
+                                        <tr>
+                                            <td class="p-4 text-xs font-normal text-gray-900 whitespace-nowrap ">
+                                                <?php echo $apprenant["TITRE"] ?>
+                                            </td>
+                                            <td class="p-4 text-xs font-normal text-gray-500 whitespace-nowrap ">
+                                                <?php echo $apprenant["PRENOM"] ?>
+                                            </td>
+                                            <td class="p-4 text-xs font-normal text-gray-900 whitespace-nowrap ">
+                                                <?php echo $apprenant["NOM"] ?>
+                                            </td>
+                                            <td class="p-4 text-xs whitespace-nowrap">
+                                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md  border-green-100 "> <?php echo $apprenant["ETAT"] ?></span>
+                                            </td>
+                                            <td class="inline-flex items-center p-4 space-x-2 text-xs font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
 
+                                                <span> Game_Recomondation_drive</span>
+                                            </td>
 
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
     </div>
 
-    <div class=" w-96 flex justify-center mx-2 bg-bodybackground   ">
+    <div class="  flex justify-cente bg-bodybackground ">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>
 
     </div>
-    
 
 
-
-
-
-
-     <script></script>
     <script src="../../public/js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>

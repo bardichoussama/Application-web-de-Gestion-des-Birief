@@ -27,21 +27,21 @@ require_once "../../controller/formateur/learner_state_detail.php";
 
 
 
-<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+<body class=" flex h-screen text-gray-900md:text-lg lg:text-xl xl:text-2xl ">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-60   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
             <div class="flex  gap-x-7 my-11">
 
 
                 <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
-                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
 
@@ -75,7 +75,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
                 </div>
 
                 <div>
-                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
                 </div>
 
             </div>
@@ -88,18 +88,24 @@ require_once "../../controller/formateur/learner_state_detail.php";
                         <table class="min-w-full divide-y divide-gray-200  text-gray-800 ">
                             <thead class="text-gray-800 bg-gray-50 text-lg">
                                 <tr>
-                                    <th scope="col" class="p-4 text-base font-medium tracking-wider text-left text-gray-800  uppercase ">
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800  uppercase ">
                                         ID_BRIEF
                                     </th>
-                                    <th scope="col" class="p-4 text-base font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
                                         Title
                                     </th>
 
-                                    <th scope="col" class="p-4 text-base font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
                                         Status
                                     </th>
-                                    <th scope="col" class="p-4 text-base font-medium tracking-wider text-left text-gray-500 uppercase ">
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
                                         Brief link
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
+                                        Start date
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
+                                        End date
                                     </th>
 
                                 </tr>
@@ -108,7 +114,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
                                 <?php if ($aprenant_states) : ?>
                                     <?php foreach ($aprenant_states as $state) : ?>
                                         <tr>
-                                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap ">
+                                            <td class="p-4 text-xs font-normal text-gray-900 whitespace-nowrap ">
                                                 <?php echo $state["ID_BRIEF"] ?>
                                             </td>
                                             <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap ">
@@ -121,6 +127,12 @@ require_once "../../controller/formateur/learner_state_detail.php";
                                             <td class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
 
                                                 <span> Game_Recomondation_drive</span>
+                                            </td>
+                                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap ">
+                                                2024-05-03
+                                            </td>
+                                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap ">
+                                                2024-05-03
                                             </td>
 
                                         </tr>
@@ -139,7 +151,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
             <div class="flex justify-between mb-3">
                 <div class="flex items-center">
                     <div class="flex justify-center items-center">
-                        <h5 class="text-xl font-bold leading-none text-gray-900  pe-1 text-center">Learner Progress</h5>
+                        <h5 class="text-base font-bold leading-none text-gray-900  pe-1 text-center">Learner Progress</h5>
                         <svg data-popover-target="chart-info" data-popover-placement="bottom" class="w-3.5 h-3.5 text-gray-500  cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
                         </svg>
@@ -163,25 +175,26 @@ require_once "../../controller/formateur/learner_state_detail.php";
                 <div class="grid grid-cols-3 gap-3 mb-2">
                     <dl class="bg-orange-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
                         <dt class="w-8 h-8 rounded-full bg-orange-100  text-orange-600  text-sm font-medium flex items-center justify-center mb-1">12</dt>
-                        <dd class="text-orange-600  text-sm font-medium">To do</dd>
-                    </dl>
-                    <dl class="bg-teal-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="w-8 h-8 rounded-full bg-teal-100  text-teal-600  text-sm font-medium flex items-center justify-center mb-1">23</dt>
-                        <dd class="text-teal-600  text-sm font-medium">In progress</dd>
+                        <dd class="text-orange-600  text-sm font-medium">Not done</dd>
                     </dl>
                     <dl class="bg-blue-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
                         <dt class="w-8 h-8 rounded-full bg-blue-100  text-blue-600  text-sm font-medium flex items-center justify-center mb-1">64</dt>
-                        <dd class="text-blue-600  text-sm font-medium">Done</dd>
+                        <dd class="text-blue-600  text-sm font-medium">Brief affected</dd>
                     </dl>
+                    <dl class="bg-teal-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
+                        <dt class="w-8 h-8 rounded-full bg-teal-100  text-teal-600  text-sm font-medium flex items-center justify-center mb-1">23</dt>
+                        <dd class="text-teal-600  text-sm font-medium">Done</dd>
+                    </dl>
+
                 </div>
-                
-                
+
+
             </div>
 
             <!-- Radial Chart -->
             <div class="py-6" id="radial-chart"></div>
 
-           
+
         </div>
 
 
@@ -194,7 +207,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
 
     </div>
 
-    <div class=" w-96 flex justify-center mx-2 bg-bodybackground   ">
+    <div class="  flex justify-cente bg-bodybackground ">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>
@@ -217,7 +230,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
     <script>
         const getChartOptions = () => {
             return {
-                series: [90, 85, 70],
+                series: [100, 85, 70],
                 colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
                 chart: {
                     height: "380px",
@@ -251,7 +264,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
                         bottom: -20,
                     },
                 },
-                labels: ["Done", "In progress", "To do"],
+                labels: ["Briefs affected", "Done", "Not done"],
                 legend: {
                     show: true,
                     position: "bottom",

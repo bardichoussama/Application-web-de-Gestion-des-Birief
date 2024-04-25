@@ -28,21 +28,21 @@ require_once "../../controller/formateur/learners_table.php";
 
 
 
-<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+<body class=" flex h-screen text-gray-900  md:text-lg lg:text-xl xl:text-2xl ">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white relative ">
+    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-60   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
             <div class="flex  gap-x-7 my-11">
 
 
                 <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
-                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
 
@@ -76,7 +76,7 @@ require_once "../../controller/formateur/learners_table.php";
                 </div>
 
                 <div>
-                    <button class="px-6 bg-primary rounded-lg w-38 h-14 text-lg text-white">Create brief</button>
+                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
                 </div>
 
             </div>
@@ -165,17 +165,17 @@ require_once "../../controller/formateur/learners_table.php";
                                             <img class="w-10 h-10 rounded-full" src="" alt="">
 
                                         </td>
-                                        <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-900 truncate xl:max-w-xs "><?php echo $learner["PRENOM"] ?></td>
-                                        <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap "><?php echo $learner["NOM"] ?></td>
-                                        <td class="p-4 text-base font-medium text-gray-500 whitespace-nowrap "><?php echo $learner["EMAIL"] ?></td>
-                                        <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap ">
+                                        <td class="max-w-sm p-4 overflow-hidden text-xs font-normal text-gray-900 truncate xl:max-w-xs "><?php echo $learner["PRENOM"] ?></td>
+                                        <td class="p-4 text-xs font-medium text-gray-900 whitespace-nowrap "><?php echo $learner["NOM"] ?></td>
+                                        <td class="p-4 text-xs font-medium text-gray-500 whitespace-nowrap "><?php echo $learner["EMAIL"] ?></td>
+                                        <td class="p-4 text-xs font-normal text-gray-900 whitespace-nowrap ">
                                             <div class="flex items-center">
                                                 <div class=" rounded-lg bg-green-200 mr-2 text-gray-800 p-1">Active</div>
                                             </div>
                                         </td>
                                         <td class="p-4 space-x-2 whitespace-nowrap">
                                             <a href="./learners_details.PHP?id=<?php echo $learner["ID_APPRENANT"] ?>">
-                                            <button data-modal-target="edit-user-modal" data-modal-toggle="edit-user-modal" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary hover:bg-primary-800 focus:ring-4  ">
+                                            <button data-modal-target="edit-user-modal" data-modal-toggle="edit-user-modal" class="inline-flex items-center px-2 text-xs py-2  font-regular text-center text-white rounded-lg bg-primary hover:bg-primary-800 focus:ring-4  ">
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
                                                     <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>

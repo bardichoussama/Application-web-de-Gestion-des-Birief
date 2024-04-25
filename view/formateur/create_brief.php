@@ -35,17 +35,17 @@ require_once '../../controller/formateur/creatBrief.php';
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-80   bg-white overflow-auto">
+       <div class=" flex flex-col gap-4 h-screen w-3/4 ml-60   bg-white overflow-auto">
 
         <div class="flex  justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
             <div class="flex  gap-x-7 my-11">
 
 
                 <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
-                    <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
 
@@ -78,17 +78,19 @@ require_once '../../controller/formateur/creatBrief.php';
 
                 </div>
 
-
+                <div>
+                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
+                </div>
 
             </div>
         </div>
         <form action="" enctype="multipart/form-data" method="post">
             <div class="flex">
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm sm:p-2 mt-11 mx-4 w-96 h-48">
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm sm:p-2 mt-11 mx-4 w-96 h-40">
                     <div class="flex flex-col ml-5 mt-7 gap-y-2">
-                        <p class="text-2xl font-semibold">Brief picture</p>
-                        <p class="text-lg font-regular text-gray-400">JPG, GIF or PNG. Max size of 800K</p>
-                        <span class="flex justify-center items-center bg-primary w-40 h-11 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl">
+                        <p class="text-lg font-semibold">Brief picture</p>
+                        <p class="text-xs font-regular text-gray-400">JPG, GIF or PNG. Max size of 800K</p>
+                        <span class="flex justify-center items-center bg-primary w-28 h-8 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-lg">
                             <label for="imgInput" class="cursor-pointer text-center">
                                 Upload
                                 <input id="imgInput" class="hidden" type="file" name="image">
@@ -97,15 +99,15 @@ require_once '../../controller/formateur/creatBrief.php';
                     </div>
                 </div>
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm sm:p-2 mt-11 w-9/12 h-auto mx-4 ">
-                    <p class="text-2xl font-semibold mt-7 mx-4">General information</p>
+                    <p class="text-lg font-semibold mt-7 mx-4">General information</p>
                     <div class="ml-5">
                         <div class="flex items-center gap-x-11 my-7">
-                        
+
                             <div class="w-7/12">
-                                <input type="text" id="Title of brief" class="rounded-xl border-gray-300 block w-full p-2.5 h-12 text-base" placeholder="Title of brief" name="title">
-                               
+                                <input type="text" id="Title of brief" class="rounded-lg border-gray-300 block w-full p-2.5 h-10 text-xs" placeholder="Title of brief" name="title">
+
                             </div>
-                            <span class="flex justify-center items-center bg-secondary w-40 h-11 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl">
+                            <span class="flex justify-center items-center bg-secondary w-40 h-10 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-xl">
                                 <label for="fileInput" class="cursor-pointer text-center">
                                     Upload attachment
                                     <input id="fileInput" class="hidden" type="file" name="pdf">
@@ -113,7 +115,7 @@ require_once '../../controller/formateur/creatBrief.php';
                             </span>
                         </div>
                         <div class="my-7">
-                        <textarea name="description" id="Title of brief" class="rounded-xl border-gray-300 block  text-base" placeholder="Description of brief" name="description" cols="30" rows="10"></textarea>
+                            <textarea name="description" id="Title of brief" class="rounded-lg border-gray-300 block  text-xs" placeholder="Description of brief" name="description" cols="26" rows="10"></textarea>
                         </div>
                         <!-- Main modal -->
                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -158,27 +160,31 @@ require_once '../../controller/formateur/creatBrief.php';
                                 </div>
                             </div>
                         </div>
-                        <p class="text-gray-800 font-semibold text-xl mt-5">skills</p>
-                        <?php if (!empty($competences)) :?>
+                        <p class="text-gray-800 font-semibold text-lg mt-5">skills</p>
+                        <?php if (!empty($competences)) : ?>
                             <?php foreach ($competences as $compe) : ?>
                                 <div class="flex items-center mt-5">
-                                    <input id="link-checkbox" type="checkbox" name="competence[]" value="<?php echo $compe["ID_COMPETENCE"] ?>" class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded">
-                                    <label for="link-checkbox" class="ms-2 text-lg font-medium text-primary"><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["COMPETENCE_NOM"] ?></a>.</label>
+                                    <input id="link-checkbox" type="checkbox" name="competence[]" value="<?php echo $compe["ID_COMPETENCE"] ?>" class="w-3 h-3 text-primary bg-gray-100 border-gray-300 rounded">
+                                    <label for="link-checkbox" class="ms-2 text-xs font-medium text-primary"><?php echo $compe["CODE"] ?> <a href="#" class="text-gray-400"><?php echo $compe["COMPETENCE_NOM"] ?></a>.</label>
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <p>No competences available.</p>
                         <?php endif; ?>
-                        
+
                         <div class="flex gap-x-7 my-7">
-                            <input type="submit" name="creat" value="Create" class="bg-white border-2 text-gray-900 rounded-xl h-12 w-48 text-lg">
-                            <?php if(!$inProgress):?>
-                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary  focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center" type="button">
-                                Create and assign
-                            </button>
-                            <?php endif; ?>
+
+                            <input type="submit" name="creat" value="Create" class="bg-white border-2 text-gray-900 rounded-lg h-10 w-32 text-xs">
+                          
+                           
+                         
+                                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-hoverprimary focus:ring-4 focus:outline-none focus:ring-primary  rounded-lg text-xs px-5 py-2.5 text-center" type="button">
+                                    Create and assign
+                                </button>
+                          
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
