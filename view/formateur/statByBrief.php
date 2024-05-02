@@ -164,15 +164,15 @@ require_once "../../controller/formateur/brief_states.php";
             <div class="bg-gray-50  p-3 rounded-lg">
                 <div class="grid grid-cols-3 gap-3 mb-2">
                     <dl class="bg-orange-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="w-8 h-8 rounded-full bg-orange-100  text-orange-600  text-sm font-medium flex items-center justify-center mb-1">12</dt>
+                        <dt class="w-8 h-8 rounded-full bg-orange-100  text-orange-600  text-sm font-medium flex items-center justify-center mb-1"><?php echo $brief_static["NOT_DONE"] ?></dt>
                         <dd class="text-orange-600  text-sm font-medium">Not done</dd>
                     </dl>
                     <dl class="bg-blue-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="w-8 h-8 rounded-full bg-blue-100  text-blue-600  text-sm font-medium flex items-center justify-center mb-1">64</dt>
+                        <dt class="w-8 h-8 rounded-full bg-blue-100  text-blue-600  text-sm font-medium flex items-center justify-center mb-1"><?php echo $brief_static["TOTAL"] ?></dt>
                         <dd class="text-blue-600  text-sm font-medium">Brief affected</dd>
                     </dl>
                     <dl class="bg-teal-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="w-8 h-8 rounded-full bg-teal-100  text-teal-600  text-sm font-medium flex items-center justify-center mb-1">23</dt>
+                        <dt class="w-8 h-8 rounded-full bg-teal-100  text-teal-600  text-sm font-medium flex items-center justify-center mb-1"><?php echo $brief_static["DONE"] ?></dt>
                         <dd class="text-teal-600  text-sm font-medium">Done</dd>
                     </dl>
 
@@ -208,7 +208,7 @@ require_once "../../controller/formateur/brief_states.php";
         const getChartOptions = () => {
             return {
                 series: [100, 85, 70],
-                colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+                colors: ["#1C64F2", "#16BDCA", "#FF0000"],
                 chart: {
                     height: "380px",
                     width: "100%",
