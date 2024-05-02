@@ -26,15 +26,18 @@
                     <path fill-rule="evenodd" d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z" clip-rule="evenodd" />
                 </svg>
 
-                <p class="text-xl">Briefed</p><br>
-                <span class="text-xs">solicode</span>
+                <div>
+                    <p class="text-xl">Briefed</p>
+                    <span class="block text-xs font-thin text-gray-500">solicode</span>
+                </div>
+
             </a>
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 ">
                         Formateur Login
                     </h1>
-                    <form class="space-y-4 md:space-y-6 bg-white rounded-xl" method="post" action="../../controller/formateur/formateurLogin.php">
+                    <form class="space-y-4 bg-white md:space-y-6 rounded-xl" method="post" action="../../controller/formateur/formateurLogin.php">
                         <div>
                             <label for="email" class="block mb-2 text-xs font-medium text-gray-900 ">Your email</label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
@@ -46,7 +49,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4  text-primary  rounded   " required="">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 rounded outline-none text-primary hover:border-none" required="">
                                 </div>
                                 <div class="ml-3 text-sm">
                                     <label for="remember" class="text-gray-500 ">Remember me</label>

@@ -14,8 +14,6 @@ require_once '../../controller/apprenant/my_briefs.php';
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/output.css"> <!-- Custom CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
     <!-- Alpine.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.7.1/dist/alpine.min.js" defer></script>
     <style>
@@ -28,200 +26,246 @@ require_once '../../controller/apprenant/my_briefs.php';
     <title>Dashboard</title>
 </head>
 
-<body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
 
-    <div class="flex">
-        <?php
-        include_once '../../view/templates/apprenant_slidbar.php';
-        ?>
-        <main class="bg-white h-screen w-8/12 ">
-            <div class="flex  justify-between mx-4">
-                <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo["PRENOM"] ?></span></p>
-                </div>
-                <div class="flex  gap-x-7 my-11">
 
-                    <div class="">
-                        <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
-                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
+<body class="flex h-screen text-gray-900 md:text-lg lg:text-xl xl:text-2xl">
+    <?php
+    include_once '../../view/templates/apprenant_sidebar.php';
+    ?>
+    <div class="flex flex-col w-3/4 h-screen gap-4 overflow-auto bg-white ml-60">
+        <div class="flex justify-between mx-4">
+            <div class="my-11">
+                <p class="text-2xl font-semibold">Hello, <span class="font-medium "><?php echo $cardInfo["PRENOM"] ?></span></p>
+            </div>
+            <div class="flex gap-x-7 my-11">
+
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center p-4 text-xl font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 focus:outline-none " type="button">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                        <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                    </svg>
+
+                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 "></div>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white border divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownNotificationButton">
+                    <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
+                        Notifications
                     </div>
-                </div>
-            </div>
-            <div class=" text-2xl font-semibold mx-7">
-                <p>Current brief</p>
-            </div>
-            <form id="myForm" action="mybriefs.php" method="post">
-                <div class="mx-11 mt-11">
-                <?php if($briefArealiser):?>
-                    <div class="flex border rounded-xl mx-4 h-24 p-4 mt-7">
+                    <div class="divide-y divide-gray-100 ">
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
+                                <div class="absolute flex items-center justify-center w-5 h-5 -mt-5 border border-white rounded-full ms-6 bg-primary ">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                        <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 ">New message from <span class="font-semibold text-gray-900 ">Jese Leos</span>: "Hey, what's up? All set for the presentation?"</div>
+                                <div class="text-xs text-primary ">a few moments ago</div>
+                            </div>
+                        </a>
 
-                        <img src="../../public/assets/img/bp-cover.jpg" alt="" class="w-24 h-16 rounded-xl">
-                        <div class="ml-4 w-4/12">
-                            <a href="./briefDetails.php?id=<?= $briefArealiser['ID_BRIEF'];?>">
-                            <p class="text-xl font-medium"><?php echo $briefArealiser["TITRE"] ?></p>
-                            </a>
-                            <span class="text-gray-400 text-lg">By <?php echo $briefArealiser["NOM"] . " " . $briefArealiser["PRENOM"] ?></span>
-                        </div>
-                        <div class="ml-48 mt-4 w-48">
-                            <span class="bg-yellobadge text-gray-800 rounded-xl text-lg font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
-                        </div>
-                        <div class="ml-24">
-                            <p class="text-gray-400 text-lg font-medium">Duration</p>
-                            <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["DUREE"] ?>Days </span>
-                        </div>
-                        <div class="ml-16">
-                            <p class="text-lg font-medium text-gray-400">Skills</p>
-                            <span class="text-lg font-medium text-gray-800"><?php echo $briefArealiser["SKILLS"] ?></span>
-                        </div>
-                        <div class="ml-24 mt-4">
-                            <button name="<?php echo $buttonName; ?>" class="bg-primary w-40 text-white text-lg font-medium me-2 px-3 py-2 rounded-xl">
-                                <?php echo $buttonLabel; ?>
-                            </button>
-                        </div>
                     </div>
-                    <?php endif;?>
 
-                    <!-- <div class=" text-lg font-regular mx-7">
-                        <p>Time left : 9j 4h 33 min</p>
-                    </div> -->
                 </div>
-            </form>
-            <div class=" text-2xl font-semibold mx-7 mt-11">
-                <p>My promo briefs</p>
             </div>
-
-
-            <form class=" mx-20 " method="post">
-
-
-
-
-            <div class="flex gap-x-11 mt-7">
-    <div class="relative w-96">
-        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-            </svg>
         </div>
-        <input type="search" name="title" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search" required />
-        <!-- <button class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button> -->
-    </div>
-    <!-- <div>
-        <button class="px-6 bg-primary rounded-lg w-56 h-14 text-base text-white" name="search">View My submissions</button>
-    </div> -->
-</div>
+        <div class="p-4 mx-4 bg-white border border-gray-200 shadow-sm h-72 rounded-xl">
+            <!-- Card header -->
+            <div class="items-center justify-between lg:flex">
+                <div class="mb-4 lg:mb-0">
+                    <h3 class="mb-2 text-lg font-semibold text-gray-800 ">Current Brief</h3>
+
+                    <?php if (!$briefArealiser) : ?>
+                        <span class="text-xs font-normal text-gray-500 dark:text-gray-400">NO BRIEF AFFECTED TO YOUR GROUP YET </span>
+                    <?php else : ?>
+                        <span class="text-xs font-normal text-gray-500 dark:text-gray-400">This a brief that you assigned to your group</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <!-- Table -->
+            <div class="flex flex-col mt-6">
+                <div class="overflow-x-auto rounded-lg">
+                    <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden shadow sm:rounded-lg">
+                            <table class="min-w-full divide-y ">
+                                <thead class="bg-white ">
+                                    <?php if ($briefArealiser) : ?>
+                                        <tr>
+
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                Image
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                                BRIEF OWNER
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                BRIEF TITLE
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                STAT
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                DURATION
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                SKILLS
+                                            </th>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    <?php endif; ?>
+                                </thead>
+                                <tbody class="bg-bodybackground">
+                                    <?php if ($briefArealiser) : ?>
+                                        <tr>
 
 
+                                            <td class="flex items-center p-4 space-x-3 whitespace-nowrap">
+                                                <img class="w-16 h-12 rounded-lg " src="../../BP-IMAGE/<?= $briefArealiser["IMAGE"] ?> " alt="">
 
-            </form>
-
-            <div class="flex flex-wrap  mr-28">
-                <?php if ($affecedBP !== null) : ?>
-                    <?php foreach ($affecedBP as $brief) : ?>
-                        <div class="flex justify-end ml-5 mt-20 flex-wrap flex-row-reverse " class="brief">
-                            <div class="max-w-md w-96   rounded-xl p-6">
-                                <div class="flex flex-col ">
-                                    <div class="">
-                                        <div class="relative h-62 w-full mb-3">
-
-                                            <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class=" w-full   h-52  object-cover  rounded-xl">
-                                        </div>
-
-                                        <div class="flex gap-x-32  mt-2 items-center">
-                                            <div class=" flex gap-x-4 items-center">
-                                                <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-
-
-                                                <div class="font-medium text-xs w-28 ">
-                                                    <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
+                                            </td>
+                                            <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
+                                                <div class="text-sm font-normal text-gray-500 ">
+                                                    <div class="text-xs font-semibold text-gray-800 ">Created By</div>
+                                                    <div class="flex items-center text-xs font-normal text-gray-800">
+                                                        <?php echo $briefArealiser["PRENOM"] . " " . $briefArealiser["NOM"] ?>
+                                                    </div>
                                                 </div>
+                                            </td>
 
-                                            </div>
+                                            <td class="p-4 text-xs font-semibold text-gray-800 whitespace-nowrap ">
+                                                <?php echo $briefArealiser["TITRE"]; ?>
+                                            </td>
+                                            <td class="p-4 whitespace-nowrap">
+                                                <span class="bg-yellobadge text-gray-800 rounded-xl text-xs font-medium me-2 p-1.5"><?php echo $briefArealiser["ETAT"] ?></span>
 
-                                            <div class="flex items-center  bg-white text-white text-xs font-semibold px-2  rounded-lg h-7">
-                                                Individual
-                                            </div>
-                                        </div>
-                                        <div class="flex-auto justify-evenly">
-                                            <div class="flex flex-wrap ">
+                                            </td>
+                                            <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap ">
+                                                <?php echo $briefArealiser["DUREE"] ?> DAYS
+                                            </td>
+                                            <td class="p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap">
 
-                                                <div class="f min-w-0  mt-2">
-                                                <a href="./briefDetails.php?id=<?= $brief['ID_BRIEF']?>">
-                                                    <h2 class="text-lg mr-auto cursor-pointer text-gray-800 hover:text-primary truncate titles"> <?= $brief['TITRE']  ?></h2>
-                                                 </a>    
+                                                <?php echo $briefArealiser["SKILLS"] ?>
+                                            </td>
+                                            <td class="p-4 space-x-2 whitespace-nowrap">
+
+                                                <div class=mt-4">
+                                                    <button name="<?php echo $buttonName; ?>" class="w-32 px-2 py-2 text-xs font-medium text-white rounded-lg bg-primary me-2">
+                                                        <?php echo $buttonLabel; ?>
+                                                    </button>
                                                 </div>
-                                            </div>
-                                            <!-- <div class="flex space-x-2 text-sm font-medium justify-end w-full mt-3">
-                                        <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium  md:mb-0 bg-primary px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-xl hover:bg-hoverprimary ">
-                                            <span>Details</span>
-                                        </button>
+                                            </td>
 
-                                    </div> -->
-                                        </div>
+                                        </tr>
+                                    <?php endif; ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Footer -->
+        </div>
+        <div class="text-xl font-semibold mx-7 mt-11">
+            <p>My promo briefs</p>
+        </div>
+
+
+   
+
+
+
+
+            <div class="flex mx-20 mt-4 gap-x-11">
+                <div class="relative w-80">
+                    <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                        <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" name="title" id="search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg h-11 ps-10 bg-gray-50" placeholder="Search" required />
+
+                </div>
+
+            </div>
+
+
+
+ 
+
+        <div class="flex flex-wrap mx-24 gap-x-2 ">
+            <?php if ($affecedBP) : ?>
+                <?php foreach ($affecedBP as $brief) : ?>
+                    <div class="max-w-md p-6 mt-20 rounded-xl" style="width: 239px;">
+                        <div class="relative w-full mb-3 h-62">
+                            <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="object-cover w-full h-32 rounded-xl">
+                        </div>
+                        <a href="./brief_details.php?id=<?= $brief['ID_BRIEF'] ?>">
+                            <div class="flex items-center justify-around mt-2">
+                                <div class="flex items-center gap-x-2">
+                                    <img class='object-cover w-6 h-6 rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+                                    <div class="w-40 text-xs font-medium">
+                                        <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-                    <?php endforeach; ?>
-                <?php endif; ?>
-
-            </div>
-
-
-        </main>
-        <div class=" w-96 flex justify-center  bg-bodybackground">
-            <?php
-            include_once '../../view/templates/apprenant_card_info.php';
-            ?>
-
+                            <div class="flex-auto justify-evenly">
+                                <div class="flex flex-wrap">
+                                    <div class="min-w-0 mt-2 f">
+                                        <h2 class="mr-auto text-xs text-gray-800 truncate cursor-pointer hover:text-primary">
+                                            <?php echo $brief['TITRE']; ?>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+    </div>
+    <div class="flex justify-center bg-bodybackground">
+        <?php
+        include_once '../../view/templates/apprenant_card_info.php';
+        ?>
 
     </div>
-
-
-
-
-
-
-
-
 
     <script src="../../public/js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("search").addEventListener("input", function() {
-        let search = this.value; // 'this' refers to the input element with id 'search'
-        console.log(search)
-        let titles = document.querySelectorAll(".titles");
-        titles.forEach(title => {
-            if (!title.innerHTML.includes(search)) {
-                title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.setAttribute("style","display:none")
-            } else {
-                title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.removeAttribute("style")
-            }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("search").addEventListener("input", function() {
+                let search = this.value; // 'this' refers to the input element with id 'search'
+                console.log(search)
+                let titles = document.querySelectorAll(".titles");
+                titles.forEach(title => {
+                    if (!title.innerHTML.includes(search)) {
+                        title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.setAttribute("style", "display:none")
+                    } else {
+                        title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.removeAttribute("style")
+                    }
+                });
+            });
         });
-    });
-});
-
     </script>
-  
 
 </body>
 
 </html>
+
+
+
 
 <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
   <label for="fileInput" class="cursor-pointer">
