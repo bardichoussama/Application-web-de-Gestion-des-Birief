@@ -199,7 +199,7 @@ class Brief
     }
     public function getLearnerState($id_apprenant)
     {
-        $sql="SELECT * FROM  realiser INNER JOIN brief USING(ID_BRIEF) WHERE ID_APPRENANT = :ID";
+        $sql="SELECT * FROM  realiser INNER JOIN brief USING(ID_BRIEF) INNER JOIN AFFECTATION USING(ID_BRIEF) WHERE ID_APPRENANT = :ID";
         $db=$this->conn->prepare($sql);
         $db->bindParam(":ID",$id_apprenant);
         $db->execute();
