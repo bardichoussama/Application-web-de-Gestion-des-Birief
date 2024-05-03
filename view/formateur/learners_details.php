@@ -214,19 +214,22 @@ require_once "../../controller/formateur/learner_state_detail.php";
                     <dl class="bg-orange-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
                         <dt
                             class="w-8 h-8 rounded-full bg-teal-100  text-orange-600  text-sm font-medium flex items-center justify-center mb-1">
-                            <?php echo $apprenant_static["NOT_DONE"] ?></dt>
+                            <?php echo $apprenant_static["NOT_DONE"] ?>
+                        </dt>
                         <dd class="text-orange-600  text-sm font-medium">Not done</dd>
                     </dl>
                     <dl class="bg-blue-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
                         <dt
                             class="w-8 h-8 rounded-full bg-blue-100  text-blue-600  text-sm font-medium flex items-center justify-center mb-1">
-                            <?php echo $apprenant_static["TOTAL"] ?></dt>
+                            <?php echo $apprenant_static["TOTAL"] ?>
+                        </dt>
                         <dd class="text-blue-600  text-sm font-medium">Brief affected</dd>
                     </dl>
                     <dl class="bg-teal-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
                         <dt
                             class="w-8 h-8 rounded-full bg-teal-100  text-teal-600  text-sm font-medium flex items-center justify-center mb-1">
-                            <?php echo $apprenant_static["DONE"] ?></dt>
+                            <?php echo $apprenant_static["DONE"] ?>
+                        </dt>
                         <dd class="text-teal-600  text-sm font-medium">Done</dd>
                     </dl>
 
@@ -270,74 +273,78 @@ require_once "../../controller/formateur/learner_state_detail.php";
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script>
-        function getChartOptions() {
+        let para = new URLSearchParams(window.location.search);
+        let id = para.get("id");
             var xmlhttp = new XMLHttpRequest();
-            var static ;
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    static = this.responseText;
+            xmlhttp.onreadystatechange  = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                    var ass = this.responseText
+                   console.log(ass)
                 }
             }
-            xmlhttp.open("GET", "BP-15/controller/formateur/ajax_static.php", true);
+            xmlhttp.open("GET", "../../controller/formateur/learner_state_detail.php?id=" + id, true);
             xmlhttp.send();
-            console.log(static)
-            return {
-                series: [100, 85, 70],
-                colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
-                chart: {
-                    height: "380px",
-                    width: "100%",
-                    type: "radialBar",
-                    sparkline: {
-                        enabled: true,
-                    },
-                },
-                plotOptions: {
-                    radialBar: {
-                        track: {
-                            background: '#E5E7EB',
+            const getChartOptions = () => {
+                return {
+                    series: [100, 85, 70],
+                    colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+                    chart: {
+                        height: "380px",
+                        width: "100%",
+                        type: "radialBar",
+                        sparkline: {
+                            enabled: true,
                         },
-                        dataLabels: {
+                    },
+                    plotOptions: {
+                        radialBar: {
+                            track: {
+                                background: '#E5E7EB',
+                            },
+                            dataLabels: {
+                                show: false,
+                            },
+                            hollow: {
+                                margin: 0,
+                                size: "32%",
+                            }
+                        },
+                    },
+                    grid: {
+                        show: false,
+                        strokeDashArray: 4,
+                        padding: {
+                            left: 2,
+                            right: 2,
+                            top: -23,
+                            bottom: -20,
+                        },
+                    },
+                    labels: ["Briefs affected", "Done", "Not done"],
+                    legend: {
+                        show: true,
+                        position: "bottom",
+                        fontFamily: "Inter, sans-serif",
+                    },
+                    tooltip: {
+                        enabled: true,
+                        x: {
                             show: false,
                         },
-                        hollow: {
-                            margin: 0,
-                            size: "32%",
-                        }
                     },
-                },
-                grid: {
-                    show: false,
-                    strokeDashArray: 4,
-                    padding: {
-                        left: 2,
-                        right: 2,
-                        top: -23,
-                        bottom: -20,
-                    },
-                },
-                labels: ["Briefs affected", "Done", "Not done"],
-                legend: {
-                    show: true,
-                    position: "bottom",
-                    fontFamily: "Inter, sans-serif",
-                },
-                tooltip: {
-                    enabled: true,
-                    x: {
+                    yaxis: {
                         show: false,
-                    },
-                },
-                yaxis: {
-                    show: false,
-                    labels: {
-                        formatter: function (value) {
-                            return value + '%';
+                        labels: {
+                            formatter: function (value) {
+                                return value + '%';
+                            }
                         }
                     }
                 }
             }
-        }
+            
+
+      
 
         if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
             const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
