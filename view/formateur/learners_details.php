@@ -275,81 +275,82 @@ require_once "../../controller/formateur/learner_state_detail.php";
     <script>
         let para = new URLSearchParams(window.location.search);
         let id = para.get("id");
+       
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange  = function () {
               if (this.readyState == 4 && this.status == 200) {
-                    var ass = this.responseText
-                   console.log(ass)
-                }
-            }
-            xmlhttp.open("GET", "../../controller/formateur/learner_state_detail.php?id=" + id, true);
-            xmlhttp.send();
-            const getChartOptions = () => {
-                return {
-                    series: [100, 85, 70],
-                    colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
-                    chart: {
-                        height: "380px",
-                        width: "100%",
-                        type: "radialBar",
-                        sparkline: {
-                            enabled: true,
-                        },
-                    },
-                    plotOptions: {
-                        radialBar: {
-                            track: {
-                                background: '#E5E7EB',
+                    static = this.responseText.split(",")
+                   console.log(static)
+                    const getChartOptions = () => {
+                        return {
+                            series: static,
+                            colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+                            chart: {
+                                height: "380px",
+                                width: "100%",
+                                type: "radialBar",
+                                sparkline: {
+                                    enabled: true,
+                                },
                             },
-                            dataLabels: {
+                            plotOptions: {
+                                radialBar: {
+                                    track: {
+                                        background: '#E5E7EB',
+                                    },
+                                    dataLabels: {
+                                        show: false,
+                                    },
+                                    hollow: {
+                                        margin: 0,
+                                        size: "32%",
+                                    }
+                                },
+                            },
+                            grid: {
                                 show: false,
+                                strokeDashArray: 4,
+                                padding: {
+                                    left: 2,
+                                    right: 2,
+                                    top: -23,
+                                    bottom: -20,
+                                },
                             },
-                            hollow: {
-                                margin: 0,
-                                size: "32%",
-                            }
-                        },
-                    },
-                    grid: {
-                        show: false,
-                        strokeDashArray: 4,
-                        padding: {
-                            left: 2,
-                            right: 2,
-                            top: -23,
-                            bottom: -20,
-                        },
-                    },
-                    labels: ["Briefs affected", "Done", "Not done"],
-                    legend: {
-                        show: true,
-                        position: "bottom",
-                        fontFamily: "Inter, sans-serif",
-                    },
-                    tooltip: {
-                        enabled: true,
-                        x: {
-                            show: false,
-                        },
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            formatter: function (value) {
-                                return value + '%';
+                            labels: ["Briefs affected", "Done", "Not done"],
+                            legend: {
+                                show: true,
+                                position: "bottom",
+                                fontFamily: "Inter, sans-serif",
+                            },
+                            tooltip: {
+                                enabled: true,
+                                x: {
+                                    show: false,
+                                },
+                            },
+                            yaxis: {
+                                show: false,
+                                labels: {
+                                    formatter: function (value) {
+                                        return value + '%';
+                                    }
+                                }
                             }
                         }
                     }
+                    
+        
+              
+        
+                if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
+                    const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
+                    chart.render();
+                }
                 }
             }
-            
-
-      
-
-        if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
-            chart.render();
-        }
+            xmlhttp.open("GET", "../../controller/formateur/ajax_learner_static.php?id=" + id, true);
+            xmlhttp.send();
     </script>
 
 </body>

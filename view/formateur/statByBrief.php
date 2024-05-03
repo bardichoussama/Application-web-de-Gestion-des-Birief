@@ -205,69 +205,84 @@ require_once "../../controller/formateur/brief_states.php";
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        const getChartOptions = () => {
-            return {
-                series: [100, 85, 70],
-                colors: ["#1C64F2", "#16BDCA", "#FF0000"],
-                chart: {
-                    height: "380px",
-                    width: "100%",
-                    type: "radialBar",
-                    sparkline: {
-                        enabled: true,
-                    },
-                },
-                plotOptions: {
-                    radialBar: {
-                        track: {
-                            background: '#E5E7EB',
-                        },
-                        dataLabels: {
-                            show: false,
-                        },
-                        hollow: {
-                            margin: 0,
-                            size: "32%",
-                        }
-                    },
-                },
-                grid: {
-                    show: false,
-                    strokeDashArray: 4,
-                    padding: {
-                        left: 2,
-                        right: 2,
-                        top: -23,
-                        bottom: -20,
-                    },
-                },
-                labels: ["Briefs affected", "Done", "Not done"],
-                legend: {
-                    show: true,
-                    position: "bottom",
-                    fontFamily: "Inter, sans-serif",
-                },
-                tooltip: {
-                    enabled: true,
-                    x: {
-                        show: false,
-                    },
-                },
-                yaxis: {
-                    show: false,
-                    labels: {
-                        formatter: function(value) {
-                            return value + '%';
+        let para = new URLSearchParams(window.location.search);
+        let id = para.get("id");
+       
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange  = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                    static = this.responseText.split(",")
+                   console.log(static)
+                    const getChartOptions = () => {
+                        return {
+                            series: static,
+                            colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+                            chart: {
+                                height: "380px",
+                                width: "100%",
+                                type: "radialBar",
+                                sparkline: {
+                                    enabled: true,
+                                },
+                            },
+                            plotOptions: {
+                                radialBar: {
+                                    track: {
+                                        background: '#E5E7EB',
+                                    },
+                                    dataLabels: {
+                                        show: false,
+                                    },
+                                    hollow: {
+                                        margin: 0,
+                                        size: "32%",
+                                    }
+                                },
+                            },
+                            grid: {
+                                show: false,
+                                strokeDashArray: 4,
+                                padding: {
+                                    left: 2,
+                                    right: 2,
+                                    top: -23,
+                                    bottom: -20,
+                                },
+                            },
+                            labels: ["Briefs affected", "Done", "Not done"],
+                            legend: {
+                                show: true,
+                                position: "bottom",
+                                fontFamily: "Inter, sans-serif",
+                            },
+                            tooltip: {
+                                enabled: true,
+                                x: {
+                                    show: false,
+                                },
+                            },
+                            yaxis: {
+                                show: false,
+                                labels: {
+                                    formatter: function (value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
                         }
                     }
+                    
+        
+              
+        
+                if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
+                    const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
+                    chart.render();
+                }
                 }
             }
-        }
-
-        if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
-            chart.render();
-        }
+            xmlhttp.open("GET", "../../controller/formateur/ajax_bref_static.php?id=" + id, true);
+            xmlhttp.send();
     </script>
 
 </body>
