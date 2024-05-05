@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../controller/apprenant/apprenant.php';
-
 require_once "../../controller/formateur/learner_state_detail.php";
 ?>
 <!DOCTYPE html>
@@ -174,15 +173,15 @@ require_once "../../controller/formateur/learner_state_detail.php";
             <div class="p-3 rounded-lg bg-gray-50">
                 <div class="grid grid-cols-3 gap-3 mb-2">
                     <dl class="bg-orange-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-orange-600 bg-orange-100 rounded-full">12</dt>
+                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-orange-600 bg-orange-100 rounded-full"><?= $apprenant_static["NOT_DONE"] ?></dt>
                         <dd class="text-sm font-medium text-orange-600">Not done</dd>
                     </dl>
                     <dl class="bg-blue-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-blue-600 bg-blue-100 rounded-full">64</dt>
+                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-blue-600 bg-blue-100 rounded-full"><?= $apprenant_static["TOTAL"] ?></dt>
                         <dd class="text-sm font-medium text-blue-600">Brief affected</dd>
                     </dl>
                     <dl class="bg-teal-50  rounded-lg flex flex-col items-center justify-center h-[78px]">
-                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-teal-600 bg-teal-100 rounded-full">23</dt>
+                        <dt class="flex items-center justify-center w-8 h-8 mb-1 text-sm font-medium text-teal-600 bg-teal-100 rounded-full"><?= $apprenant_static["DONE"] ?></dt>
                         <dd class="text-sm font-medium text-teal-600">Done</dd>
                     </dl>
 
@@ -219,7 +218,6 @@ require_once "../../controller/formateur/learner_state_detail.php";
             xmlhttp.onreadystatechange  = function () {
               if (this.readyState == 4 && this.status == 200) {
                     static = this.responseText.split(",")
-                   console.log(static)
                     const getChartOptions = () => {
                         return {
                             series: static,

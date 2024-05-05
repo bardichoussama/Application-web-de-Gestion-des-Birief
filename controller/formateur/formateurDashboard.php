@@ -4,7 +4,7 @@
         require_once("../../config/db.php");
         require_once("../../model/formateur/formateurInfo.php");
         require_once("../../model/formateur/formateur_BP_model.php");
-            $conn=$database->getConnection();
+        $conn=$database->getConnection();
             $formateur = new formateur($_SESSION["ID"],$conn);
             $cardInfo = $formateur->getFormation();
             $brief = new brief($conn);
@@ -15,8 +15,12 @@
                 $progresID=0;
             }
             $assignedBP = $brief->getAssignedBP($_SESSION["ID_GROUPE"], $progresID);
-            $briefProgress=$brief->briefProgres( $progresID,$_SESSION["ID_GROUPE"]);   
-           
+            $briefProgress=$brief->briefProgres( $progresID,$_SESSION["ID_GROUPE"]); 
+            if(isset($_POST["year"]) ){
+                require_once "../../model/formateur/filters.php";
+                $filter= new filters($conn);
+                $assignedBP=$filter->filter_by_year((int)$_SESSION["ID"],(int)$_POST["year"]);
+            }
     }else{
         header("location:../../view/formateur/formateurLogin.php");
     }

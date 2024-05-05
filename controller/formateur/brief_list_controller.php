@@ -1,12 +1,12 @@
 <?php
         require_once("../../config/db.php");
         require_once "../../model/formateur/formateur_BP_model.php";
-        require_once "../../model/formateur/search.php";
+        require_once "../../model/formateur/filters.php";
 
      
         $conn=$database->getConnection();
         $brief = new brief($conn);
-        $search= new search($conn);
+        $search= new filters($conn);
         $allbriefs=$brief->getAllBriefs();
  
         if(isset($_POST['allBriefs'])){

@@ -1,9 +1,5 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
-if(isset($_POST["2020"]) ){
-    var_dump($_POST["2020"]);
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -237,7 +233,7 @@ if(isset($_POST["2020"]) ){
                                     <button name="year" value="2020" class="block text-xs  hover:bg-gray-100 ">2020</button>
                                 </li>
                                 <li>
-                                    <button name="year" class="block text-xs  hover:bg-gray-100 ">2020</button>
+                                    <button name="year"  value="2024" class="block text-xs  hover:bg-gray-100 ">2024</button>
                                 </li>
                                 </form>
                                
