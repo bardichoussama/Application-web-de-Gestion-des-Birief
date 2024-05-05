@@ -1,5 +1,8 @@
 <?php
 require_once "../../controller/formateur/formateurDashboard.php";
+if(isset($_POST["2020"]) ){
+    var_dump($_POST["2020"]);
+}
 
 ?>
 <!DOCTYPE html>
@@ -180,7 +183,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                             </td>
                                             <td class="p-4 space-x-2 whitespace-nowrap">
 
-                                                <div class=mt-4">
+                                                <div class="mt-4">
                                                     <a href="../../BP-PDF/<?php echo $inProgres["PIECE_JOINTE"] ?>" download>
                                                         <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
                                                             <label for="fileInput" class="cursor-pointer text-gray-800">
@@ -229,13 +232,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow ">
 
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                                <form action="" method="post">
                                 <li>
-                                    <button name="" class="block text-xs  hover:bg-gray-100 ">2020</button>
+                                    <button name="year" value="2020" class="block text-xs  hover:bg-gray-100 ">2020</button>
                                 </li>
                                 <li>
-                                    <button name="" class="block text-xs  hover:bg-gray-100 ">2020</button>
+                                    <button name="year" class="block text-xs  hover:bg-gray-100 ">2020</button>
                                 </li>
-
+                                </form>
                                
                             </ul>
                         </div>

@@ -30,7 +30,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
 <body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
     <div class="flex">
         <?php
-        include_once '../../view/templates/apprenant_slidbar.php';
+         include_once '../../view/templates/apprenant_sidebar.php';
         ?>
         <main class="bg-white h-screen w-8/12 ">
             <div class="flex  justify-between mx-4">
@@ -120,7 +120,7 @@ require_once '../../controller/formateur/brief_details_controller.php';
         </main>
         <div class=" w-96 flex justify-center  bg-bodybackground">
             <?php
-            include_once '../../view/templates/apprenant_card_info.php';
+              include_once '../../view/templates/apprenant_card_info.php';
             ?>
 
         </div>

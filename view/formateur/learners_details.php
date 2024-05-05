@@ -349,7 +349,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
                 }
                 }
             }
-            xmlhttp.open("GET", "../../controller/formateur/ajax_learner_static.php?id=" + id, true);
+            xmlhttp.open("GET", "../../controller/apprenant/ajax_learner_static.php?id=" + id, true);
             xmlhttp.send();
     </script>
 

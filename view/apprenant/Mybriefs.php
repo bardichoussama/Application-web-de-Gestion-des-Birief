@@ -155,7 +155,7 @@ require_once '../../controller/apprenant/my_briefs.php';
                                             </td>
                                             <td class="p-4 space-x-2 whitespace-nowrap">
 
-                                                <div class=mt-4">
+                                                <div class="mt-4">
                                                     <button name="<?php echo $buttonName; ?>" class="w-32 px-2 py-2 text-xs font-medium text-white rounded-lg bg-primary me-2">
                                                         <?php echo $buttonLabel; ?>
                                                     </button>
@@ -203,11 +203,12 @@ require_once '../../controller/apprenant/my_briefs.php';
         <div class="flex flex-wrap mx-24 gap-x-2 ">
             <?php if ($affecedBP) : ?>
                 <?php foreach ($affecedBP as $brief) : ?>
+                   
                     <div class="max-w-md p-6 mt-20 rounded-xl" style="width: 239px;">
                         <div class="relative w-full mb-3 h-62">
                             <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="object-cover w-full h-32 rounded-xl">
                         </div>
-                        <a href="./briefDetails.php?= $brief['ID_BRIEF'] ?>">
+                        <a href="./briefDetails.php?id=<?php echo $brief['ID_BRIEF'] ?>">
                             <div class="flex items-center justify-around mt-2">
                                 <div class="flex items-center gap-x-2">
                                     <img class='object-cover w-6 h-6 rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
