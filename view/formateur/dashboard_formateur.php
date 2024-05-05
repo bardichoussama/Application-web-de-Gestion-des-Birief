@@ -27,20 +27,20 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
 
 
-<body class=" flex h-screen text-gray-900 bg-black md:text-lg lg:text-xl xl:text-2xl ">
+<body class="flex h-screen text-gray-900 bg-black">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col gap-4 h-screen w-3/4 ml-60   bg-white overflow-auto">
+    <div class="flex flex-col w-3/4 h-screen gap-4 overflow-auto bg-white ml-60">
 
-        <div class="flex  justify-between mx-4 ">
+        <div class="flex justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class="font-medium "><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
-            <div class="flex  gap-x-7 my-11">
+            <div class="flex gap-x-7 my-11">
 
 
-                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center p-4 text-xl font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 focus:outline-none " type="button">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
@@ -49,7 +49,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </button>
 
                 <!-- Dropdown menu -->
-                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow  border" aria-labelledby="dropdownNotificationButton">
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white border divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownNotificationButton">
                     <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
                         Notifications
                     </div>
@@ -57,7 +57,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
                             <div class="flex-shrink-0">
                                 <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
-                                <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-primary border border-white rounded-full ">
+                                <div class="absolute flex items-center justify-center w-5 h-5 -mt-5 border border-white rounded-full ms-6 bg-primary ">
                                     <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                                         <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
                                         <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
@@ -75,13 +75,13 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <div>
-                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
+                    <a href="./create_brief.php"><button class="px-2 text-xs text-white rounded-lg bg-primary w-28 h-11">Create brief</button></a>
                 </div>
 
             </div>
         </div>
 
-        <div class="p-4  border border-gray-200 rounded-xl shadow-sm  my-4 mx-4  bg-white h-80">
+        <div class="p-4 mx-4 my-4 bg-white border border-gray-200 shadow-sm rounded-xl h-80">
             <!-- Card header -->
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
@@ -95,7 +95,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
 
                 <?php if ($inProgres) : ?>
-                    <div class=" w-96 h-16 rounded-xl mt-9 ml-8 px-4 flex justify-center items-center gap-11">
+                    <div class="flex items-center justify-center h-16 px-4 ml-8 w-96 rounded-xl mt-9 gap-11">
 
                         <div>
                             <p class="text-xs">Progress</p>
@@ -152,14 +152,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                         <tr>
 
 
-                                            <td class="flex items-center p-4  space-x-3 whitespace-nowrap">
-                                                <img class=" w-16 h-12 rounded-lg" src="../../BP-IMAGE/<?= $inProgres["IMAGE"] ?> " alt="">
+                                            <td class="flex items-center p-4 space-x-3 whitespace-nowrap">
+                                                <img class="w-16 h-12 rounded-lg " src="../../BP-IMAGE/<?= $inProgres["IMAGE"] ?> " alt="">
 
                                             </td>
                                             <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
                                                 <div class="text-sm font-normal text-gray-500 ">
                                                     <div class="text-xs font-semibold text-gray-800 ">Created By</div>
-                                                    <div class="text-xs font-normal text-gray-800  flex items-center">
+                                                    <div class="flex items-center text-xs font-normal text-gray-800">
                                                         <?php echo $inProgres["PRENOM"] . " " . $inProgres["NOM"] ?>
                                                     </div>
                                                 </div>
@@ -174,7 +174,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                             <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap ">
                                                 <?php echo $inProgres["DUREE"] ?> DAYS
                                             </td>
-                                            <td class=" p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap ">
+                                            <td class="p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap">
 
                                                 <?php echo $inProgres["SKILLS"] ?>
                                             </td>
@@ -182,10 +182,10 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                                                 <div class=mt-4">
                                                     <a href="../../BP-PDF/<?php echo $inProgres["PIECE_JOINTE"] ?>" download>
-                                                        <span class="bg-secondary  text-gray-800 text-xs font-semibold me-2 px-3 py-2 rounded-md">
-                                                            <label for="fileInput" class="cursor-pointer text-gray-800">
+                                                        <span class="px-3 py-2 text-xs font-semibold text-gray-800 rounded-md bg-secondary me-2">
+                                                            <label for="fileInput" class="text-gray-800 cursor-pointer">
                                                                 Attachment
-                                                                <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                <svg class="inline-block w-6 h-6 text-gray-800 align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                                                     <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
                                                                 </svg>
                                                                 <input id="fileInput" class="hidden" type="input">
@@ -206,7 +206,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
             </div>
             <!-- Card Footer -->
         </div>
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm  my-2 mx-4">
+        <div class="p-4 mx-4 my-2 bg-white border border-gray-200 rounded-lg shadow-sm">
             <!-- Card header -->
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
@@ -230,10 +230,10 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <li>
-                                    <button name="" class="block text-xs  hover:bg-gray-100 ">2020</button>
+                                    <button name="" class="block text-xs hover:bg-gray-100 ">2020</button>
                                 </li>
                                 <li>
-                                    <button name="" class="block text-xs  hover:bg-gray-100 ">2020</button>
+                                    <button name="" class="block text-xs hover:bg-gray-100 ">2020</button>
                                 </li>
 
                                
@@ -280,14 +280,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                     <?php if ($assignedBP) : ?>
                                         <?php foreach ($assignedBP as $brief) : ?>
                                             <tr>
-                                                <td class="flex items-center p-4  space-x-3 whitespace-nowrap">
-                                                    <img class=" w-16 h-12 rounded-lg" src="../../BP-IMAGE/<?php echo $brief["IMAGE"]; ?>" alt="">
+                                                <td class="flex items-center p-4 space-x-3 whitespace-nowrap">
+                                                    <img class="w-16 h-12 rounded-lg " src="../../BP-IMAGE/<?php echo $brief["IMAGE"]; ?>" alt="">
 
                                                 </td>
                                                 <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
                                                     <div class="text-sm font-normal text-gray-500 ">
                                                         <div class="text-xs font-semibold text-gray-800 ">Created By</div>
-                                                        <div class="text-xs font-normal text-gray-800  flex items-center">
+                                                        <div class="flex items-center text-xs font-normal text-gray-800">
                                                             <?php echo $brief["PRENOM"] . " " . $brief["NOM"] ?>
                                                         </div>
                                                     </div>
@@ -302,14 +302,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                                 <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap ">
                                                     <?php echo $brief["DUREE"] ?> DAYS
                                                 </td>
-                                                <td class=" p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap ">
+                                                <td class="p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap">
                                                     <?php echo $brief["SKILLS"] ?>
                                                 </td>
                                                 <td class="p-4 space-x-2 whitespace-nowrap">
 
-                                                    <div class="mt-4 flex gap-x-2 items-center">
-                                                        <a class=" bg-primary rounded-lg p-2  flex" href="./statByBrief.php?id=<?php echo $brief["ID_BRIEF"] ?>">
-                                                            <p class="text-xs text-center font-medium  text-white">Brief statics </p>
+                                                    <div class="flex items-center mt-4 gap-x-2">
+                                                        <a class="flex p-2 rounded-lg bg-primary" href="./statByBrief.php?id=<?php echo $brief["ID_BRIEF"] ?>">
+                                                            <p class="text-xs font-medium text-center text-white">Brief statics </p>
                                                             <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                                                 <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd" />
                                                             </svg>
@@ -335,7 +335,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
             </div>
             <!-- Card Footer -->
         </div>
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm  my-2 mx-4">
+        <div class="p-4 mx-4 my-2 bg-white border border-gray-200 rounded-lg shadow-sm">
             <!-- Card header -->
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
@@ -351,67 +351,67 @@ require_once "../../controller/formateur/formateurDashboard.php";
                 </div>
             </div>
             <!-- Table -->
-            <div class="flex flex-col  my-10">
+            <div class="flex flex-col my-10">
                 <div class="overflow-x-auto rounded-lg">
                     <div class="inline-block min-w-full align-middle">
-                        <div class="overflow-hidden shadow sm:rounded-lg  flex justify-center gap-x-16 ">
-                            <div class="flex flex-col  items-center gap-y-4">
-                                <p class="text-gray-800 text-base">My prime avencment</p>
-                                <div class="relative h-40 w-40">
+                        <div class="flex justify-center overflow-hidden shadow sm:rounded-lg gap-x-16 ">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <p class="text-base text-gray-800">My prime avencment</p>
+                                <div class="relative w-40 h-40">
 
 
                                     <svg class="absolute inset-0 w-full h-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
                                         <!-- Background Circle -->
-                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 " stroke-width="2"></circle>
+                                        <circle cx="18" cy="18" r="16" fill="none" class="text-gray-200 stroke-current " stroke-width="2"></circle>
                                         <!-- Progress Circle inside a group with rotation -->
-                                        <g class="origin-center -rotate-90 transform">
+                                        <g class="origin-center transform -rotate-90">
                                             <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-primary" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="10"></circle>
 
                                         </g>
                                     </svg>
                                     <!-- Percentage Text -->
-                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                        <span class="text-center text-xl font-bold text-gray-600">90%</span>
+                                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                        <span class="text-xl font-bold text-center text-gray-600">90%</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col  items-center gap-y-4">
-                                <p class="text-gray-800 text-base">My prime avencment</p>
-                                <div class="relative h-40 w-40">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <p class="text-base text-gray-800">My prime avencment</p>
+                                <div class="relative w-40 h-40">
 
 
                                     <svg class="absolute inset-0 w-full h-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
                                         <!-- Background Circle -->
-                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 " stroke-width="2"></circle>
+                                        <circle cx="18" cy="18" r="16" fill="none" class="text-gray-200 stroke-current " stroke-width="2"></circle>
                                         <!-- Progress Circle inside a group with rotation -->
-                                        <g class="origin-center -rotate-90 transform">
+                                        <g class="origin-center transform -rotate-90">
                                             <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-primary" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="10"></circle>
 
                                         </g>
                                     </svg>
                                     <!-- Percentage Text -->
-                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                        <span class="text-center text-xl font-bold text-gray-600">90%</span>
+                                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                        <span class="text-xl font-bold text-center text-gray-600">90%</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col  items-center gap-y-4">
-                                <p class="text-gray-800 text-base">My prime avencment</p>
-                                <div class="relative h-40 w-40">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <p class="text-base text-gray-800">My prime avencment</p>
+                                <div class="relative w-40 h-40">
 
 
                                     <svg class="absolute inset-0 w-full h-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
                                         <!-- Background Circle -->
-                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 " stroke-width="2"></circle>
+                                        <circle cx="18" cy="18" r="16" fill="none" class="text-gray-200 stroke-current " stroke-width="2"></circle>
                                         <!-- Progress Circle inside a group with rotation -->
-                                        <g class="origin-center -rotate-90 transform">
+                                        <g class="origin-center transform -rotate-90">
                                             <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-primary" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="10"></circle>
 
                                         </g>
                                     </svg>
                                     <!-- Percentage Text -->
-                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                        <span class="text-center text-xl font-bold text-gray-600">90%</span>
+                                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                        <span class="text-xl font-bold text-center text-gray-600">90%</span>
                                     </div>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
     </div>
 
-    <div class="  flex justify-cente bg-bodybackground ">
+    <div class="flex justify-cente bg-bodybackground">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>

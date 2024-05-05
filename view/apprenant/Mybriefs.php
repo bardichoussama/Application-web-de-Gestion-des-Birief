@@ -1,7 +1,10 @@
 <?php
 
 require_once '../../controller/apprenant/apprenant.php';
+
 require_once '../../controller/apprenant/my_briefs.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -207,7 +210,8 @@ require_once '../../controller/apprenant/my_briefs.php';
                         <div class="relative w-full mb-3 h-62">
                             <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="object-cover w-full h-32 rounded-xl">
                         </div>
-                        <a href="./briefDetails.php?= $brief['ID_BRIEF'] ?>">
+                        <a href="./briefDetails.php?id=<?= $brief['ID_BRIEF'] ?>">
+                        
                             <div class="flex items-center justify-around mt-2">
                                 <div class="flex items-center gap-x-2">
                                     <img class='object-cover w-6 h-6 rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>

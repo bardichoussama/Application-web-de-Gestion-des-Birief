@@ -28,20 +28,20 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 
 
 
-<body class=" flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
+<body class="flex h-screen text-gray-900 bg-bodybackground md:text-lg lg:text-xl xl:text-2xl">
     <?php
     include_once '../../view/templates/formateur_sidebar.php';
     ?>
-    <div class=" flex flex-col  h-screen w-3/4 ml-60   bg-white ">
+    <div class="flex flex-col w-3/4 h-screen bg-white ml-60">
 
-        <div class="flex  justify-between mx-4 ">
+        <div class="flex justify-between mx-4 ">
             <div class="my-11">
-                <p class="text-2xl font-semibold">Hello, <span class=" font-medium"><?php echo $cardInfo['PRENOM'] ?></span></p>
+                <p class="text-2xl font-semibold">Hello, <span class="font-medium "><?php echo $cardInfo['PRENOM'] ?></span></p>
             </div>
-            <div class="flex  gap-x-7 my-11">
+            <div class="flex gap-x-7 my-11">
 
 
-                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-xl  p-4 rounded-lg font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none " type="button">
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center p-4 text-xl font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 focus:outline-none " type="button">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
@@ -50,15 +50,15 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                 </button>
 
                 <!-- Dropdown menu -->
-                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm  divide-y divide-gray-100 rounded-lg shadow  border" aria-labelledby="dropdownNotificationButton">
-                    <div class="block px-4 py-2 font-medium text-center text-lg text-gray-700 rounded-t-lg bg-gray-50 ">
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm border divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownNotificationButton">
+                    <div class="block px-4 py-2 text-lg font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
                         Notifications
                     </div>
                     <div class="divide-y divide-gray-100 ">
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
                             <div class="flex-shrink-0">
                                 <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
-                                <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-primary border border-white rounded-full ">
+                                <div class="absolute flex items-center justify-center w-5 h-5 -mt-5 border border-white rounded-full ms-6 bg-primary ">
                                     <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                                         <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
                                         <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
@@ -76,7 +76,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
                 </div>
 
                 <div>
-                    <a href="./create_brief.php"><button class="px-2 bg-primary rounded-lg w-28 h-11 text-xs text-white">Create brief</button></a>
+                    <a href="./create_brief.php"><button class="px-2 text-xs text-white rounded-lg bg-primary w-28 h-11">Create brief</button></a>
                 </div>
 
             </div>
@@ -85,16 +85,16 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
         <form class="max-w-md mx-20" method="post">
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
             <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                     <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <input type="search" id="default-search" name="title" class="block w-full p-4 ps-10 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 " placeholder="Search Mockups, Logos..." required />
+                <input type="search" id="default-search" name="title" class="block w-full p-4 text-xs text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 " placeholder="Search Mockups, Logos..." required />
                 <button name="search" class="bg-primary text-white absolute end-2.5 bottom-2.5  font-regular  outline-none  rounded-lg text-sm px-4 py-2 ">Search</button>
             </div>
         </form>
-        <form class="flex justify-end  mr-16" action="./briefs_list.php" method="post">
+        <form class="flex justify-end mr-16" action="./briefs_list.php" method="post">
             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-800 bg-white border font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
                 Filter briefs
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -117,26 +117,26 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 
 
 
-        <div class="flex flex-wrap  gap-x-2 mx-24 overflow-auto ">
+        <div class="flex flex-wrap mx-24 overflow-auto gap-x-2 ">
             <?php if ($allbriefs) : ?>
                 <?php foreach ($allbriefs as $brief) : ?>
-                    <div class="max-w-md rounded-xl p-6 mt-20" style="width: 250px;">
-                        <div class="relative h-62 w-full mb-3">
-                            <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="w-full h-32 object-cover rounded-xl">
+                    <div class="max-w-md p-6 mt-20 rounded-xl" style="width: 250px;">
+                        <div class="relative w-full mb-3 h-62">
+                            <img src="../../public/assets/img/bp-cover.jpg" alt="Just a flower" class="object-cover w-full h-32 rounded-xl">
                         </div>
                         <a href="./brief_details.php?id=<?= $brief['ID_BRIEF'] ?>">
-                            <div class="flex justify-around mt-2 items-center">
-                                <div class="flex gap-x-2 items-center">
-                                    <img class='w-6 h-6 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-                                    <div class="font-medium text-xs w-40">
+                            <div class="flex items-center justify-around mt-2">
+                                <div class="flex items-center gap-x-2">
+                                    <img class='object-cover w-6 h-6 rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+                                    <div class="w-40 text-xs font-medium">
                                         <?= $brief['NOM'] . ' ' . $brief['PRENOM'] ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-auto justify-evenly">
                                 <div class="flex flex-wrap">
-                                    <div class="f min-w-0 mt-2">
-                                        <h2 class="text-xs mr-auto cursor-pointer text-gray-800 hover:text-primary truncate">
+                                    <div class="min-w-0 mt-2 f">
+                                        <h2 class="mr-auto text-xs text-gray-800 truncate cursor-pointer hover:text-primary">
                                             <?php echo $brief['TITRE']; ?>
                                         </h2>
                                     </div>
@@ -157,7 +157,7 @@ $Brief_id = isset($_POST['ID_BRIEF']) ? $_POST['ID_BRIEF'] : null;
 
     </div>
 
-    <div class="  flex justify-cente bg-bodybackground ">
+    <div class="flex justify-cente bg-bodybackground">
         <?php
         include_once '../../view/templates/formateur_info_card.php';
         ?>

@@ -1,5 +1,6 @@
 <?php
 require_once '../../controller/apprenant/apprenant.php';        
+
 require_once '../../controller/formateur/brief_details_controller.php';
 ?>
 <!DOCTYPE html>
@@ -13,8 +14,6 @@ require_once '../../controller/formateur/brief_details_controller.php';
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/output.css"> <!-- Custom CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
     <!-- Alpine.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.7.1/dist/alpine.min.js" defer></script>
     <style>
@@ -27,127 +26,155 @@ require_once '../../controller/formateur/brief_details_controller.php';
     <title>Dashboard</title>
 </head>
 
-<body class="text-gray-900 bg-bodybackground font-Poppins md:text-lg lg:text-xl xl:text-2xl">
-    <div class="flex">
-        <?php
-        include_once '../../view/templates/apprenant_slidbar.php';
-        ?>
-        <main class="bg-white h-screen w-8/12 ">
-            <div class="flex  justify-between mx-4">
-                <div class="my-11">
-                    <p class="text-4xl font-semibold">Hello, <span class=" font-medium">Imane</span></p>
-                </div>
-                <div class="flex  gap-x-7 my-11">
-                    
-                    <div class="">
-                        <button id="theme-toggle" type="button" class="flex justify-center items-center text-gray-500 border   hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 w-14 h-14">
-                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
+
+
+<body class="flex h-screen text-gray-900 md:text-lg lg:text-xl xl:text-2xl">
+    <?php
+    include_once '../../view/templates/apprenant_sidebar.php';
+    ?>
+    <div class="flex flex-col w-3/4 h-screen gap-4 overflow-auto bg-white ml-60">
+        <div class="flex justify-between mx-4">
+            <div class="my-11">
+                <p class="text-2xl font-semibold">Hello, <span class="font-medium "><?php echo $cardInfo["PRENOM"] ?></span></p>
+            </div>
+            <div class="flex gap-x-7 my-11">
+
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center p-4 text-xl font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 focus:outline-none " type="button">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                        <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                    </svg>
+
+                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 "></div>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white border divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownNotificationButton">
+                    <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 ">
+                        Notifications
                     </div>
+                    <div class="divide-y divide-gray-100 ">
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 ">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="../../public/assets/img/testprofile.jpg" alt="">
+                                <div class="absolute flex items-center justify-center w-5 h-5 -mt-5 border border-white rounded-full ms-6 bg-primary ">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                        <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 ">New message from <span class="font-semibold text-gray-900 ">Jese Leos</span>: "Hey, what's up? All set for the presentation?"</div>
+                                <div class="text-xs text-primary ">a few moments ago</div>
+                            </div>
+                        </a>
+
+                    </div>
+
                 </div>
             </div>
-            <div class="flex ">
+        </div>
+        <div class="flex flex-col mx-2 ">
+            <div class="my-4">
+                <a href="./Mybriefs.php">
+                    <button class="flex items-center justify-center h-12 px-6 text-lg rounded-lg w-28 bg-secondary text-primary"><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
+                </a>
+            </div>
+            <div class="flex justify-center p-0 m-0 ">
 
-                <div class="flex flex-col item-center mx-20 mt-11 rounded-3xl  " style=" width: 900px;">
-                    <div class="my-4">
-                        <a href="./Mybriefs.php">
-                        <button class=" flex justify-center items-center px-6 bg-secondary rounded-lg w-38 h-14 text-lg text-primary  "><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
-                        </a>
-                    </div>
-                    <img class="object-cover rounded-3xl  " style="max-height: 550px; width: 900px;" src="../../BP-IMAGE/<?= $briefDetail['IMAGE']?>" alt="Cover Image">
-                    <div class="flex flex-wrap ">
-                        <div class="f min-w-0  mt-2">
-                            <h2 class="text-2xl font-medium mr-auto cursor-pointer text-gray-800 hover:text-primary truncate "><?= $briefDetail['TITRE']?></h2>
-                        </div>
-
-                    </div>
-                    <div class="flex gap-x-32  mt-2 items-center w-full ">
-                        <div class=" flex gap-x-4 items-center w-full">
-                            <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+                <?php if ($briefDetail) : ?>
+                    <div class="flex flex-col mx-20 item-center rounded-xl" style=" width: 900px; ">
+                        <img class="object-cover bg-white rounded-xl" style="max-height: 320px; width: 700px;" src="../../public/assets/img/bp-cover.jpg" alt="">
 
 
-                            <div class="font-medium text-xs w-full  ">
-                            <p class="text-xl"><?= $briefDetail['NOM'] .' '. $briefDetail['PRENOM'] ?></p>
-                                <p class="text-xs">created : <?= $briefDetail['DATE_AJOUTE']?></p>
+                        <div class="flex flex-wrap ">
+                            <div class="min-w-0 mt-2 f">
+                            <h2 class="mr-auto text-2xl font-medium text-gray-800 truncate cursor-pointer hover:text-primary "><?= $briefDetail['TITRE']?></h2>
                             </div>
-                           
 
                         </div>
-                        <!-- <div class="flex justify-end w-full ">
-                            <div class="flex items-center   bg-green-400 text-white text-xs px-2  rounded-lg h-7 ">
-                                assigned
+                        <div class="flex items-center w-full mt-2 gap-x-32 ">
+                            <div class="flex items-center w-full gap-x-4">
+                                <img class='object-cover rounded-full h-7 w-7' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+
+
+                                <div class="w-full text-xs font-medium ">
+                                    <p class="text-xs"><?= $briefDetail['NOM'] . ' ' . $briefDetail['PRENOM'] ?></p>
+                                    <p class="text-xs text-gray-500">created : <?= $briefDetail['DATE_AJOUTE'] ?></p>
+                                </div>
+
+
                             </div>
-                        </div> -->
 
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="flex-1">
-                            <h5 class="w-full break-words"> <?= $briefDetail['DESCRIPTION']?></h5>
-                        </div>
-                      
-                        <a  href="../../BP-PDF/<?= $briefDetail['PIECE_JOINTE']?>" download class="bg-secondary text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded "> <svg class="w-6 h-6 text-gray-800  inline-block align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"  download >
-    
+                            <a href="../../BP-PDF/<?= $briefDetail['PIECE_JOINTE'] ?>" download class="bg-secondary text-gray-800 text-xs font-medium me-2 px-4 py-0.5 rounded w-60 "> <svg class="inline-block w-6 h-6 text-gray-800 align-middle p-x-11" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" download>
+
                                     <path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z" clip-rule="evenodd" />
                                 </svg>
-                                
-                                Attachment
-                               
-                        </a>
-                    </div>
 
-                </div>
-                <div class="flex flex-col border w-96  shadow rounded-3xl p-4 gap-y-7">
-                    <p class="text-2xl font-semibold">Targeted skill</p>
-                    <?php foreach ($briefCompetence as $competence ): ?>
-                    <div class=" mx-4  flex gap-x-3">
-                        <p class="text-lg text-primary font-semibold"><?= $competence ['CODE']?></p>
-                        <span class="text-gray-500"><?= $competence ['COMPETENCE_NOM']?></span>
+                                Attachment
+
+                            </a>
+
+                        </div>
+
+
+
                     </div>
+                <?php endif; ?>
+                <div class="flex flex-col p-4 border shadow rounded-xl gap-y-7" style="width: 380px;">
+                    <p class="text-xl font-semibold">Targeted skill</p>
+                    <?php foreach ($briefCompetence as $competence) : ?>
+                        <div class="flex mx-4 gap-x-3">
+                            <p class="text-sm font-semibold text-primary"><?= $competence['CODE'] ?></p>
+                            <span class="text-sm text-gray-500"><?= $competence['COMPETENCE_NOM'] ?></span>
+                        </div>
                     <?php endforeach; ?>
-                   
+
 
 
                 </div>
             </div>
 
-
-
-        </main>
-        <div class=" w-96 flex justify-center  bg-bodybackground">
-            <?php
-            include_once '../../view/templates/apprenant_card_info.php';
-            ?>
 
         </div>
 
+        
+    </div>
+    <div class="flex justify-cente bg-bodybackground">
+        <?php
+        include_once '../../view/templates/apprenant_card_info.php';
+        ?>
 
     </div>
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var eyeOpenIcon = document.getElementById('eyeOpenIcon');
-            var eyeClosedIcon = document.getElementById('eyeClosedIcon');
-
-            eyeOpenIcon.classList.toggle('hidden');
-            eyeClosedIcon.classList.toggle('hidden');
-        });
-    </script>
-
-
 
     <script src="../../public/js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("search").addEventListener("input", function() {
+                let search = this.value; // 'this' refers to the input element with id 'search'
+                console.log(search)
+                let titles = document.querySelectorAll(".titles");
+                titles.forEach(title => {
+                    if (!title.innerHTML.includes(search)) {
+                        title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.setAttribute("style", "display:none")
+                    } else {
+                        title.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.removeAttribute("style")
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
 </html>
+
+
+
 
 <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
   <label for="fileInput" class="cursor-pointer">
