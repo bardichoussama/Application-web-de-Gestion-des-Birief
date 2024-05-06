@@ -120,12 +120,12 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         <div class="overflow-hidden shadow sm:rounded-lg">
                             <table class="min-w-full divide-y ">
                                 <thead class="bg-white ">
-                                    <?php
-                                    // Define and set the value of $inProgress
-                                    $inProgress = true; // or false, depending on your logic
+                                  
+                                
+                                  
 
-                                    // Check if $inProgress is true
-                                    if ($inProgress) : ?>
+                                 
+                                 
                                         <tr>
                                             <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Image
@@ -149,8 +149,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                                 Action
                                             </th>
                                         </tr>
-                                    <?php endif; ?>
-
+                                  
                                 </thead>
                                 <tbody class="bg-bodybackground">
 
@@ -176,12 +175,12 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                             </td>
                                     
                                             <td class="p-4 text-xs font-semibold text-gray-800 whitespace-nowrap">
-                                                <!-- Display brief title -->
+                                            
                                                 <?php echo $inProgress["TITRE"]; ?>
                                             </td>
-                                            <!-- Table data for status -->
+                                         
                                             <td class="p-4 whitespace-nowrap">
-                                                <!-- Display status -->
+                                               
                                                 <span class="bg-yellow-100 text-yellow-500 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md">INPROGRESS</span>
                                      
                                             <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap">
