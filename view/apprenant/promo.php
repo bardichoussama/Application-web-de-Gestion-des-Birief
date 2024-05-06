@@ -52,7 +52,7 @@ require_once "../../controller/apprenant/apprenant.php";
                 </div>
                 <div class="flex flex-col gap-y-6">
                     <p class="text-2xl font-medium">Logic Legends</p>
-                    <p class="text-base font-regular">Group <?= $cardInfo['NOM_GROUPE']  ?> | 2023</p>
+                    <p class="text-base font-regular">Group <?= $cardInfo['NOM_GROUPE'] . " | " . $cardInfo['ANNEE'] ?></p>
                     <div class="flex w-full gap-x-20">
                         <div class="flex mt-20 gap-x-4 text-primary ">
                             <ion-icon class="w-8 h-8" name="location-outline"></ion-icon>
@@ -64,8 +64,8 @@ require_once "../../controller/apprenant/apprenant.php";
                         </div>
                         <div class="flex mt-20 gap-x-4 text-primary">
                             <ion-icon class="w-8 h-8" name="location-outline"></ion-icon>
-                            <p class="text-xs text-gray-700 font-regular">From 2/10/2023 to
-                                01/06/2024</p>
+                            <p class="text-xs text-gray-700 font-regular">From 2/10/<?=  $cardInfo['ANNEE']-1    ?> to
+                                01/06/<?=  $cardInfo['ANNEE'] ?></p>
                         </div>
                     </div>
                 </div>

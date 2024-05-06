@@ -9,7 +9,6 @@
         $loggedIn = $authModel->login($email, $password, 'APPRENANT'); 
         if ($loggedIn) {
                 header('Location: ../../view/apprenant/promo.php'); 
-                exit();
         } else {       
             include_once '../../view/alerts/lgin_fail_message.php';
         }

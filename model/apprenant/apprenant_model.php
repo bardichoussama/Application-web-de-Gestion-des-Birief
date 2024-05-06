@@ -10,7 +10,7 @@ class Apprenant
 
     public function getGroupInfo($id_apprenant)
     {
-        $stmt = $this->conn->prepare("SELECT A.*,G.NOM_GROUPE, (SELECT COUNT(*) FROM apprenant WHERE ID_GROUPE = A.ID_GROUPE) as nbApprenants
+        $stmt = $this->conn->prepare("SELECT A.*,G.NOM_GROUPE,G.ANNEE,G.ID_GROUPE, (SELECT COUNT(*) FROM apprenant WHERE ID_GROUPE = A.ID_GROUPE) as nbApprenants
         FROM apprenant A
         INNER JOIN groupe G ON A.ID_GROUPE = G.ID_GROUPE
         WHERE ID_APPRENANT = :idApprenant");

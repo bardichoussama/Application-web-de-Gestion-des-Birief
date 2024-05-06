@@ -280,7 +280,7 @@ require_once "../../controller/formateur/learner_state_detail.php";
             xmlhttp.onreadystatechange  = function () {
               if (this.readyState == 4 && this.status == 200) {
                     static = this.responseText.split(",")
-                   console.log(static)
+                    console.log(static);
                     const getChartOptions = () => {
                         return {
                             series: static,

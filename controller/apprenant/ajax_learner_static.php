@@ -2,9 +2,8 @@
 session_start();
 require_once ("../../config/db.php");
 require_once ("../../model/formateur/formateur_statics.php");
-$learnerId = isset($_GET['id']) ? $_GET['id'] : null;
-if ($learnerId == null) {
-    $learnerId = $_SESSION["ID"];
+$learnerId = isset($_GET['id']) ? $_GET['id'] : $_SESSION["ID"];;
+if ($learnerId) {
     $conn = $database->getConnection();
     $statics = new statics($conn);
     $apprenant_static = $statics->get_learner_statics($learnerId);
@@ -12,7 +11,4 @@ if ($learnerId == null) {
     $DONE = $apprenant_static["DONE"] / $apprenant_static["TOTAL"] * 100;
     $TOTAL = $apprenant_static["TOTAL"] / $apprenant_static["TOTAL"] * 100;
 }
-echo "$TOTAL,$DONE,$NOT_DONE";
-
-
 ?>

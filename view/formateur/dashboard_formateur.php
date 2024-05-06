@@ -35,6 +35,7 @@ require_once "../../controller/formateur/formateurDashboard.php";
         <div class="flex justify-between mx-4 ">
             <div class="my-11">
                 <p class="text-2xl font-semibold">Hello, <span class="font-medium "><?php echo $cardInfo['PRENOM'] ?></span></p>
+              
             </div>
             <div class="flex gap-x-7 my-11">
 
