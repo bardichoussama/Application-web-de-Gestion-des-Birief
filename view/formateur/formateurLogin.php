@@ -1,9 +1,11 @@
 <?php
-    session_start();
-    if($_SESSION["ID"]!=""){
+
+    if(!empty($_SESSION["ID"])){
         header('Location: ../../view/formateur/dashboard_formateur.php'); 
     }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

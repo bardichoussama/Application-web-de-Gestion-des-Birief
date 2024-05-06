@@ -14,6 +14,7 @@ require_once '../../model/formateur/formateurInfo.php';
             $conn=$database->getConnection();
             $formateur = new formateur($_SESSION["ID"],$conn);
             $_SESSION["ID_GROUPE"] = $formateur->getFormation()["ID_GROUPE"];
+            var_dump($_SESSION["ID_GROUPE"]);
             header('Location: ../../view/formateur/dashboard_formateur.php'); 
         } else {
             echo "Invalid email or password. Please try again.";

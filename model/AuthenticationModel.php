@@ -37,7 +37,7 @@ class AuthenticationModel
             session_start();
             $_SESSION['annee'] = $annee;
             $_SESSION["ID"] = $user['ID_' . $userType];
-            if ($userType === 'APPRENANT') 
+            if ($userType === 'APPRENANT' ) 
             {
                 $_SESSION["ID_GROUPE"] = $user['ID_GROUPE'];
             }

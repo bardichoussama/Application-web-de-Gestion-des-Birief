@@ -119,68 +119,84 @@ require_once "../../controller/formateur/formateurDashboard.php";
                         <div class="overflow-hidden shadow sm:rounded-lg">
                             <table class="min-w-full divide-y ">
                                 <thead class="bg-white ">
-                                    <?php if ($inProgres) : ?>
-                                        <tr>
+                                    <?php
+                                    // Define and set the value of $inProgress
+                                    $inProgress = true; // or false, depending on your logic
 
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                    // Check if $inProgress is true
+                                    if ($inProgress) : ?>
+                                        <tr>
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Image
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-800 uppercase">
                                                 BRIEF OWNER
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 BRIEF TITLE
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 STAT
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 DURATION
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 SKILLS
                                             </th>
-                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase ">
+                                            <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Action
                                             </th>
                                         </tr>
                                     <?php endif; ?>
+
                                 </thead>
                                 <tbody class="bg-bodybackground">
-                                    <?php if ($inProgres) : ?>
+
+                                    <?php
+                                 
+                                    if ($inProgress) : ?>
+                                   
                                         <tr>
-
-
+                                        
                                             <td class="flex items-center p-4 space-x-3 whitespace-nowrap">
-                                                <img class="w-16 h-12 rounded-lg " src="../../BP-IMAGE/<?= $inProgres["IMAGE"] ?> " alt="">
-
+                                         
+                                                <img class="w-16 h-12 rounded-lg" src="../../BP-IMAGE/<?= $inProgress["IMAGE"] ?>" alt="">
                                             </td>
-                                            <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap ">
-                                                <div class="text-sm font-normal text-gray-500 ">
-                                                    <div class="text-xs font-semibold text-gray-800 ">Created By</div>
+                                       
+                                            <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
+                                           
+                                                <div class="text-sm font-normal text-gray-500">
+                                                    <div class="text-xs font-semibold text-gray-800">Created By</div>
                                                     <div class="flex items-center text-xs font-normal text-gray-800">
-                                                        <?php echo $inProgres["PRENOM"] . " " . $inProgres["NOM"] ?>
+                                                        <?php echo $inProgress["PRENOM"] . " " . $inProgress["NOM"] ?>
                                                     </div>
                                                 </div>
                                             </td>
-
-                                            <td class="p-4 text-xs font-semibold text-gray-800 whitespace-nowrap ">
-                                                <?php echo $inProgres["TITRE"]; ?>
+                                    
+                                            <td class="p-4 text-xs font-semibold text-gray-800 whitespace-nowrap">
+                                                <!-- Display brief title -->
+                                                <?php echo $inProgress["TITRE"]; ?>
                                             </td>
+                                            <!-- Table data for status -->
                                             <td class="p-4 whitespace-nowrap">
-                                                <span class="bg-yellow-100 text-yellow-500 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md ">INPROGRESS</span>
+                                                <!-- Display status -->
+                                                <span class="bg-yellow-100 text-yellow-500 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md">INPROGRESS</span>
+                                     
+                                            <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap">
+                                       
+                                                <?php echo $inProgress["DUREE"] ?> DAYS
                                             </td>
-                                            <td class="p-4 text-xs font-medium text-gray-800 whitespace-nowrap ">
-                                                <?php echo $inProgres["DUREE"] ?> DAYS
-                                            </td>
+                                      
                                             <td class="p-4 space-x-2 text-xs font-medium text-gray-800 whitespace-nowrap">
-
-                                                <?php echo $inProgres["SKILLS"] ?>
+                                            
+                                                <?php echo $inProgress["SKILLS"] ?>
                                             </td>
+                                           
                                             <td class="p-4 space-x-2 whitespace-nowrap">
-
+                                           
                                                 <div class="mt-4">
-                                                    <a href="../../BP-PDF/<?php echo $inProgres["PIECE_JOINTE"] ?>" download>
+                                                    <a href="../../BP-PDF/<?php echo $inProgress["PIECE_JOINTE"] ?>" download>
                                                         <span class="px-3 py-2 text-xs font-semibold text-gray-800 rounded-md bg-secondary me-2">
                                                             <label for="fileInput" class="text-gray-800 cursor-pointer">
                                                                 Attachment
@@ -193,9 +209,9 @@ require_once "../../controller/formateur/formateurDashboard.php";
                                                     </a>
                                                 </div>
                                             </td>
-
                                         </tr>
                                     <?php endif; ?>
+
 
                                 </tbody>
                             </table>
@@ -229,14 +245,14 @@ require_once "../../controller/formateur/formateurDashboard.php";
 
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <form action="" method="post">
-                                <li>
-                                    <button name="year" value="2020" class="block text-xs  hover:bg-gray-100 ">2020</button>
-                                </li>
-                                <li>
-                                    <button name="year"  value="2024" class="block text-xs  hover:bg-gray-100 ">2024</button>
-                                </li>
+                                    <li>
+                                        <button name="year" value="2020" class="block text-xs hover:bg-gray-100 ">2020</button>
+                                    </li>
+                                    <li>
+                                        <button name="year" value="2024" class="block text-xs hover:bg-gray-100 ">2024</button>
+                                    </li>
                                 </form>
-                               
+
                             </ul>
                         </div>
                     </div>
