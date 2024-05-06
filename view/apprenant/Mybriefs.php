@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../controller/apprenant/apprenant.php';
-
 require_once '../../controller/apprenant/my_briefs.php';
 
 
@@ -157,11 +156,12 @@ require_once '../../controller/apprenant/my_briefs.php';
                                                 <?php echo $briefArealiser["SKILLS"] ?>
                                             </td>
                                             <td class="p-4 space-x-2 whitespace-nowrap">
-
+                                                <form action="" method="post">
                                                 <div class="mt-4">
-                                                    <button name="<?php echo $buttonName; ?>" class="w-32 px-2 py-2 text-xs font-medium text-white rounded-lg bg-primary me-2">
+                                                    <button type="submit" name="<?php echo $buttonName; ?>" class="w-32 px-2 py-2 text-xs font-medium text-white rounded-lg bg-primary me-2">
                                                         <?php echo $buttonLabel; ?>
                                                     </button>
+                                                    </form>
                                                 </div>
                                             </td>
 

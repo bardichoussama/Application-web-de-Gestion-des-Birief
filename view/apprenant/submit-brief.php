@@ -1,5 +1,7 @@
 <?php
 require_once "../../controller/apprenant/apprenant.php";
+require_once "../../controller/apprenant/submite_brief.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -52,7 +54,7 @@ require_once "../../controller/apprenant/apprenant.php";
                     </a>
                 </div>
                 <!-- Chat -->
-                <form class="overflow-y-auto lg:max-h-[60rem] 2xl:max-h-fit">
+                <form class="overflow-y-auto lg:max-h-[60rem] 2xl:max-h-fit" method="post">
 
 
 
@@ -73,21 +75,20 @@ require_once "../../controller/apprenant/apprenant.php";
 
                         </footer>
                         <p class="mb-2 text-sm text-gray-900">
-                            Hello <a href="#" class="font-medium hover:underline text-primary-600 ">@jeseleos</a> I
-                            need some informations about flowbite react version.
+                            Hello <a href="#" class="font-medium hover:underline text-primary-600 "><?= $cardInfo['NOM'] . ' ' . $cardInfo['PRENOM']  ?></a> 
+                           you can send link for your brief here 
                         </p>
                     </article>
 
                     <div class="w-full border border-gray-200 rounded-lg bg-gray-50 ">
                         <div class="px-4 py-2 bg-white rounded-t-lg ">
-                            <label for="comment" class="sr-only">Write your message</label>
-                            <textarea id="comment" rows="8" class="w-full px-0 text-sm text-gray-900 bg-white border-0 " placeholder="Write your message" name="link" required></textarea>
+                            <textarea id="comment" rows="8" class="w-full px-0 text-sm text-gray-900 bg-white border-0 " placeholder="Write your linkes" name="link" required></textarea>
                         </div>
                         <div class="flex items-center justify-between px-3 py-2 border-t ">
                             <button class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary rounded-lg focus:ring-4  " name="update">
                                 Send Link
                             </button>
-                            <div class="flex pl-0 space-x-1 sm:pl-2">
+                            <!-- <div class="flex pl-0 space-x-1 sm:pl-2">
                                 <button type="button" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 ">
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path>
@@ -106,7 +107,7 @@ require_once "../../controller/apprenant/apprenant.php";
                                     </svg>
                                     <span class="sr-only">Upload image</span>
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </form>

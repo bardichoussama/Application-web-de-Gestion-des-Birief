@@ -15,8 +15,8 @@ class AuthenticationModel
     {
         if ($userType === 'FORMATEUR') {
             $tableName = 'formateur'; 
-            if(date("m")<06){
-                $annee=date("Y");
+            if(date("m")>06){
+                $annee=date("Y")+1;
             }else{
                 $annee=date("Y");
             } 
@@ -26,8 +26,8 @@ class AuthenticationModel
             $tableName = 'apprenant';
             $stmt = $this->conn->prepare("SELECT * FROM $tableName  WHERE EMAIL = :email ");
         }
-        
-       
+
+
         $stmt->bindParam(':email', $email);
 
         $stmt->execute();
@@ -37,13 +37,12 @@ class AuthenticationModel
             session_start();
             $_SESSION['annee'] = $annee;
             $_SESSION["ID"] = $user['ID_' . $userType];
-            if ($userType === 'APPRENANT' ) 
+            if ($userType === 'FORMATEUR') 
             {
-                $_SESSION["ID_GROUPE"] = $user['ID_GROUPE'];
+                $_SESSION["ID_GROUPE"] = $user["ID_GROUPE"];
             }
-            $_SESSION["user"]=$tableName;
+            
             return true;
         }
-        return false;
     }  
 }

@@ -4,7 +4,7 @@
     require_once("../../model/formateur/formateur_BP_model.php");
     $conn=$database->getConnection();
     $brief= new brief($conn);
-    $inProgress=$brief->getInProgresBP($_SESSION["ID_GROUPE"]);
+    $inProgress=$brief->getInProgresBP($_SESSION["GROUPE"]);
     $competences = $brief->getCompetence();    
     if(isset($_POST["creat"]) || isset($_POST["assigned"]) ){   
         if (isset($_POST['start']) && isset($_POST['end'])) {

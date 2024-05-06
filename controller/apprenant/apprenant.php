@@ -9,9 +9,8 @@ $apprenant = new Apprenant($conn);
 
 
 if (isset($_SESSION["ID"])) {
-    $apprenantID = $_SESSION["ID"];
-    $groupID = $_SESSION["ID_GROUPE"];
     $cardInfo = $apprenant->getGroupInfo($_SESSION["ID"]);
+    $_SESSION["ID_GROUPE"]= $cardInfo["ID_GROUPE"];
     if ($cardInfo) {
 
     } else {

@@ -1,6 +1,5 @@
 <?php
 require_once '../../controller/apprenant/apprenant.php';        
-
 require_once '../../controller/formateur/brief_details_controller.php';
 ?>
 <!DOCTYPE html>

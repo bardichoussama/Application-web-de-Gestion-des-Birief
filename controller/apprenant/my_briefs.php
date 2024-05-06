@@ -7,7 +7,7 @@ $brief = new brief($conn);
 $search= new search($conn);
 $briefArealiser = $brief->realiseBrief($_SESSION["ID_GROUPE"],$_SESSION["ID"]);
 $affecedBP = $brief->getAffecedBP($_SESSION["ID_GROUPE"]);
-if($briefArealiser){
+if($briefArealiser && $briefArealiser['LIEN']=="" ){
     if ($briefArealiser["ETAT"] == "TO DO") {
         $buttonLabel = "Start brief";
         $buttonName = "startBP";
@@ -15,9 +15,13 @@ if($briefArealiser){
         $buttonLabel = "END";
         $buttonName = "endBP";
     }
+}else{
+    $brief->updateRealiserEtat($briefArealiser['ID_BRIEF'],$_SESSION["ID"],"DONE");
+    $buttonLabel = "update";
+    $buttonName = "endBP";
 }
 if (isset($_POST["startBP"])) {
-    $result = $brief->updateRealiserEtat($briefArealiser["ID_BRIEF"],$_SESSION["ID"],'DOING');
+    $brief->updateRealiserEtat($briefArealiser["ID_BRIEF"],$_SESSION["ID"],'DOING');
     header("location:./Mybriefs.php"); 
 }elseif(isset($_POST["endBP"])){
     header("location:../../view/apprenant/submit-brief.php?id=".$briefArealiser["ID_BRIEF"]);

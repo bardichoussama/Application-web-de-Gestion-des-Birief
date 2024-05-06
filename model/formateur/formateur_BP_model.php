@@ -143,6 +143,7 @@ class Brief
         F.NOM, 
         F.PRENOM, 
         R.ETAT, 
+        R.LIEN,
         B.IMAGE,
         COUNT(C.ID_COMPETENCE) AS SKILLS 
         FROM affectation A
@@ -207,12 +208,7 @@ class Brief
     }
     function updateRealiserLink($briefId, $apprenantId, $newLink)
     {
-
-
-
         $stmt = $this->conn->prepare("UPDATE realiser SET LIEN = :lien WHERE ID_BRIEF = :brief_id AND ID_APPRENANT = :apprenant_id");
-
-
         $stmt->bindParam(':lien', $newLink);
         $stmt->bindParam(':brief_id', $briefId);
         $stmt->bindParam(':apprenant_id', $apprenantId);
